@@ -124,7 +124,7 @@ Function regenerate($CLI : cs:C1710.CLI)
 			
 		End while 
 		
-		cs:C1710.Package.new().setProperty("労災行為"; $file1.fullName)
+		cs:C1710.Package.new().setProperty("労災診療行為"; $file2.fullName)
 		
 	End if 
 	
