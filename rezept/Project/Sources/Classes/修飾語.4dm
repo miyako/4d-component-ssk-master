@@ -133,7 +133,7 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	$CLI.CR().EL().print($values[6]; "226")
+	//$CLI.CR().EL().print($values[6]; "226")
 	
 Function _trimDoubleQuotes($values : Variant)->$value : Variant
 	

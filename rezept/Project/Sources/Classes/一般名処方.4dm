@@ -112,4 +112,4 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	$CLI.CR().EL().print($values[2]; "226")
+	//$CLI.CR().EL().print($values[2]; "226")

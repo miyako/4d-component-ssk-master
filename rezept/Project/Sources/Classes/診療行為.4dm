@@ -94,9 +94,6 @@ Function regenerate($CLI : cs:C1710.CLI)
 			
 		End while 
 		
-		$CLI.CR().EL().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
-		
 		cs:C1710.Package.new().setProperty("診療行為"; $file1.fullName)
 		
 		$CLI.CR().EL().print("records imported..."; "bold")
@@ -298,7 +295,7 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	$CLI.CR().EL().print($values[4]; "226")
+	//$CLI.CR().EL().print($values[4]; "226")
 	
 Function _trimDoubleQuotes($values : Variant)->$value : Variant
 	
