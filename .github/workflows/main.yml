@@ -42,4 +42,27 @@ jobs:
           tool4d_download_url: ${{ steps.get.outputs.tool4d_download_url }}
           tool4d_executable_path: ${{ steps.get.outputs.tool4d_executable_path }}
           startup_method: ${{ matrix.TOOL4D_STARTUP_METHOD }}
-          project_path: ${{ matrix.TOOL4D_STARTUP_PROJECT_PATH }}        
+          project_path: ${{ matrix.TOOL4D_STARTUP_PROJECT_PATH }}  
+
+      - name: bump
+        id: bump
+        uses: ./.github/actions/bump
+        with:
+          mode: patch
+
+      - name: release 
+        id: release
+        uses: ./.github/actions/create-release@v1
+        with:
+          version: ${{ steps.bump.outputs.version }}
+          mode: patch
+
+      - name: deploy                                        
+        uses: ./.github/actions/upload-release-asset
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: steps.release.outputs.upload_url
+          asset_path: Components/rezept.4dbase
+          asset_name: rezept.4dbase
+          asset_content_type: application/octet-stream
