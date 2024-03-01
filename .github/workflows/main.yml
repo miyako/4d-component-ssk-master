@@ -68,13 +68,23 @@ jobs:
           startup_method: ${{ matrix.TOOL4D_STARTUP_METHOD }}
           project_path: ${{ matrix.TOOL4D_STARTUP_PROJECT_PATH }}  
           user_param: regenerate,export,build
-              
+          
+      - name: execute startup method
+        run: |
+          pwd
+          ditto -c -k --keepParent "${SRC}" "${PWD}/${DST}"
+          ls .
+        shell: bash 
+        env: 
+          SRC: /Users/runner/work/4d-component-ssk-master/4d-component-ssk-master/Components/rezept.4dbase
+          DST: rezept.4dbase.zip
+
       - name: deploy                                        
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: steps.release.outputs.upload_url
-          asset_path: /Users/runner/work/4d-component-ssk-master/4d-component-ssk-master/Components/rezept.4dbase
+          asset_path: rezept.4dbase.zip
           asset_name: rezept.4dbase
           asset_content_type: application/octet-stream
