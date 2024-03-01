@@ -22,6 +22,7 @@ runs:
   run: |
     echo "RELEASE_NAME=${VERSION}" >> $GITHUB_ENV
     echo "TAG_NAME=${MODE}-${VERSION}" >> $GITHUB_ENV
+  shell: bash    
   env: 
     VERSION: ${{ inputs.version }}
     MODE: ${{ inputs.mode }}
