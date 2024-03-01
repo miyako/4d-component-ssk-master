@@ -1,2 +1,5 @@
-# 4d-component-ssk-master
 社会保険診療報酬支払基金マスターを4DBに変換
+
+# 概要
+
+GitHub Actionsと`tool4d`を活用し，マスターファイルを更新したら自動的にコンポーネントを再生成します。
