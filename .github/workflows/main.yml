@@ -53,7 +53,7 @@ jobs:
 
       - name: release 
         id: release
-        uses: ./.github/actions/create-release@v1
+        uses: actions/create-release@v1
         with:
           version: ${{ steps.bump.outputs.version }}
           mode: patch
