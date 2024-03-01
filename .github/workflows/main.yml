@@ -69,22 +69,32 @@ jobs:
           project_path: ${{ matrix.TOOL4D_STARTUP_PROJECT_PATH }}  
           user_param: regenerate,export,build
           
-      - name: execute startup method
+      - name: create archive
         run: |
-          pwd
-          ditto -c -k --keepParent "${SRC}" "${PWD}/${DST}"
-          ls .
+          ditto -c -k --keepParent "${SRC}" "${ZIP}"
+          hdiutil create -format UDBZ -plist -srcfolder "${SRC}" "${DMG}"
         shell: bash 
         env: 
-          SRC: ./Components/rezept.4dbase
-          DST: rezept.4dbase.zip
+          SRC: Components/rezept.4dbase
+          ZIP: rezept.4dbase.zip
+          DMG: rezept.4dbase.dmg
 
-      - name: deploy                                        
+      - name: deploy zip                                       
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: steps.release.outputs.upload_url
-          asset_path: ./rezept.4dbase.zip
-          asset_name: rezept.4dbase
-          asset_content_type: application/octet-stream
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: rezept.4dbase.zip
+          asset_name: rezept.4dbase.zip
+          asset_content_type: application/zip
+
+      - name: deploy dmg                                       
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: rezept.4dbase.dmg
+          asset_name: rezept.4dbase.dmg
+          asset_content_type: application/octet-stream    
