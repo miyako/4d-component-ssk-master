@@ -1,3 +1,2 @@
 //%attributes = {}
-ds:C1482.医薬品.regenerate()
-
+ds:C1482.後発医薬品.regenerate()

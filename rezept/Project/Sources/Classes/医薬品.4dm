@@ -90,26 +90,10 @@ Function regenerate($CLI : cs:C1710.CLI)
 			
 		End while 
 		
-		$CLI.LF()
-		
-		$CLI.print("records imported..."; "bold")
-		$CLI.print(String:C10(ds:C1482.医薬品.getCount()); "82;bold").LF()
+		$CLI.CR().EL().print("records imported..."; "bold")
+		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
 		
 		This:C1470._resumeIndexes()
-		
-		ds医薬品
-		
-		var $dataFile : 4D:C1709.File
-		$dataFile:=Folder:C1567("/RESOURCES/").file("医薬品.data")
-		
-		$CLI.print("generate data file..."; "bold")
-		If ($dataFile.exists)
-			$CLI.print("success"; "82;bold").LF()
-			$CLI.print($dataFile.path; "244").LF()
-			$CLI.print("size: "; "bold").print(String:C10($dataFile.size); "39").LF()
-		Else 
-			$CLI.print("failure"; "196;bold").LF()
-		End if 
 		
 		cs:C1710.Package.new().setProperty("医薬品"; $file.fullName)
 		
@@ -124,11 +108,11 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e:=$dataClass.new()
 	
-	$e["項目"]:=New object:C1471
-	$e["医薬品名・規格名"]:=New object:C1471
-	$e["単位"]:=New object:C1471
-	$e["新又は現金額"]:=New object:C1471
-	$e["旧金額"]:=New object:C1471
+	$e["項目"]:={}
+	$e["医薬品名・規格名"]:={}
+	$e["単位"]:={}
+	$e["新又は現金額"]:={}
+	$e["旧金額"]:={}
 	
 	$e["項目"]["変更区分"]:=$values[0]
 	$e["項目"]["マスター種別"]:=$values[1]

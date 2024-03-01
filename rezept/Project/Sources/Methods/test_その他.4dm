@@ -37,7 +37,7 @@ Else
 	import_傷病名
 	$ds:=ds傷病名(True:C214)
 	
-	import_一般名処方
+	//import_一般名処方
 	import_後発医薬品
 	
 	
