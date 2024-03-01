@@ -61,13 +61,9 @@ jobs:
           release_name: ${{ steps.bump.outputs.version }}
           draft: false
           prerelease: false  
-        
-      - name: deploy                                        
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: steps.release.outputs.upload_url
-          asset_path: 4d-component-ssk-master/Components/rezept.4dbase/
-          asset_name: rezept.4dbase
-          asset_content_type: application/octet-stream
+
+      - name: ls
+        run: |
+          ls .
+        shell: bash 
+    
