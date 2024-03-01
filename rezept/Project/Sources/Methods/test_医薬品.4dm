@@ -8,7 +8,7 @@ If (False:C215)
 	
 	//import_医薬品
 	//import_一般名処方
-	import_後発医薬品
+	//import_後発医薬品
 	
 	$ds:=ds医薬品(True:C214)
 	

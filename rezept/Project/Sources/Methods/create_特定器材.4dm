@@ -1,6 +1,6 @@
 //%attributes = {"invisible":true}
-C_COLLECTION:C1488($1;$values)
-C_OBJECT:C1216($dataClass;$e)
+C_COLLECTION:C1488($1; $values)
+C_OBJECT:C1216($dataClass; $e)
 
 $values:=$1
 
@@ -38,7 +38,7 @@ $e["項目"]["酸素等区分"]:=$values[20]
 $e["項目"]["特定器材種別(1)"]:=$values[21]
 $e["項目"]["上限価格"]:=$values[22]
 $e["項目"]["上限点数"]:=$values[23]
-  //予備
+//予備
 $e["項目"]["公表順序番号"]:=$values[25]
 $e["項目"]["廃止・新設関連"]:=$values[26]
 $e["項目"]["変更年月日"]:=$values[27]
@@ -48,10 +48,14 @@ $e["項目"]["告示番号"]:=New object:C1471
 $e["項目"]["告示番号"]["別表番号"]:=$values[30]
 $e["項目"]["告示番号"]["区分番号"]:=$values[31]
 $e["項目"]["DPC適用区分"]:=$values[32]
-  //予備
-  //予備
-  //予備
+//予備
+//予備
+//予備
 
 $e["基本漢字名称"]:=$values[36]
+
+If ($values.length>37)
+	$e["項目"]["再製造単回使用医療機器"]:=$values[37]
+End if 
 
 $e.save()
