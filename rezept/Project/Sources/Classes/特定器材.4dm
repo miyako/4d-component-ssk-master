@@ -106,7 +106,7 @@ Function regenerate($CLI : cs:C1710.CLI)
 		$CLI.print("found"; "82;bold").LF()
 		$CLI.print($file2.path; "244").LF()
 		
-		$csv:=$file.getText("windows-31j"; Document with LF:K24:22)
+		$csv:=$file2.getText("windows-31j"; Document with LF:K24:22)
 		
 		$i:=1
 		
