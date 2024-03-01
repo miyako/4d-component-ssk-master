@@ -59,8 +59,9 @@ Function regenerate($CLI : cs:C1710.CLI)
 	
 	var $i : Integer
 	
-	var $file : 4D:C1709.File
-	$file:=This:C1470._getFile(["t@"; "特定器材@"])
+	var $file1; $file2 : 4D:C1709.File
+	$file1:=This:C1470._getFile(["t@"; "特定器材@"])
+	$file2:=This:C1470._getFile(["rezept-master-03"])
 	
 	If ($CLI=Null:C1517)
 		$CLI:=cs:C1710.CLI.new()
@@ -68,15 +69,17 @@ Function regenerate($CLI : cs:C1710.CLI)
 	
 	$CLI.print("master for 特定器材..."; "bold")
 	
-	If ($file=Null:C1517)
+	If ($file1#Null:C1517) || ($file2#Null:C1517)
+		This:C1470._truncateTable()._pauseIndexes()
+	End if 
+	
+	If ($file1=Null:C1517)
 		$CLI.print("not found"; "196;bold").LF()
 	Else 
 		$CLI.print("found"; "82;bold").LF()
-		$CLI.print($file.path; "244").LF()
+		$CLI.print($file1.path; "244").LF()
 		
-		This:C1470._truncateTable()._pauseIndexes()
-		
-		$csv:=$file.getText("windows-31j"; Document with LF:K24:22)
+		$csv:=$file1.getText("windows-31j"; Document with LF:K24:22)
 		
 		$i:=1
 		
@@ -91,24 +94,17 @@ Function regenerate($CLI : cs:C1710.CLI)
 			
 		End while 
 		
-		$CLI.CR().EL().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
-		
-		This:C1470._resumeIndexes()
+		cs:C1710.Package.new().setProperty("特定器材"; $file1.fullName)
 		
 	End if 
-	
-	$file:=This:C1470._getFile(["rezept-master-03"])
 	
 	$CLI.print("master for 労災特定器材..."; "bold")
 	
-	If ($file=Null:C1517)
+	If ($file2=Null:C1517)
 		$CLI.print("not found"; "196;bold").LF()
 	Else 
 		$CLI.print("found"; "82;bold").LF()
-		$CLI.print($file.path; "244").LF()
-		
-		This:C1470._truncateTable()._pauseIndexes()
+		$CLI.print($file2.path; "244").LF()
 		
 		$csv:=$file.getText("windows-31j"; Document with LF:K24:22)
 		
@@ -125,14 +121,15 @@ Function regenerate($CLI : cs:C1710.CLI)
 			
 		End while 
 		
-		$CLI.CR().EL().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
-		
-		This:C1470._resumeIndexes()
+		cs:C1710.Package.new().setProperty("労災特定器材"; $file2.fullName)
 		
 	End if 
 	
-	cs:C1710.Package.new().setProperty("特定器材"; $file.fullName)
+	If ($file1#Null:C1517) || ($file2#Null:C1517)
+		$CLI.CR().EL().print("records imported..."; "bold")
+		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
+		This:C1470._resumeIndexes()
+	End if 
 	
 Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	

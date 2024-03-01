@@ -1,2 +1,2 @@
 //%attributes = {}
-ds:C1482.診療行為.regenerate()
+ds:C1482.傷病名.regenerate()

@@ -42,12 +42,8 @@
 	},
 	"import": {
 		"methods": [
-			"create_コメント",
 			"create_記載事項等",
-			"create_傷病名",
 			"formula_ippanmei",
-			"import_コメント",
-			"import_傷病名",
 			"import_地方公費",
 			"load_collection",
 			"save_collection",
