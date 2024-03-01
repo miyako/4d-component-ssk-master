@@ -1,2 +1,2 @@
 //%attributes = {}
-ds:C1482.修飾語.regenerate()
+ds:C1482.診療行為.regenerate()

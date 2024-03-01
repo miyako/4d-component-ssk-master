@@ -65,6 +65,20 @@ If (Get application info:C1599.headless)
 		$CLI.print("failure"; "196;bold").LF()
 	End if 
 	
+	ds:C1482.診療行為.regenerate()
+	
+	ds診療行為
+	
+	$dataFile:=Folder:C1567("/RESOURCES/").file("診療行為.data")
+	$CLI.print("generate data file..."; "bold")
+	If ($dataFile.exists)
+		$CLI.print("success"; "82;bold").LF()
+		$CLI.print($dataFile.path; "244").LF()
+		$CLI.print("size: "; "bold").print(String:C10($dataFile.size); "39").LF()
+	Else 
+		$CLI.print("failure"; "196;bold").LF()
+	End if 
+	
 	cs:C1710.Build.new().build()
 	
 	ON ERR CALL:C155("")
