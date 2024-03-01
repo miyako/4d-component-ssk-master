@@ -36,7 +36,7 @@ jobs:
           version: ${{ matrix.TOOL4D_VERSION }}
           build: ${{ matrix.TOOL4D_BUILD }}
           
-      - name: run tests
+      - name: build component
         uses: ./.github/actions/build-component
         with:
           tool4d_download_url: ${{ steps.get.outputs.tool4d_download_url }}
