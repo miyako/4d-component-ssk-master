@@ -1,0 +1,76 @@
+{
+	"4DB": {
+		"tables": [
+			"コメント",
+			"医薬品",
+			"一般名処方",
+			"一般名処方例外",
+			"修飾語",
+			"傷病名",
+			"診療行為",
+			"地方公費",
+			"特定器材"
+		],
+		"methods": [
+			"dsコメント",
+			"ds医薬品",
+			"ds一般名検索",
+			"ds記載事項等",
+			"ds修飾語",
+			"ds傷病名",
+			"ds診療行為",
+			"ds単位",
+			"ds地方公費",
+			"ds特定器材"
+		],
+		"classes": [
+			"番号"
+		]
+	},
+	"function": {
+		"methods": [
+			"double_quote",
+			"m_setup",
+			"m_setup_i",
+			"new_query_params",
+			"str_trim",
+			"trim_double_quotes"
+		]
+	},
+	"import": {
+		"methods": [
+			"create_コメント",
+			"create_記載事項等",
+			"create_修飾語",
+			"create_傷病名",
+			"create_診療行為",
+			"create_特定器材",
+			"formula_ippanmei",
+			"import_コメント",
+			"import_一般名処方",
+			"import_後発医薬品",
+			"import_修飾語",
+			"import_傷病名",
+			"import_診療行為",
+			"import_地方公費",
+			"import_特定器材",
+			"load_collection",
+			"save_collection",
+			"コメント_get",
+			"診療行為_get"
+		]
+	},
+	"公費": {
+		"methods": [
+			"レセプト記載区分",
+			"レセプト請求区分",
+			"レセプト負担金額区分",
+			"外来負担区分",
+			"食事療養費",
+			"入院負担区分",
+			"保険公費種別区分",
+			"薬剤負担区分"
+		]
+	},
+	"trash": {}
+}

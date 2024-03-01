@@ -1,0 +1,60 @@
+{
+	"_method_": {
+		"ds地方公費": {
+			"Syntax": "**ds地方公費**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"ds傷病名": {
+			"Syntax": "**ds傷病名**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"公費": {
+			"Syntax": "**公費**()->公費 : Object",
+			"Params": [
+				[
+					"公費",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"dsコメント": {
+			"Syntax": "**dsコメント**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"ds単位": {
+			"Syntax": "**ds単位**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"ds修飾語": {
+			"Syntax": "**ds修飾語**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"ds医薬品": {
+			"Syntax": "**ds医薬品**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"ds特定器材": {
+			"Syntax": "**ds特定器材**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"ds診療行為": {
+			"Syntax": "**ds診療行為**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"ds記載事項等": {
+			"Syntax": "**ds記載事項等**()",
+			"Params": [],
+			"Summary": ""
+		}
+	}
+}

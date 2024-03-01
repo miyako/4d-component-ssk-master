@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="5">
+	<com.4d>
+		<php ip_address="127.0.0.1"/>
+		<sql>
+			<publication allow_flash_player_requests="false" port_number="19812"/>
+		</sql>
+		<web>
+			<standalone_server>
+				<configuration allowHttp="false" allow_ssl="false" port_number="80"/>
+				<webservices>
+					<server allow_requests="false" name="A_WebService"/>
+				</webservices>
+				<options>
+					<keep_alive requests_number="100"/>
+					<cache cache_max_size="524288"/>
+				</options>
+			</standalone_server>
+		</web>
+		<server>
+			<network>
+				<options publication_name="SYOUBYOUMEI" publish_at_startup="false"/>
+			</network>
+			<ip_config>
+				<allow_deny_table>
+					<allow_deny address="*" allow="true"/>
+				</allow_deny_table>
+			</ip_config>
+		</server>
+		<database>
+			<cache adaptative="false" flush_buffer_delay="20s"/>
+			<misc mac_use_lf="false" no_bom="false" prefer_null_than_blank_values="false" standard_xpath="true"/>
+		</database>
+		<compiler>
+			<typage default_for_button="2" default_for_numeric="1"/>
+			<options error_file="true" symbol_file="true" target="all"/>
+		</compiler>
+	</com.4d>
+</preferences>

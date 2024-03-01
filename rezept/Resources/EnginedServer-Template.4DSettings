@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?><!--#4dcode	C_OBJECT:C1216($1;$EnginedServer)	$EnginedServer:=$1 --><database_shortcut is_remote="true" server_database_name="$4dtext($EnginedServer.server_database_name)" server_path="$4dtext($EnginedServer.server_path)" cache_folder_name="$4dtext($EnginedServer.cache_folder_name)"/>

@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="rezept" uuid="84023AD4F88A4963B69202BB1F842731" collation_locale="ja">
+	<schema name="DEFAULT_SCHEMA"/>
+	<table name="傷病名" uuid="0633BF498E944681BE5C880624D8F45B" id="1">
+		<field name="ID" uuid="09C3793D0A3C4AC5875A1D46619E405A" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="傷病名コード" uuid="3945089719954C459AB55C37F18953C5" type="10" limiting_length="7" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="7550632BDA8B4F7D8A0792FC29334FB3" type="21" blob_switch_size="2147483647" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="0" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="傷病名称" uuid="B69301A9301147B4B443E3EB50C3B820" type="10" limiting_length="100" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="09C3793D0A3C4AC5875A1D46619E405A"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="4">
+				<color red="255" green="255" blue="255" alpha="255"/>
+				<coordinates left="0" top="0" width="132" height="142.80019617081"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="コメント" uuid="B518E0DF24D54F6A8009259D82F6C7A5" id="2">
+		<field name="ID" uuid="6F8BBFAEE2974B54AB9632ADACFF3E73" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="コメントコード" uuid="E8DA40219B3D42C5832EE4896CCDF418" type="21" blob_switch_size="2147483647" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="0B910F1BFDE346E8BF042216974CE5D1" type="21" blob_switch_size="2147483647" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="0" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="コメント文" uuid="4E98D72864AB48F4A4AC87E3068D8C91" type="21" blob_switch_size="2147483647" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="6F8BBFAEE2974B54AB9632ADACFF3E73"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="4">
+				<color red="221" green="240" blue="255" alpha="255"/>
+				<coordinates left="315.83984375" top="54.61328125" width="145" height="142.80019617081"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="修飾語" uuid="C42602DD197147378A9BEF8DEDAC8934" id="3">
+		<field name="ID" uuid="DE075F0FB0F34FE28366E52AC7F35C52" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="修飾語コード" uuid="85FEEA5392174830B8E6212799D944D2" type="10" limiting_length="4" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="739D20AB6A60428595C62DCC0E5F5285" type="21" blob_switch_size="2147483647" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="0" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="修飾語名称" uuid="C56E808D69FF4EE580FDD63524A62687" type="10" limiting_length="40" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="DE075F0FB0F34FE28366E52AC7F35C52"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="4">
+				<color red="251" green="240" blue="254" alpha="255"/>
+				<coordinates left="507.46484375" top="163.80859375" width="132" height="142.80019617081"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="特定器材" uuid="520CCBA0AB994E73B8388E312463C3AD" id="4">
+		<field name="ID" uuid="FD878242D6E04CB89C0A68196581BDE4" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="特定器材コード" uuid="B3962B1510AC488DB06E20A64D7563BC" type="10" limiting_length="9" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="特定器材名・規格名" uuid="3C9BFA3C4B9C4BD3808DC7B1DAFEEE81" type="21" blob_switch_size="2147483647" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="単位" uuid="7D537B2F443D410881D52902B1FE7797" type="21" blob_switch_size="2147483647" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="新又は現金額" uuid="0281B113D5F34D76A7F23F7D72051C19" type="21" blob_switch_size="2147483647" never_null="true" id="5">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="旧金額" uuid="A78F1745293649E98E3543FC82DA238C" type="21" blob_switch_size="2147483647" never_null="true" id="6">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="FF987BD6368D47E282E41B20A03F1495" type="21" blob_switch_size="2147483647" never_null="true" id="7">
+			<field_extra>
+				<editor_field_info>
+					<color red="0" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="基本漢字名称" uuid="21B9422E2E924259B4DA2EA8B53669D5" type="10" limiting_length="100" never_null="true" id="8">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="FD878242D6E04CB89C0A68196581BDE4"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="8">
+				<color red="253" green="255" blue="229" alpha="255"/>
+				<coordinates left="115.6328125" top="172.13671875" width="170" height="237.60034775734"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="診療行為" uuid="4D3EF7827A9247AB870DA06991297252" id="5">
+		<field name="ID" uuid="7ADDCE923075422FBD5DAFF351B6E649" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="診療行為コード" uuid="332027737E0841F487AFC1BAF8941BBA" type="10" limiting_length="9" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="診療行為省略名称" uuid="0F92361E2A1145CC816ADDEB256971D4" type="21" blob_switch_size="2147483647" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="新又は現点数" uuid="307325F2FD4E45A892CCA37174262493" type="21" blob_switch_size="2147483647" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="旧点数" uuid="B42D21786B214DECAC82E78BC2686707" type="21" blob_switch_size="2147483647" never_null="true" id="5">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="49B30F7EE98849ED8291D8190212469A" type="21" blob_switch_size="2147483647" never_null="true" id="6">
+			<field_extra>
+				<editor_field_info>
+					<color red="0" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="基本漢字名称" uuid="03FB16E0092042F79895DD8B249D62F6" type="10" limiting_length="100" never_null="true" id="7">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="7ADDCE923075422FBD5DAFF351B6E649"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="8">
+				<color red="255" green="255" blue="255" alpha="255"/>
+				<coordinates left="677.17578125" top="21.46875" width="170" height="237.60034775734"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="医薬品" uuid="FE5C16A612CE49AC8B3CABCB2B36C085" id="6">
+		<field name="ID" uuid="A98FF576E78E4BF89F9702DA23ECAD67" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="医薬品コード" uuid="E06439D347584DD881B349044C7077C3" type="10" limiting_length="9" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="医薬品名・規格名" uuid="57B87A8879A34AA999483B315B1170DF" type="21" blob_switch_size="2147483647" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="単位" uuid="8AE484C9C07F4131B2A2E5A479CDE543" type="21" blob_switch_size="2147483647" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="新又は現金額" uuid="A5A29154D9BA4A2CB9E9F2AAAD64CFBE" type="21" blob_switch_size="2147483647" never_null="true" id="5">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="旧金額" uuid="1710D439651044DBA3FC0C3AFECA190D" type="21" blob_switch_size="2147483647" never_null="true" id="6">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="3C38AA23F7F443A48615351A6A9013F3" type="21" blob_switch_size="2147483647" never_null="true" id="7">
+			<field_extra>
+				<editor_field_info>
+					<color red="0" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="基本漢字名称" uuid="242B2AE2ED754019B6AE8D5588E4AEE2" type="10" limiting_length="100" never_null="true" id="8">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="一般名処方マスタ" uuid="3C04683E739B4EAFB3945BF31CFD7DF5" type="21" blob_switch_size="2147483647" never_null="true" id="9">
+			<field_extra>
+				<editor_field_info>
+					<color red="43" green="60" blue="105" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="A98FF576E78E4BF89F9702DA23ECAD67"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="9">
+				<color red="255" green="255" blue="255" alpha="255"/>
+				<coordinates left="27.4609375" top="461.796875" width="148" height="230.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="一般名処方" uuid="ED38EA3426504DA38ACD1CE4AA59C32E" id="7">
+		<field name="ID" uuid="3D79C58402684FC2B1FA60560692A932" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="一般名コード" uuid="002A931932524598AD4C0FCD56101ECC" type="10" limiting_length="12" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="7BA9D1A5F2D74241B3D7EDBEF1A1AB9E" type="21" blob_switch_size="2147483647" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="0" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="一般名処方の標準的な記載" uuid="F1F2B1A4B2024C33A16D2C3FCF030A9E" type="10" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="3D79C58402684FC2B1FA60560692A932"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="4">
+				<color red="221" green="240" blue="255" alpha="255"/>
+				<coordinates left="283.36328125" top="482.48046875" width="224.8046875" height="145.44082117081"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="一般名処方例外" uuid="7BF59CFA1BCC4C7E9520BBFCE4F12BAD" id="8">
+		<field name="ID" uuid="6006647DE65343278D472147832ED3D1" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="一般名コード" uuid="F2CE10632E354DEAB8E9B436FE6A4ABE" type="10" limiting_length="12" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="CDE96677F78649FD898B53B21F282A9D" type="21" blob_switch_size="2147483647" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="0" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="一般名処方の標準的な記載" uuid="6B5A35810EC546FCAC61C4D788C03F23" type="10" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="6006647DE65343278D472147832ED3D1"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="4">
+				<color red="221" green="240" blue="255" alpha="255"/>
+				<coordinates left="283.58984375" top="651.35546875" width="228.17578125" height="137.08535242081"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="地方公費" uuid="793355E13D374C76A7B6B5E84913F239" id="9">
+		<field name="ID" uuid="12D1FC18B00743FA9E297DB12893AFF0" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="法別番号" uuid="CBC2CCCE781748B6999A4CEDD5CC0495" type="10" limiting_length="2" never_null="true" id="2"/>
+		<field name="都道府県コード" uuid="51652DCA14204C0D9ACECD8B354FF278" type="10" limiting_length="2" never_null="true" id="3"/>
+		<field name="短縮制度名" uuid="1BD0D24D8F61410EA438D1F20E35BDAA" type="10" limiting_length="10" never_null="true" id="4"/>
+		<field name="項目" uuid="4700E20FA3DE444089E2512BF8221C9F" type="21" blob_switch_size="2147483647" never_null="true" id="5"/>
+		<primary_key field_name="ID" field_uuid="12D1FC18B00743FA9E297DB12893AFF0"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="5">
+				<color red="225" green="255" blue="219" alpha="255"/>
+				<coordinates left="322.64453125" top="260.62890625" width="137" height="146.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="後発医薬品" uuid="569C488BC02A4072AE3DAEA6954192EC" id="10">
+		<field name="ID" uuid="742C3DD2EA6C44C4B6988FE4291F8B57" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="薬価基準収載医薬品コード" uuid="00DBC20DED994102870141A3C4754B2B" type="10" limiting_length="255" never_null="true" id="2">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="品名" uuid="A523734AE8E042318EDD5454BEFAFAB2" type="10" limiting_length="255" never_null="true" id="3">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="メーカー名" uuid="9514E15F457E4AC6B63B186C20C707A1" type="10" limiting_length="255" never_null="true" id="4">
+			<field_extra>
+				<editor_field_info>
+					<color red="148" green="23" blue="81" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="項目" uuid="FDF146466C1E4CD2944C57F7B57DB460" type="21" blob_switch_size="2147483647" never_null="true" id="5">
+			<field_extra>
+				<editor_field_info>
+					<color red="1" green="145" blue="147" alpha="255"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="ID" field_uuid="742C3DD2EA6C44C4B6988FE4291F8B57"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="7">
+				<color red="255" green="237" blue="228" alpha="255"/>
+				<coordinates left="537.4921875" top="383.5859375" width="209.48046875" height="191.54296875"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<index kind="regular" uuid="0671AB491ABF4C1B9FAC8A1E6A78CC32" type="3">
+		<field_ref uuid="7BA9D1A5F2D74241B3D7EDBEF1A1AB9E" name="項目">
+			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="一般名処方"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="098C5C1E18A74B8BA0642D8EF0AB55CD" type="3">
+		<field_ref uuid="57B87A8879A34AA999483B315B1170DF" name="医薬品名・規格名">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="0CBD2621B8D04E1D87FB778EFF9024E8" type="1">
+		<field_ref uuid="002A931932524598AD4C0FCD56101ECC" name="一般名コード">
+			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="一般名処方"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="0DFAF2A4B5A84F18B7F2ECCF857C9296" type="1">
+		<field_ref uuid="3945089719954C459AB55C37F18953C5" name="傷病名コード">
+			<table_ref uuid="0633BF498E944681BE5C880624D8F45B" name="傷病名"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="11CCA089BA2B41D4BD2D1E75D1677159" type="3">
+		<field_ref uuid="0281B113D5F34D76A7F23F7D72051C19" name="新又は現金額">
+			<table_ref uuid="520CCBA0AB994E73B8388E312463C3AD" name="特定器材"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="155714F03D1B414FB1EF3082AE87437E" type="1">
+		<field_ref uuid="03FB16E0092042F79895DD8B249D62F6" name="基本漢字名称">
+			<table_ref uuid="4D3EF7827A9247AB870DA06991297252" name="診療行為"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="2008E12E887F4E8AA2121F070F4A7926" type="3">
+		<field_ref uuid="FDF146466C1E4CD2944C57F7B57DB460" name="項目">
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="2337F3B324BF40D5927F2A3FE5CF2EF1" type="3">
+		<field_ref uuid="3C9BFA3C4B9C4BD3808DC7B1DAFEEE81" name="特定器材名・規格名">
+			<table_ref uuid="520CCBA0AB994E73B8388E312463C3AD" name="特定器材"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="258CB0369AD34E5284482F9DDC986AE3" type="1">
+		<field_ref uuid="B3962B1510AC488DB06E20A64D7563BC" name="特定器材コード">
+			<table_ref uuid="520CCBA0AB994E73B8388E312463C3AD" name="特定器材"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="2C7E604AD41143E9928491C367F4CFCB" type="1">
+		<field_ref uuid="6B5A35810EC546FCAC61C4D788C03F23" name="一般名処方の標準的な記載">
+			<table_ref uuid="7BF59CFA1BCC4C7E9520BBFCE4F12BAD" name="一般名処方例外"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="2EAC3DBE040F45E195AE456A0B8696D1" type="3">
+		<field_ref uuid="9514E15F457E4AC6B63B186C20C707A1" name="メーカー名">
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="2EB33D27F2F94B239937FC23F6B5BDEF" type="1">
+		<field_ref uuid="00DBC20DED994102870141A3C4754B2B" name="薬価基準収載医薬品コード">
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="2F26886BA8C24654B20F283B543787D4" type="1">
+		<field_ref uuid="6F8BBFAEE2974B54AB9632ADACFF3E73" name="ID">
+			<table_ref uuid="B518E0DF24D54F6A8009259D82F6C7A5" name="コメント"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="394322A044CB4636881F3FC4F7E36C7A" type="1">
+		<field_ref uuid="332027737E0841F487AFC1BAF8941BBA" name="診療行為コード">
+			<table_ref uuid="4D3EF7827A9247AB870DA06991297252" name="診療行為"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="3B2720385A8A449DAAF0CC6E6FA4EB80" type="1">
+		<field_ref uuid="E06439D347584DD881B349044C7077C3" name="医薬品コード">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="4772B7B179CF4536B54B4613435FA15B" type="7">
+		<field_ref uuid="A98FF576E78E4BF89F9702DA23ECAD67" name="ID">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="489401DCCAAE447A9BCBBD58E4A85E2C" type="3">
+		<field_ref uuid="739D20AB6A60428595C62DCC0E5F5285" name="項目">
+			<table_ref uuid="C42602DD197147378A9BEF8DEDAC8934" name="修飾語"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="489F3CBFFDA741A4BD417AD633ADC0F7" type="3">
+		<field_ref uuid="7550632BDA8B4F7D8A0792FC29334FB3" name="項目">
+			<table_ref uuid="0633BF498E944681BE5C880624D8F45B" name="傷病名"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="49812595371D41459A08651D26C6035B" type="1">
+		<field_ref uuid="FD878242D6E04CB89C0A68196581BDE4" name="ID">
+			<table_ref uuid="520CCBA0AB994E73B8388E312463C3AD" name="特定器材"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="52CB293A87B143E98A6B041C56C5E9FA" type="1">
+		<field_ref uuid="21B9422E2E924259B4DA2EA8B53669D5" name="基本漢字名称">
+			<table_ref uuid="520CCBA0AB994E73B8388E312463C3AD" name="特定器材"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="583EAE9FDD144B85B40E3E84251E5FA7" type="3">
+		<field_ref uuid="A78F1745293649E98E3543FC82DA238C" name="旧金額">
+			<table_ref uuid="520CCBA0AB994E73B8388E312463C3AD" name="特定器材"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="5AD0311BE841411BA7179652E6C5665D" type="1">
+		<field_ref uuid="09C3793D0A3C4AC5875A1D46619E405A" name="ID">
+			<table_ref uuid="0633BF498E944681BE5C880624D8F45B" name="傷病名"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="655D4E3DB42049D38F35181ADA9C0D00" type="7">
+		<field_ref uuid="12D1FC18B00743FA9E297DB12893AFF0" name="ID">
+			<table_ref uuid="793355E13D374C76A7B6B5E84913F239" name="地方公費"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="65CD6649ED2F48FB96DCC018A928ABCB" type="7">
+		<field_ref uuid="6006647DE65343278D472147832ED3D1" name="ID">
+			<table_ref uuid="7BF59CFA1BCC4C7E9520BBFCE4F12BAD" name="一般名処方例外"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="6AAC139590AB43EBB6242FA8EDF81990" type="1">
+		<field_ref uuid="DE075F0FB0F34FE28366E52AC7F35C52" name="ID">
+			<table_ref uuid="C42602DD197147378A9BEF8DEDAC8934" name="修飾語"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="6C86EA7A73164AB49EB0A8CD0C79CB99" type="1">
+		<field_ref uuid="F1F2B1A4B2024C33A16D2C3FCF030A9E" name="一般名処方の標準的な記載">
+			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="一般名処方"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="71C35D8F7C99482D8701114A61AD1326" type="3">
+		<field_ref uuid="4E98D72864AB48F4A4AC87E3068D8C91" name="コメント文">
+			<table_ref uuid="B518E0DF24D54F6A8009259D82F6C7A5" name="コメント"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="73BAE76C24BC4930A50FF38C90558E46" type="3">
+		<field_ref uuid="4700E20FA3DE444089E2512BF8221C9F" name="項目">
+			<table_ref uuid="793355E13D374C76A7B6B5E84913F239" name="地方公費"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="7D6A0FF0761745E48E98FB509C0C5F00" type="3">
+		<field_ref uuid="B42D21786B214DECAC82E78BC2686707" name="旧点数">
+			<table_ref uuid="4D3EF7827A9247AB870DA06991297252" name="診療行為"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="7D811B5BC9F7432E9FFD2B2A14F4B598" type="1">
+		<field_ref uuid="CBC2CCCE781748B6999A4CEDD5CC0495" name="法別番号">
+			<table_ref uuid="793355E13D374C76A7B6B5E84913F239" name="地方公費"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="8053C16880B54711BBEE8390F0F89729" type="1">
+		<field_ref uuid="51652DCA14204C0D9ACECD8B354FF278" name="都道府県コード">
+			<table_ref uuid="793355E13D374C76A7B6B5E84913F239" name="地方公費"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="80B7C0AA80884CCCABCB970D28E2077A" type="7">
+		<field_ref uuid="742C3DD2EA6C44C4B6988FE4291F8B57" name="ID">
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="8413740D23734F4E97A7A4981260CDA8" type="7">
+		<field_ref uuid="3D79C58402684FC2B1FA60560692A932" name="ID">
+			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="一般名処方"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="85A86175B30746F69185F7795E6BEC78" type="3">
+		<field_ref uuid="CDE96677F78649FD898B53B21F282A9D" name="項目">
+			<table_ref uuid="7BF59CFA1BCC4C7E9520BBFCE4F12BAD" name="一般名処方例外"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="8D5A824E5FB24330B88DDDBF96545240" type="3">
+		<field_ref uuid="A523734AE8E042318EDD5454BEFAFAB2" name="品名">
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="8E3D8E8BBC124F3BAB200816B4749E5D" type="3">
+		<field_ref uuid="49B30F7EE98849ED8291D8190212469A" name="項目">
+			<table_ref uuid="4D3EF7827A9247AB870DA06991297252" name="診療行為"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="9BA6A7490A6E4370818E8325E51DE015" type="1">
+		<field_ref uuid="242B2AE2ED754019B6AE8D5588E4AEE2" name="基本漢字名称">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="9CC85DA02171412AB2BDBDD18E2B6AD7" type="1">
+		<field_ref uuid="85FEEA5392174830B8E6212799D944D2" name="修飾語コード">
+			<table_ref uuid="C42602DD197147378A9BEF8DEDAC8934" name="修飾語"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="9CDF392B923849B79912652937CC8741" type="3">
+		<field_ref uuid="FF987BD6368D47E282E41B20A03F1495" name="項目">
+			<table_ref uuid="520CCBA0AB994E73B8388E312463C3AD" name="特定器材"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="A30B1D11CC93407B9163F2DE1A1F6138" type="3">
+		<field_ref uuid="8AE484C9C07F4131B2A2E5A479CDE543" name="単位">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="A782E0EDB2394C22B0E092B6A706F341" type="3">
+		<field_ref uuid="3C04683E739B4EAFB3945BF31CFD7DF5" name="一般名処方マスタ">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="AC94275970EA4F4DB9C947F19DF3C819" type="3">
+		<field_ref uuid="7D537B2F443D410881D52902B1FE7797" name="単位">
+			<table_ref uuid="520CCBA0AB994E73B8388E312463C3AD" name="特定器材"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="B2169F9A9293492492861C8A30FED613" type="3">
+		<field_ref uuid="3C38AA23F7F443A48615351A6A9013F3" name="項目">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="B58FBD81E17E4F87AEC50C3D9926A6B9" type="3">
+		<field_ref uuid="0B910F1BFDE346E8BF042216974CE5D1" name="項目">
+			<table_ref uuid="B518E0DF24D54F6A8009259D82F6C7A5" name="コメント"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="B8B3E8D52DF848139FB9FD98C2271EA0" type="3">
+		<field_ref uuid="A5A29154D9BA4A2CB9E9F2AAAD64CFBE" name="新又は現金額">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="BA55E0E8E83944D683ED0FF45899779E" type="1">
+		<field_ref uuid="F2CE10632E354DEAB8E9B436FE6A4ABE" name="一般名コード">
+			<table_ref uuid="7BF59CFA1BCC4C7E9520BBFCE4F12BAD" name="一般名処方例外"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="BFD99FF3D52D4C24BCA5CFFDD068E438" type="3">
+		<field_ref uuid="307325F2FD4E45A892CCA37174262493" name="新又は現点数">
+			<table_ref uuid="4D3EF7827A9247AB870DA06991297252" name="診療行為"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="C652E7983D0F44FC8B1E8BFAEC59A475" type="3">
+		<field_ref uuid="0F92361E2A1145CC816ADDEB256971D4" name="診療行為省略名称">
+			<table_ref uuid="4D3EF7827A9247AB870DA06991297252" name="診療行為"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="C6AEADD1674043DA9A614F9FB98AEBFA" type="3">
+		<field_ref uuid="1BD0D24D8F61410EA438D1F20E35BDAA" name="短縮制度名">
+			<table_ref uuid="793355E13D374C76A7B6B5E84913F239" name="地方公費"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="D886D736FFE74F9693BB3918942CE54A" type="1">
+		<field_ref uuid="7ADDCE923075422FBD5DAFF351B6E649" name="ID">
+			<table_ref uuid="4D3EF7827A9247AB870DA06991297252" name="診療行為"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="EB4A795FF35443D6B838B46685BFF8C9" type="3">
+		<field_ref uuid="E8DA40219B3D42C5832EE4896CCDF418" name="コメントコード">
+			<table_ref uuid="B518E0DF24D54F6A8009259D82F6C7A5" name="コメント"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="EB857E3C31B84A7FB843B098C55A786F" type="3">
+		<field_ref uuid="1710D439651044DBA3FC0C3AFECA190D" name="旧金額">
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="F909CD5F18B54591893C06948E8E18F8" type="1">
+		<field_ref uuid="C56E808D69FF4EE580FDD63524A62687" name="修飾語名称">
+			<table_ref uuid="C42602DD197147378A9BEF8DEDAC8934" name="修飾語"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="FE4723C07C4A46CB9946B89720C5FC74" type="1">
+		<field_ref uuid="B69301A9301147B4B443E3EB50C3B820" name="傷病名称">
+			<table_ref uuid="0633BF498E944681BE5C880624D8F45B" name="傷病名"/>
+		</field_ref>
+	</index>
+</base>
