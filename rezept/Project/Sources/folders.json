@@ -44,12 +44,10 @@
 		"methods": [
 			"create_コメント",
 			"create_記載事項等",
-			"create_修飾語",
 			"create_傷病名",
 			"create_診療行為",
 			"formula_ippanmei",
 			"import_コメント",
-			"import_修飾語",
 			"import_傷病名",
 			"import_診療行為",
 			"import_地方公費",
