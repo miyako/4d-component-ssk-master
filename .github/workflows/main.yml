@@ -12,7 +12,9 @@ on:
 jobs:     
 
   get:
-    permissions: write-all
+    permissions: 
+    - write-all
+    - read-all
     strategy:
       fail-fast: false
       matrix:
