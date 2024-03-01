@@ -10,7 +10,7 @@ Class constructor($CLI : cs:C1710._CLI)
 	This:C1470.timeout:=Null:C1517
 	This:C1470.dataType:="text"
 	This:C1470.encoding:="UTF-8"
-	This:C1470.variables:=New object:C1471
+	This:C1470.variables:={}
 	This:C1470.currentDirectory:=Folder:C1567(Temporary folder:C486; fk platform path:K87:2)
 	This:C1470.hideWindow:=True:C214
 	

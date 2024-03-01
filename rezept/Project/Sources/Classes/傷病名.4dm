@@ -109,7 +109,7 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e:=$dataClass.new()
 	
-	$e["項目"]:=New object:C1471
+	$e["項目"]:={}
 	$e["項目"]["変更区分"]:=$values[0]
 	$e["項目"]["マスター種別"]:=$values[1]
 	$e["傷病名コード"]:=$values[2]

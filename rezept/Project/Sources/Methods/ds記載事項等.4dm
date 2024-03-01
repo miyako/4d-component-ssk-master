@@ -127,7 +127,7 @@ If ($noHost)
 						
 						If ($index=1)
 							
-							$o:=New object:C1471
+							$o:={}
 							$o.項番:=$values[0]  //A
 							$o.区分:=$values[1]  //B
 							$o.診療行為名称等:=$values[2]  //C

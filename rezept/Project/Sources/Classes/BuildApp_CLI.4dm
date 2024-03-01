@@ -366,7 +366,7 @@ Function compile($compileProject : 4D:C1709.File)->$CLI : cs:C1710.BuildApp_CLI
 		
 	Else 
 		
-		$options:=New object:C1471
+		$options:={}
 		$options.generateSymbols:=False:C215
 		$options.generateSyntaxFile:=True:C214
 		
@@ -694,7 +694,7 @@ $sourceProjectFile : 4D:C1709.File; $BuildApplicationName : Text; $publication_n
 					
 					If ($PackProject)
 						
-						$zip:=New object:C1471
+						$zip:={}
 						$zip.files:=New collection:C1472($targetProjectFolder)
 						
 						$UseStandardZipFormat:=$CLI._getBoolValue($BuildApp; "UseStandardZipFormat")
@@ -1011,7 +1011,7 @@ $sdi_application : Boolean; $publication_name : Text; $buildApplicationType : Te
 				
 				$CLI.quickSign($BuildApp; $targetFolder)
 				
-				$zip:=New object:C1471
+				$zip:={}
 				$zip.files:=New collection:C1472($targetFolder)
 				$zip.encryption:=ZIP Encryption none:K91:3
 				
@@ -1138,7 +1138,7 @@ Function _createUpgradeClientManifest($BuildApp : cs:C1710.BuildApp; $BuildAppli
 	
 	$CLI:=This:C1470
 	
-	$info:=New object:C1471
+	$info:={}
 	
 	$info.BuildName:=$BuildApplicationName
 	$info.BuildInfoVersion:=$CLI._getVersioning($BuildApp; "Version"; "Client")
@@ -1414,8 +1414,8 @@ $sdi_application : Boolean; $publication_name : Text; $buildApplicationType : Te
 	
 	$keys:=New collection:C1472
 	
-	$info:=New object:C1471
-	$winInfo:=New object:C1471
+	$info:={}
+	$winInfo:={}
 	
 	$info.BuildName:=$BuildApplicationName
 	$keys.push("BuildName")

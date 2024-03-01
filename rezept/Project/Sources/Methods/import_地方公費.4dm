@@ -36,7 +36,7 @@ For each ($file; $files)
 			
 			If ($rows.length>33)
 				For ($x; 1; $rows[0].values.length-1)
-					$value:=New object:C1471
+					$value:={}
 					$node:=$value
 					$mode:=""
 					For ($y; 0; 32)
@@ -61,7 +61,7 @@ For each ($file; $files)
 								End if 
 							: ($attribute="外来負担区分") | ($attribute="入院負担区分")
 								$mode:=$attribute
-								$node:=New object:C1471
+								$node:={}
 								$value[$attribute]:=$node
 								$node[$attribute]:=Num:C11($stringValue)
 							: ($attribute="短縮制度名")
