@@ -29,4 +29,4 @@ runs:
         TOOL4D_DOWNLOAD_URL: ${{ inputs.tool4d_download_url }}
         PROJECT_STARTUP_METHOD: ${{ inputs.startup_method }}
         PROJECT_PATH: ${{ inputs.project_path }}
-        USER_PARAM: ${{ user_param }}
+        USER_PARAM: ${{ inputs.user_param }}
