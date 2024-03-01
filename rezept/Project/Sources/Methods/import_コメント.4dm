@@ -69,9 +69,6 @@ nnnnnnnnn.csv
 			ARRAY LONGINT:C221($pos; 0)
 			ARRAY LONGINT:C221($len; 0)
 			
-			C_LONGINT:C283($i)
-			$i:=1
-			
 			While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
 				
 				$i:=$pos{1}+$len{1}

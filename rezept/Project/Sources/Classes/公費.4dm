@@ -5,13 +5,158 @@ Class constructor
 	Super:C1705()
 	
 	This:C1470.公費:=This:C1470._公費()
-	This:C1470.保険公費種別区分:=Formula:C1597(保険公費種別区分)
-	This:C1470.入院負担区分:=Formula:C1597(入院負担区分)
-	This:C1470.外来負担区分:=Formula:C1597(外来負担区分)
-	This:C1470.レセプト負担金額区分:=Formula:C1597(レセプト負担金額区分)
-	This:C1470.レセプト請求区分:=Formula:C1597(レセプト請求区分)
-	This:C1470.レセプト記載区分:=Formula:C1597(レセプト記載区分)
-	This:C1470.薬剤負担区分:=Formula:C1597(薬剤負担区分)
+	
+Function 食事療養費($code : Integer)->$stringValue : Text
+	
+	Case of 
+		: ($code=0)
+			
+			$stringValue:="使用しない"  //設定の必要がない場合
+			
+		: ($code=1)
+			
+			$stringValue:="患者負担あり"  //医療費患者負担とは別で負担あり
+			
+		: ($code=2)
+			
+			$stringValue:="患者負担あり（上限あり）"  //医療費月上限額に食事患者負担が含まれる場合
+			
+		: ($code=3)
+			
+			$stringValue:="患者負担なし"
+			
+		: ($code=4)
+			
+			$stringValue:="患者負担あり（消費税あり）"  //自費保険以外無効
+			
+	End case 
+	
+Function 保険公費種別区分($code : Integer)->$stringValue : Text
+	
+	Case of 
+		: ($code=7)
+			
+			$stringValue:="一般公費"
+			
+		: ($code=2)
+			
+			$stringValue:="補助公費"
+			
+		: ($code=3)
+			
+			$stringValue:="主補公費"
+			
+	End case 
+	
+Function 入院負担区分($code : Integer)->$stringValue : Text
+	
+	Case of 
+		: ($code=0)
+			
+			$stringValue:="使用しない"  //設定の必要がない場合
+			
+		: ($code=1)
+			
+			$stringValue:="患者負担あり"  //医療費の患者負担がある場合
+			
+		: ($code=2)
+			
+			$stringValue:="患者負担なし"  //医療費の患者負担がない場合
+			
+	End case 
+	
+Function 外来負担区分($code : Integer)->$stringValue : Text
+	
+	Case of 
+		: ($code=0)
+			
+			$stringValue:="使用しない"  //設定の必要がない場合
+			
+		: ($code=1)
+			
+			$stringValue:="患者負担あり"  //医療費の患者負担がある場合
+			
+		: ($code=2)
+			
+			$stringValue:="患者負担なし"  //医療費の患者負担がない場合
+			
+	End case 
+	
+Function レセプト負担金額区分($code : Integer)->$stringValue : Text
+	
+	Case of 
+		: ($code=1)
+			
+			$stringValue:="10円未満を四捨五入する"
+			
+		: ($code=2)
+			
+			$stringValue:="10円未満を四捨五入しない"
+			
+	End case 
+	
+Function レセプト請求区分($code : Integer)->$stringValue : Text
+	
+	Case of 
+		: ($code=0)
+			
+			$stringValue:="社保と国保の両方に印刷"
+			
+		: ($code=1)
+			
+			$stringValue:="社保との併用に限り印刷"
+			
+		: ($code=2)
+			
+			$stringValue:="国保か広域連合との併用に限り印刷"
+			
+		: ($code=3)
+			
+			$stringValue:="印刷しない"
+			
+		: ($code=4)
+			
+			$stringValue:="国保との併用に限り印刷"
+			
+		: ($code=5)
+			
+			$stringValue:="広域連合との併用に限り印刷"
+			
+	End case 
+	
+Function レセプト記載区分($code : Integer)->$stringValue : Text
+	
+	Case of 
+		: ($code=1)
+			
+			$stringValue:="負担上限未満を記載する"
+			
+		: ($code=2)
+			
+			$stringValue:="負担上限未満を記載しない"
+			
+	End case 
+	
+Function 薬剤負担区分($code : Integer)->$stringValue : Text
+	
+	Case of 
+		: ($code=0)
+			
+			$stringValue:="使用しない"
+			
+		: ($code=1)
+			
+			$stringValue:="患者負担あり"
+			
+		: ($code=2)
+			
+			$stringValue:="患者負担あり（上限あり）"
+			
+		: ($code=3)
+			
+			$stringValue:="患者負担なし"
+			
+	End case 
 	
 Function _公費()->$公費 : Collection
 	

@@ -11,9 +11,9 @@ $番号:=cs:C1710.番号.new()
 $values:=New collection:C1472
 
 For each ($file; $files)
-	
+	//%W-533.4
 	$json:=XLSX TO JSON($file.platformPath)
-	
+	//%W+533.4
 	C_OBJECT:C1216($data)
 	
 	$data:=JSON Parse:C1218($json; Is object:K8:27)

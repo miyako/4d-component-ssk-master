@@ -62,8 +62,9 @@ Function regenerate($CLI : cs:C1710.CLI)
 		This:C1470._truncateTable()._pauseIndexes()
 		
 		var $sheet : Object
-		
+		//%W-533.4
 		$json:=XLSX TO JSON($file.platformPath)
+		//%W+533.4
 		$data:=JSON Parse:C1218($json; Is object:K8:27)
 		$sheets:=$data.sheets
 		If ($sheets.length>0)
