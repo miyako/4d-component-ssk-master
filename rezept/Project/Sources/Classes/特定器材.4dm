@@ -4,19 +4,19 @@ Function _getTablePointer() : Pointer
 	
 	return Table:C252(This:C1470.getInfo().tableNumber)
 	
-Function _pauseIndexes() : cs:C1710.医薬品
+Function _pauseIndexes() : cs:C1710.特定器材
 	
 	PAUSE INDEXES:C1293(This:C1470._getTablePointer()->)
 	
 	return This:C1470
 	
-Function _resumeIndexes() : cs:C1710.医薬品
+Function _resumeIndexes() : cs:C1710.特定器材
 	
 	RESUME INDEXES:C1294(This:C1470._getTablePointer()->)
 	
 	return This:C1470
 	
-Function _truncateTable() : cs:C1710.医薬品
+Function _truncateTable() : cs:C1710.特定器材
 	
 	var $pTable : Pointer
 	$pTable:=This:C1470._getTablePointer()
@@ -54,14 +54,19 @@ Function _getFile($names : Collection) : 4D:C1709.File
 	
 Function regenerate($CLI : cs:C1710.CLI)
 	
+	ARRAY LONGINT:C221($pos; 0)
+	ARRAY LONGINT:C221($len; 0)
+	
+	var $i : Integer
+	
 	var $file : 4D:C1709.File
-	$file:=This:C1470._getFile(["y@"; "医薬品@"])
+	$file:=This:C1470._getFile(["t@"; "特定器材@"])
 	
 	If ($CLI=Null:C1517)
 		$CLI:=cs:C1710.CLI.new()
 	End if 
 	
-	$CLI.print("master for 医薬品..."; "bold")
+	$CLI.print("master for 特定器材..."; "bold")
 	
 	If ($file=Null:C1517)
 		$CLI.print("not found"; "196;bold").LF()
@@ -73,10 +78,6 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 		$csv:=$file.getText("windows-31j"; Document with LF:K24:22)
 		
-		ARRAY LONGINT:C221($pos; 0)
-		ARRAY LONGINT:C221($len; 0)
-		
-		var $i : Integer
 		$i:=1
 		
 		While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
@@ -95,9 +96,43 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 		This:C1470._resumeIndexes()
 		
-		cs:C1710.Package.new().setProperty("医薬品"; $file.fullName)
+	End if 
+	
+	$file:=This:C1470._getFile(["rezept-master-03"])
+	
+	$CLI.print("master for 労災特定器材..."; "bold")
+	
+	If ($file=Null:C1517)
+		$CLI.print("not found"; "196;bold").LF()
+	Else 
+		$CLI.print("found"; "82;bold").LF()
+		$CLI.print($file.path; "244").LF()
+		
+		This:C1470._truncateTable()._pauseIndexes()
+		
+		$csv:=$file.getText("windows-31j"; Document with LF:K24:22)
+		
+		$i:=1
+		
+		While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
+			
+			$i:=$pos{1}+$len{1}
+			$line:=Substring:C12($csv; $pos{1}; $len{1})
+			$values:=Split string:C1554($line; ",")
+			
+			This:C1470._trimDoubleQuotes($values)
+			This:C1470._createRecords($CLI; $values)
+			
+		End while 
+		
+		$CLI.CR().EL().print("records imported..."; "bold")
+		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
+		
+		This:C1470._resumeIndexes()
 		
 	End if 
+	
+	cs:C1710.Package.new().setProperty("特定器材"; $file.fullName)
 	
 Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
@@ -108,66 +143,54 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e:=$dataClass.new()
 	
-	$e["項目"]:={}
-	$e["医薬品名・規格名"]:={}
-	$e["単位"]:={}
-	$e["新又は現金額"]:={}
-	$e["旧金額"]:={}
-	
+	$e["項目"]:=New object:C1471
 	$e["項目"]["変更区分"]:=$values[0]
 	$e["項目"]["マスター種別"]:=$values[1]
-	$e["医薬品コード"]:=$values[2]
-	$e["医薬品名・規格名"]["漢字有効桁数"]:=$values[3]
-	$e["医薬品名・規格名"]["漢字名称"]:=$values[4]
-	$e["医薬品名・規格名"]["カナ有効桁数"]:=$values[5]
-	$e["医薬品名・規格名"]["カナ名称"]:=$values[6]
+	$e["特定器材コード"]:=$values[2]
+	$e["特定器材名・規格名"]:=New object:C1471
+	$e["特定器材名・規格名"]["漢字有効桁数"]:=$values[3]
+	$e["特定器材名・規格名"]["漢字名称"]:=$values[4]
+	$e["特定器材名・規格名"]["カナ有効桁数"]:=$values[5]
+	$e["特定器材名・規格名"]["カナ名称"]:=$values[6]
+	$e["単位"]:=New object:C1471
 	$e["単位"]["コード"]:=$values[7]
 	$e["単位"]["漢字有効桁数"]:=$values[8]
 	$e["単位"]["漢字名称"]:=$values[9]
+	$e["新又は現金額"]:=New object:C1471
 	$e["新又は現金額"]["金額種別"]:=$values[10]
 	$e["新又は現金額"]["新又は現金額"]:=$values[11]
+	$e["項目"]["名称使用識別"]:=$values[12]
+	$e["項目"]["年齢加算区分"]:=$values[13]
+	$e["項目"]["上下限年齢"]:=New object:C1471
+	$e["項目"]["上下限年齢"]["下限年齢"]:=$values[14]
+	$e["項目"]["上下限年齢"]["上限年齢"]:=$values[15]
+	$e["旧金額"]:=New object:C1471
+	$e["旧金額"]["旧金額種別"]:=$values[16]
+	$e["旧金額"]["旧金額"]:=$values[17]
+	$e["項目"]["漢字名称変更区分"]:=$values[18]
+	$e["項目"]["カナ名称変更区分"]:=$values[19]
+	$e["項目"]["酸素等区分"]:=$values[20]
+	$e["項目"]["特定器材種別(1)"]:=$values[21]
+	$e["項目"]["上限価格"]:=$values[22]
+	$e["項目"]["上限点数"]:=$values[23]
 	//予備
-	$e["項目"]["麻薬・毒薬・覚せい剤原料・向精神薬"]:=$values[13]
-	$e["項目"]["神経破壊剤"]:=$values[14]
-	$e["項目"]["生物学的製剤"]:=$values[15]
-	$e["項目"]["後発品"]:=$values[16]
+	$e["項目"]["公表順序番号"]:=$values[25]
+	$e["項目"]["廃止・新設関連"]:=$values[26]
+	$e["項目"]["変更年月日"]:=$values[27]
+	$e["項目"]["経過措置年月日"]:=$values[28]
+	$e["項目"]["廃止年月日"]:=$values[29]
+	$e["項目"]["告示番号"]:=New object:C1471
+	$e["項目"]["告示番号"]["別表番号"]:=$values[30]
+	$e["項目"]["告示番号"]["区分番号"]:=$values[31]
+	$e["項目"]["DPC適用区分"]:=$values[32]
 	//予備
-	$e["項目"]["歯科特定薬剤"]:=$values[18]
-	$e["項目"]["造影(補助)剤"]:=$values[19]
-	$e["項目"]["注射容量"]:=$values[20]
-	$e["項目"]["収載方式等識別"]:=$values[21]
-	$e["項目"]["商品名等関連"]:=$values[22]
-	$e["旧金額"]["旧金額種別"]:=$values[23]
-	$e["旧金額"]["旧金額"]:=$values[24]
-	$e["項目"]["漢字名称変更区分"]:=$values[25]
-	$e["項目"]["カナ名称変更区分"]:=$values[26]
-	$e["項目"]["剤形"]:=$values[27]
 	//予備
-	$e["項目"]["変更年月日"]:=$values[29]
-	$e["項目"]["廃止年月日"]:=$values[30]
-	$e["項目"]["薬価基準コード"]:=$values[31]
-	$e["項目"]["公表順序番号"]:=$values[32]
-	$e["項目"]["経過措置年月日又は商品名医薬品コード使用期限"]:=$values[33]
-	$e["基本漢字名称"]:=$values[34]
+	//予備
 	
-	If ($values.length>35)
-		$e["項目"]["薬価基準収載年月日"]:=$values[35]
-	End if 
-	
-	If ($values.length>36)
-		$e["一般名処方マスタ"]["一般名コード"]:=$values[36]
-	End if 
+	$e["基本漢字名称"]:=$values[36]
 	
 	If ($values.length>37)
-		$e["一般名処方マスタ"]["一般名処方の標準的な記載"]:=$values[37]
-	End if 
-	
-	If ($values.length>38)
-		$e["一般名処方マスタ"]["一般名処方加算対象区分"]:=$values[38]
-	End if 
-	
-	If ($values.length>39)
-		$e["項目"]["抗HIV薬区分"]:=$values[39]
+		$e["項目"]["再製造単回使用医療機器"]:=$values[37]
 	End if 
 	
 	$e.save()

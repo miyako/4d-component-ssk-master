@@ -1,10 +1,12 @@
 {
+	"(公費)": {},
 	"4DB": {
 		"tables": [
 			"コメント",
 			"医薬品",
 			"一般名処方",
 			"一般名処方例外",
+			"後発医薬品",
 			"修飾語",
 			"傷病名",
 			"診療行為",
@@ -16,6 +18,7 @@
 			"ds医薬品",
 			"ds一般名検索",
 			"ds記載事項等",
+			"ds後発品検索",
 			"ds修飾語",
 			"ds傷病名",
 			"ds診療行為",
@@ -44,20 +47,41 @@
 			"create_修飾語",
 			"create_傷病名",
 			"create_診療行為",
-			"create_特定器材",
 			"formula_ippanmei",
 			"import_コメント",
 			"import_修飾語",
 			"import_傷病名",
 			"import_診療行為",
 			"import_地方公費",
-			"import_特定器材",
 			"load_collection",
 			"save_collection",
 			"コメント_get",
 			"診療行為_get"
 		]
 	},
-	"公費": {},
-	"trash": {}
+	"ビルド": {
+		"methods": [
+			"generic_error_handler",
+			"sign"
+		],
+		"classes": [
+			"_CLI",
+			"_CLI_Controller",
+			"_SettingsXmlParser",
+			"_XmlParser",
+			"Build",
+			"BuildApp",
+			"BuildApp_CLI",
+			"CLI",
+			"Package",
+			"SignApp",
+			"SignApp_Controller",
+			"SignAppUI_Controller"
+		]
+	},
+	"trash": {
+		"groups": [
+			"(公費)"
+		]
+	}
 }

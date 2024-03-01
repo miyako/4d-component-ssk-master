@@ -25,7 +25,7 @@ Else
 	import_コメント
 	$ds:=dsコメント(True:C214)
 	
-	import_特定器材
+	//import_特定器材
 	$ds:=ds特定器材(True:C214)
 	
 	//import_医薬品

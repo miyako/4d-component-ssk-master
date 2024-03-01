@@ -38,7 +38,6 @@ Function _getFiles($names : Collection) : Collection
 	$files:=$folder.files()
 	return $files.query("name in :1 and extension in :2"; $names; [".xlsx"])
 	
-	
 Function regenerate($CLI : cs:C1710.CLI)
 	
 	var $files : Collection
@@ -118,5 +117,4 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	$CLI.CR().EL().print($values[4]; "226")
-	
+	$CLI.CR().EL().print($values[7]; "226")

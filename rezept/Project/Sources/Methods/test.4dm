@@ -1,2 +1,2 @@
 //%attributes = {}
-ds:C1482.後発医薬品.regenerate()
+ds:C1482.修飾語.regenerate()
