@@ -1,14 +1,14 @@
 name: Bump
-description: Build Component
+description: Bump
 inputs:
-      mode: 
-        required: true
-        type: string
+  mode: 
+    required: true
+    type: string
 outputs:
-   version:
-     value: ${{ jobs.bump.outputs.version }}
-   mode:
-     value: ${{ inputs.mode }}
+  version:
+    value: ${{ jobs.bump.outputs.version }}
+  mode:
+    value: ${{ inputs.mode }}
 
 runs:
   using: "composite"
