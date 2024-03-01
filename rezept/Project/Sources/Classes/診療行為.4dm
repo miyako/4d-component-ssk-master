@@ -99,6 +99,9 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 		cs:C1710.Package.new().setProperty("診療行為"; $file1.fullName)
 		
+		$CLI.CR().EL().print("records imported..."; "bold")
+		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
+		
 	End if 
 	
 	$CLI.print("master for 労災診療行為..."; "bold")
@@ -126,11 +129,12 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 		cs:C1710.Package.new().setProperty("労災診療行為"; $file2.fullName)
 		
+		$CLI.CR().EL().print("records imported..."; "bold")
+		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
+		
 	End if 
 	
 	If ($file1#Null:C1517) || ($file2#Null:C1517)
-		$CLI.CR().EL().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
 		This:C1470._resumeIndexes()
 	End if 
 	
