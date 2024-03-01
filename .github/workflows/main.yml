@@ -13,6 +13,7 @@ jobs:
 
   get:
     permissions: write-all
+
     strategy:
       fail-fast: false
       matrix:
@@ -66,6 +67,7 @@ jobs:
           tool4d_executable_path: ${{ steps.get.outputs.tool4d_executable_path }}
           startup_method: ${{ matrix.TOOL4D_STARTUP_METHOD }}
           project_path: ${{ matrix.TOOL4D_STARTUP_PROJECT_PATH }}  
+          user_param: regenerate,export,build
               
       - name: deploy                                        
         uses: actions/upload-release-asset@v1
