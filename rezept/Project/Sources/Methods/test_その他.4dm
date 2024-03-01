@@ -22,7 +22,7 @@ If (True:C214)  //23.05.11再読み込み（労災がインポートされてい
 	
 Else 
 	
-	import_コメント
+	//import_コメント
 	$ds:=dsコメント(True:C214)
 	
 	//import_特定器材
