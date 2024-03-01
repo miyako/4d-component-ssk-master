@@ -34,5 +34,3 @@ Function build($name : Text)
 	$CLI:=cs:C1710.BuildApp_CLI.new()
 	$CLI.compile($compileProject)
 	$CLI.build($buildProject; $compileProject)
-	
-	$CLI.print($destFolder.folder("Components").folder($name+".4dbase").path; "244").LF()
