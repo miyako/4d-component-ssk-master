@@ -71,7 +71,7 @@ jobs:
           
       - name: execute startup method
         run: |
-          realpath .
+          pwd
           ditto -c -k --keepParent "${SRC}" "${DST}"
         shell: bash 
         env: 
