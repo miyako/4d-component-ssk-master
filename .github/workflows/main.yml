@@ -57,12 +57,4 @@ jobs:
           version: ${{ steps.bump.outputs.version }}
           mode: patch
 
-      - name: deploy                                        
-        uses: ./.github/actions/upload-release-asset
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: steps.release.outputs.upload_url
-          asset_path: Components/rezept.4dbase
-          asset_name: rezept.4dbase
-          asset_content_type: application/octet-stream
+
