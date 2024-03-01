@@ -6,7 +6,7 @@ inputs:
     type: string
 outputs:
   version:
-    value: ${{ jobs.bump.outputs.version }}
+    value: ${{ steps.version.outputs.version }}
   mode:
     value: ${{ inputs.mode }}
 
