@@ -46,19 +46,19 @@ jobs:
 
       - name: bump
         id: bump
-        uses: miyako/4D/.github/workflows/bump.yml@v1
+        uses: ./.github/actions/bump
         with:
           mode: patch
 
       - name: release 
         id: release
-        uses: miyako/4D/.github/workflows/create-release.yml@v1
+        uses: ./.github/actions/create-release@v1
         with:
           version: ${{ steps.bump.outputs.version }}
           mode: patch
 
       - name: deploy                                        
-        uses: actions/upload-release-asset@v1
+        uses: ./.github/actions/upload-release-asset
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
