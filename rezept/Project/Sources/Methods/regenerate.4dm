@@ -94,9 +94,23 @@ If (Get application info:C1599.headless)
 				$CLI.print("failure"; "196;bold").LF()
 			End if 
 			
+		: ($userParamValues.indexOf("build")#-1)
+			
 			cs:C1710.Build.new().build()
 			
+		: ($userParamValues.indexOf("test")#-1)
+			
+			$CLI.print("白"; "bold")
+			$CLI.print("緑"; "82;bold")
+			$CLI.print("赤"; "196;bold")
+			$CLI.print("紫"; "177;bold")
+			$CLI.print("灰"; "244")
+			$CLI.print("青"; "39")
+			$CLI.print("黄"; "226")
+			$CLI.print("橙"; "166")
+			
 		Else 
+			
 			ds:C1482.医薬品.regenerate($CLI)
 			ds:C1482.一般名処方.regenerate($CLI)
 			ds:C1482.後発医薬品.regenerate($CLI)
@@ -105,20 +119,8 @@ If (Get application info:C1599.headless)
 			ds:C1482.コメント.regenerate()
 			ds:C1482.傷病名.regenerate()
 			ds:C1482.診療行為.regenerate()
-			SET DATABASE PARAMETER:C642(User param value:K37:94; "export")
-			RESTART 4D:C1292
+			
 	End case 
-	
-	If (False:C215)
-		$CLI.print("白"; "bold")
-		$CLI.print("緑"; "82;bold")
-		$CLI.print("赤"; "196;bold")
-		$CLI.print("紫"; "177;bold")
-		$CLI.print("灰"; "244")
-		$CLI.print("青"; "39")
-		$CLI.print("黄"; "226")
-		$CLI.print("橙"; "166")
-	End if 
 	
 	ON ERR CALL:C155("")
 	
