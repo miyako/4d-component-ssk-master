@@ -51,13 +51,25 @@ jobs:
         with:
           mode: patch
 
-      - name: release 
+      - name: set version
+        run: |
+          echo "RELEASE_NAME=${VERSION}" >> $GITHUB_ENV
+          echo "TAG_NAME=${MODE}-${VERSION}" >> $GITHUB_ENV
+        env: 
+          VERSION: ${{ steps.bump.output.version }}
+          MODE: ${{ steps.bump.output.mode }}
+
+      - name: create release 
         id: release
         uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          version: ${{ steps.bump.outputs.version }}
-          mode: patch
-
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: ${{ env.RELEASE_NAME }}
+          draft: false
+          prerelease: false  
+        
       - name: deploy                                        
         uses: ./.github/actions/upload-release-asset
         env:
