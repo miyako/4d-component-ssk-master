@@ -1,0 +1,45 @@
+name: 🌀Build Component
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+      - 'DATA/*'   
+  workflow_dispatch:
+  workflow_call:
+  
+jobs:     
+
+  get:
+    strategy:
+      fail-fast: false
+      matrix:
+        TOOL4D_PLATFORM: ["windows-latest", "macos-latest"]
+        TOOL4D_BRANCH: [20.x]
+        TOOL4D_VERSION: [20.2]
+        TOOL4D_BUILD: [latest] 
+        TOOL4D_STARTUP_METHOD: [test] 
+        TOOL4D_STARTUP_PROJECT_PATH: [./application/Project/application.4DProject] 
+    runs-on: ${{ matrix.TOOL4D_PLATFORM }}
+    steps:
+
+      - name: checkout 
+        uses: actions/checkout@v4
+    
+      - name: get tool4d
+        id: get
+        uses: miyako/4D/.github/actions/get-tool@v1
+        with:
+          platform: ${{ matrix.TOOL4D_PLATFORM }}
+          branch: ${{ matrix.TOOL4D_BRANCH }}
+          version: ${{ matrix.TOOL4D_VERSION }}
+          build: ${{ matrix.TOOL4D_BUILD }}
+          
+      - name: run tests
+        uses: ./.github/actions/build-component
+        with:
+          tool4d_download_url: ${{ steps.get.outputs.tool4d_download_url }}
+          tool4d_executable_path: ${{ steps.get.outputs.tool4d_executable_path }}
+          startup_method: ${{ matrix.TOOL4D_STARTUP_METHOD }}
+          project_path: ${{ matrix.TOOL4D_STARTUP_PROJECT_PATH }}        
