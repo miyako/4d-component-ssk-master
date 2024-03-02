@@ -79,8 +79,8 @@ Function regenerate($CLI : cs:C1710.CLI)
 			
 		End for each 
 		
-		$CLI.CR().EL().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
+		$CLI.CR().print("records imported..."; "bold")
+		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
 		
 		This:C1470._resumeIndexes()
 		
@@ -117,4 +117,4 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	//$CLI.CR().EL().print($values[7]; "226")
+	//$CLI.CR().print($values[7]; "226").EL()

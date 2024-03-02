@@ -96,8 +96,8 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 		cs:C1710.Package.new().setProperty("診療行為"; $file1.fullName)
 		
-		$CLI.CR().EL().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
+		$CLI.CR().print("records imported..."; "bold")
+		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
 		
 	End if 
 	
@@ -126,8 +126,8 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 		cs:C1710.Package.new().setProperty("労災診療行為"; $file2.fullName)
 		
-		$CLI.CR().EL().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").LF()
+		$CLI.CR().print("records imported..."; "bold")
+		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
 		
 	End if 
 	
@@ -295,7 +295,7 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	//$CLI.CR().EL().print($values[4]; "226")
+	//$CLI.CR().print($values[4]; "226").EL()
 	
 Function _trimDoubleQuotes($values : Variant)->$value : Variant
 	

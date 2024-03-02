@@ -1,13 +1,13 @@
 Class constructor
 	
-	This:C1470.ASCII:={}
+	This:C1470.ASCII:=New object:C1471
 	This:C1470.ASCII.ESC:=Char:C90(ESC ASCII code:K15:28)
 	This:C1470.ASCII.CR:=Char:C90(Carriage return:K15:38)
 	This:C1470.ASCII.LF:=Char:C90(Line feed:K15:40)
 	
 	This:C1470.RESET:=This:C1470.ASCII.ESC+"[0m"
 	
-	This:C1470.COLOR:={}
+	This:C1470.COLOR:=New object:C1471
 	This:C1470.COLOR.BLACK:=30
 	This:C1470.COLOR.RED:=31
 	This:C1470.COLOR.GREEN:=32
@@ -20,12 +20,12 @@ Class constructor
 	
 	This:C1470.BACKGROUND:=10
 	
-	This:C1470.STYLE:={}
+	This:C1470.STYLE:=New object:C1471
 	This:C1470.STYLE.BOLD:=1
 	This:C1470.STYLE.UNDERLINE:=4
 	This:C1470.STYLE.REVERSED:=7
 	
-	This:C1470.CURSOR:={}
+	This:C1470.CURSOR:=New object:C1471
 	This:C1470.CURSOR.UP:="A"
 	This:C1470.CURSOR.DOWN:="B"
 	This:C1470.CURSOR.RIGHT:="C"
@@ -42,6 +42,22 @@ Function LF()->$this : cs:C1710.CLI
 Function EL()->$this : cs:C1710.CLI
 	
 	$this:=This:C1470.print(This:C1470.ASCII.ESC+"[K")
+	
+Function ES()->$this : cs:C1710.CLI
+	
+	$this:=This:C1470.print(This:C1470.ASCII.ESC+"[2J")
+	
+Function XY($x : Integer; $y : Integer)->$this : cs:C1710.CLI
+	
+	$this:=This:C1470.print(This:C1470.ASCII.ESC+"["+String:C10(Abs:C99($x))+";"+String:C10(Abs:C99($y))+"H")
+	
+Function hideCursor()->$this : cs:C1710.CLI
+	
+	$this:=This:C1470.print(This:C1470.ASCII.ESC+"[?25l")
+	
+Function showCursor()->$this : cs:C1710.CLI
+	
+	$this:=This:C1470.print(This:C1470.ASCII.ESC+"[?25h")
 	
 Function escape($message : Text; $style : Text)->$ANSI : Text
 	
