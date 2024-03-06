@@ -18,3 +18,13 @@ GitHub Actionsと`tool4d`を活用し，マスターファイルを更新した�
 |修飾語|2023年12月22日|
 
 医薬品マスターの新レイアウトに対応しました。
+
+コマンドライン
+
+```
+tool4d.app/Contents/MacOS/tool4d
+ --project=/Users/miyako/Documents/GitHub/4d-component-ssk-master/rezept/Project/rezept.4DProject
+ --startup-method=regenerate
+ --skip-onstartup
+ --user-param="verbose,regenereate"
+```
