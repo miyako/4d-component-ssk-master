@@ -21,7 +21,7 @@ jobs:
         TOOL4D_BRANCH: [20.x]
         TOOL4D_VERSION: [20.2]
         TOOL4D_BUILD: [latest] 
-        TOOL4D_STARTUP_METHOD: [verbose,regenereate,export,build] 
+        TOOL4D_STARTUP_METHOD: ['regenereate,export,build'] 
         TOOL4D_STARTUP_PROJECT_PATH: [./rezept/Project/rezept.4DProject] 
     runs-on: ${{ matrix.TOOL4D_PLATFORM }}
     steps:
@@ -53,7 +53,7 @@ jobs:
               
       - name: get tool4d
         id: get
-        uses: miyako/4D/.github/actions/get-tool@v1
+        uses: miyako/4D/.github/actions/tool4d-download@v1
         with:
           platform: ${{ matrix.TOOL4D_PLATFORM }}
           branch: ${{ matrix.TOOL4D_BRANCH }}
