@@ -2,8 +2,8 @@
 If (Get application info:C1599.headless)
 	
 	var $CLI : cs:C1710.CLI
-	$CLI:=cs:C1710.CLI.new()
-	$CLI.logo().version()
+	$CLI:=cs:C1710.CLI.new().ES().XY(0; 0)
+	$CLI.logo().version().hideCursor()
 	
 	ON ERR CALL:C155(Formula:C1597(generic_error_handler).source)
 	
@@ -13,15 +13,33 @@ If (Get application info:C1599.headless)
 	var $options : Collection
 	$options:=Split string:C1554($userParamValue; ","; sk ignore empty strings:K86:1 | sk trim spaces:K86:2)
 	
-	If ($options.includes("regenerate"))
-		ds:C1482.医薬品.regenerate($CLI)
-		ds:C1482.一般名処方.regenerate($CLI)
-		ds:C1482.後発医薬品.regenerate($CLI)
-		ds:C1482.特定器材.regenerate($CLI)
-		ds:C1482.修飾語.regenerate()
-		ds:C1482.コメント.regenerate()
-		ds:C1482.傷病名.regenerate()
-		ds:C1482.診療行為.regenerate()
+	var $verbose; $regenerate : Boolean
+	$verbose:=$options.includes("verbose")
+	$regenerate:=$options.includes("verbose")
+	
+	$CLI.print("verbose..."; "bold")
+	If ($verbose)
+		$CLI.print("yes"; "39").LF()
+	Else 
+		$CLI.print("yes"; "196;bold").LF()
+	End if 
+	
+	$CLI.print("regenerate..."; "bold")
+	If ($regenerate)
+		$CLI.print("yes"; "39").LF()
+	Else 
+		$CLI.print("yes"; "196;bold").LF()
+	End if 
+	
+	If ($regenerate)
+		ds:C1482.医薬品.regenerate($CLI; $verbose)
+		ds:C1482.一般名処方.regenerate($CLI; $verbose)
+		ds:C1482.後発医薬品.regenerate($CLI; $verbose)
+		ds:C1482.特定器材.regenerate($CLI; $verbose)
+		ds:C1482.修飾語.regenerate($CLI; $verbose)
+		ds:C1482.コメント.regenerate($CLI; $verbose)
+		ds:C1482.傷病名.regenerate($CLI; $verbose)
+		ds:C1482.診療行為.regenerate($CLI; $verbose)
 	End if 
 	
 	If ($options.includes("export"))
@@ -105,6 +123,8 @@ If (Get application info:C1599.headless)
 	If ($options.includes("build"))
 		cs:C1710.Build.new().build()
 	End if 
+	
+	$CLI.showCursor()
 	
 	If (False:C215)
 		$CLI.print("白"; "bold")

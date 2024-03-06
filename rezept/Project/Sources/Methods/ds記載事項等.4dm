@@ -60,8 +60,9 @@ If ($noHost)
 		If ($files.length#0)
 			
 			$file:=$files[0]
+			//%W-533.4
 			$json:=XLSX TO JSON($file.platformPath)
-			
+			//%W+533.4
 			C_OBJECT:C1216($data)
 			
 			$data:=JSON Parse:C1218($json; Is object:K8:27)

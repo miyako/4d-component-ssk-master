@@ -12,7 +12,7 @@ Function _pauseIndexes() : cs:C1710.後発医薬品
 	
 Function _resumeIndexes() : cs:C1710.後発医薬品
 	
-	RESUME INDEXES:C1294(This:C1470._getTablePointer()->)
+	RESUME INDEXES:C1294(This:C1470._getTablePointer()->; *)
 	
 	return This:C1470
 	
@@ -38,7 +38,7 @@ Function _getFiles($names : Collection) : Collection
 	$files:=$folder.files()
 	return $files.query("name in :1 and extension in :2"; $names; [".xlsx"])
 	
-Function regenerate($CLI : cs:C1710.CLI)
+Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 	
 	var $files : Collection
 	$files:=This:C1470._getFiles(["tp@"; "後発医薬品@"])
@@ -72,7 +72,7 @@ Function regenerate($CLI : cs:C1710.CLI)
 				$sheet:=$sheets[0]
 				For each ($row; $sheet.rows; 1)
 					$values:=$row.values
-					This:C1470._createRecords($CLI; $values)
+					This:C1470._createRecords($CLI; $values; $verbose)
 				End for each 
 				
 			End if 
@@ -88,7 +88,7 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 	End if 
 	
-Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
+Function _createRecords($CLI : cs:C1710.CLI; $values : Collection; $verbose : Boolean)
 	
 	var $e : 4D:C1709.Entity
 	var $dataClass : 4D:C1709.DataClass
@@ -117,4 +117,15 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	//$CLI.CR().print($values[7]; "226").EL()
+	If ($verbose)
+		$CLI.CR().print(This:C1470._truncateString($values[7]; 20); "226").EL()
+	End if 
+	
+Function _truncateString($value : Text; $length : Integer) : Text
+	
+	If (Length:C16($value)>$length)
+		return Substring:C12($value; 1; $length-1)+"..."
+	Else 
+		return $value
+	End if 
+	

@@ -12,7 +12,7 @@ Function _pauseIndexes() : cs:C1710.医薬品
 	
 Function _resumeIndexes() : cs:C1710.医薬品
 	
-	RESUME INDEXES:C1294(This:C1470._getTablePointer()->)
+	RESUME INDEXES:C1294(This:C1470._getTablePointer()->; *)
 	
 	return This:C1470
 	
@@ -52,7 +52,7 @@ Function _getFile($names : Collection) : 4D:C1709.File
 		End if 
 	End if 
 	
-Function regenerate($CLI : cs:C1710.CLI)
+Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 	
 	var $file : 4D:C1709.File
 	$file:=This:C1470._getFile(["z@"; "修飾語@"])
@@ -86,7 +86,7 @@ Function regenerate($CLI : cs:C1710.CLI)
 			$values:=Split string:C1554($line; ",")
 			
 			This:C1470._trimDoubleQuotes($values)
-			This:C1470._createRecords($CLI; $values)
+			This:C1470._createRecords($CLI; $values; $verbose)
 			
 		End while 
 		
@@ -99,7 +99,7 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 	End if 
 	
-Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
+Function _createRecords($CLI : cs:C1710.CLI; $values : Collection; $verbose : Boolean)
 	
 	var $e : 4D:C1709.Entity
 	var $dataClass : 4D:C1709.DataClass
@@ -133,7 +133,9 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	//$CLI.CR().print($values[6]; "226").EL()
+	If ($verbose)
+		$CLI.CR().print($values[6]; "226").EL()
+	End if 
 	
 Function _trimDoubleQuotes($values : Variant)->$value : Variant
 	

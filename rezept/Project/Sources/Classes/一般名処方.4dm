@@ -12,7 +12,7 @@ Function _pauseIndexes() : cs:C1710.一般名処方
 	
 Function _resumeIndexes() : cs:C1710.一般名処方
 	
-	RESUME INDEXES:C1294(This:C1470._getTablePointer()->)
+	RESUME INDEXES:C1294(This:C1470._getTablePointer()->; *)
 	
 	return This:C1470
 	
@@ -42,7 +42,7 @@ Function _getFile($names : Collection) : 4D:C1709.File
 		return $files[0]
 	End if 
 	
-Function regenerate($CLI : cs:C1710.CLI)
+Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 	
 	var $file : 4D:C1709.File
 	$file:=This:C1470._getFile(["ippanmeishohoumaster_@"; "一般名処方@"])
@@ -76,7 +76,7 @@ Function regenerate($CLI : cs:C1710.CLI)
 		If ($sheet#Null:C1517)
 			For each ($row; $sheet.rows; 3)
 				$values:=$row.values
-				This:C1470._createRecords($CLI; $values)
+				This:C1470._createRecords($CLI; $values; $verbose)
 			End for each 
 		End if 
 		
@@ -89,7 +89,7 @@ Function regenerate($CLI : cs:C1710.CLI)
 		
 	End if 
 	
-Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
+Function _createRecords($CLI : cs:C1710.CLI; $values : Collection; $verbose : Boolean)
 	
 	var $e : 4D:C1709.Entity
 	var $dataClass : 4D:C1709.DataClass
@@ -112,4 +112,6 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection)
 	
 	$e.save()
 	
-	//$CLI.CR().print($values[2]; "226").EL()
+	If ($verbose)
+		$CLI.CR().print($values[2]; "226").EL()
+	End if 
