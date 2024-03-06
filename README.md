@@ -30,5 +30,5 @@ tool4d.app/Contents/MacOS/tool4d
  --project=/Users/miyako/Documents/GitHub/4d-component-ssk-master/rezept/Project/rezept.4DProject
  --startup-method=regenerate
  --skip-onstartup
- --user-param="verbose,regenereate"
+ --user-param="verbose,regenereate,export,build"
 ```
