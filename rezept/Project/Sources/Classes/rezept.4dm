@@ -9,6 +9,7 @@ Class constructor
 	This:C1470.特定器材:=This:C1470.ds("特定器材").特定器材
 	This:C1470.地方公費:=This:C1470.ds("地方公費").地方公費
 	This:C1470.傷病名:=This:C1470.ds("傷病名").傷病名
+	This:C1470.地方公費:=This:C1470.ds("地方公費").地方公費
 	
 Function get($dataClassName : Text) : Object
 	

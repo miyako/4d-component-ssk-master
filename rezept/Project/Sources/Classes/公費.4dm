@@ -423,13 +423,14 @@ Function parse($保険者番号 : Text)->$status : Object
 				
 			Else 
 				
-				$ds:=ds地方公費
+				var $rezept : cs:C1710.rezept
+				$rezept:=cs:C1710.rezept.new()
 				
 				If ($status.都道府県番号#Null:C1517)
 					
 					var $公費 : Object
 					
-					$col:=$ds.地方公費.query("法別番号 == :1 and 都道府県コード == :2"; $status.法別番号; $都道府県コード)
+					$col:=$rezept.地方公費.query("法別番号 == :1 and 都道府県コード == :2"; $status.法別番号; $都道府県コード)
 					
 					If ($col.length#0)
 						
@@ -494,7 +495,7 @@ Function parse($保険者番号 : Text)->$status : Object
 							End for each 
 							
 							$地方公費.限定公費:=This:C1470.公費.query("法別番号 in :1"; $限定法別番号)
-							$地方公費.限定地方公費:=$ds.地方公費.query("項目.保険番号 in :1 and 都道府県コード == :2"; $公費.項目.限定保険番号; $都道府県コード)
+							$地方公費.限定地方公費:=$rezept.地方公費.query("項目.保険番号 in :1 and 都道府県コード == :2"; $公費.項目.限定保険番号; $都道府県コード)
 							
 							$status.地方公費.push($地方公費)
 							
@@ -503,7 +504,6 @@ Function parse($保険者番号 : Text)->$status : Object
 					End if 
 					
 				End if 
-				
 				
 			End if 
 			

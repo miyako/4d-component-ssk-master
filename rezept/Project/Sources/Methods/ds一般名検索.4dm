@@ -5,7 +5,7 @@ C_OBJECT:C1216($0; $一般名)
 $薬価基準コード:=$1
 $一般名:=Null:C1517
 
-$params:=new_query_params
+$params:=cs:C1710._params.new()
 
 If (True:C214)
 	

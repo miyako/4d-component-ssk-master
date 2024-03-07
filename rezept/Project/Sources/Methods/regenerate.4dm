@@ -36,6 +36,7 @@ If (Get application info:C1599.headless)
 		ds:C1482.一般名処方.regenerate($CLI; $verbose)
 		ds:C1482.後発医薬品.regenerate($CLI; $verbose)
 		
+		ds:C1482._地方公費.regenerate($CLI; $verbose)
 		ds:C1482._特定器材.regenerate($CLI; $verbose)
 		ds:C1482._修飾語.regenerate($CLI; $verbose)
 		ds:C1482._コメント.regenerate($CLI; $verbose)

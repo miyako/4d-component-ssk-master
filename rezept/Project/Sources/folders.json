@@ -17,6 +17,7 @@
 			"_修飾語",
 			"_傷病名",
 			"_診療行為",
+			"_地方公費",
 			"_特定器材",
 			"番号"
 		]
@@ -32,7 +33,6 @@
 	"import": {
 		"methods": [
 			"create_記載事項等",
-			"import_地方公費",
 			"load_collection",
 			"save_collection"
 		]

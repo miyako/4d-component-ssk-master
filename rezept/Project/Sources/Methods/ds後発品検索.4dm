@@ -5,7 +5,7 @@ C_OBJECT:C1216($0; $後発医薬品)
 $薬価基準コード:=$1
 $後発医薬品:=Null:C1517
 
-$params:=new_query_params
+$params:=cs:C1710._params.new()
 
 $params.attributes.医薬品コード:="薬価基準収載医薬品コード"
 $params.parameters.検索値:=$薬価基準コード
