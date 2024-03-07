@@ -5,10 +5,7 @@ on:
     branches:
     - main
     paths:
-      - '*/Project/Sources/**/*.4dm'
-      - '*/Project/Sources/*/*.4DForm'
-      - '*/Project/Sources/*.4DCatalog'
-      - '*/Project/Resources/**'
+      - 'DATA/*'
   workflow_dispatch:
     inputs:
         mode:
