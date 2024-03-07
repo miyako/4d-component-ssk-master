@@ -2,9 +2,7 @@
 
 # 概要
 
-GitHub Actionsと`tool4d`を活用し，マスターファイルを更新したら自動的にコンポーネントを再生成します。
-
-コンポーネントは，データベースではなく，共有オブジェクトで各種マスターを返します。
+GitHub Actionsと`tool4d`を活用し，マスターファイルを更新したら自動的にコンポーネントを再生成します。コンポーネントなので，データファイルはありません。代わりに共有オブジェクト（シングルトン）をファイルとしてエクスポートし，初回の参照でインポートします。
 
 # [基本マスター](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/index.html)
 
@@ -21,8 +19,6 @@ GitHub Actionsと`tool4d`を活用し，マスターファイルを更新した�
 |修飾語|2023年12月22日||
 
 * [厚生労働省のマスター](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/rezeptsystem/index.html)は上記のとおりファイル名を変更してください。
-* 医薬品マスターの新レイアウトに対応しました。
-* 特定器材マスターの新レイアウトに対応しました。
 
 * ローカルで実行する場合
 
