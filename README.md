@@ -9,7 +9,7 @@ var $rezept : cs.ssk.Rezept
 $rezept:=cs.ssk.Rezept.new()
 ```
 
-* クエリ例
+### クエリ
 
 ```4d
 $診療行為:=$rezept.診療行為.query("基本漢字名称 == :1"; "@術中術後自己血回収術@")
