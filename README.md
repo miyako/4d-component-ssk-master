@@ -17,6 +17,10 @@ GitHub Actionsと`tool4d`を活用し，マスターファイルを更新した�
 |労災コメント|2020年4月15日|ファイル名: rezept-master-06.csv|
 |傷病名|2023年12月22日||
 |修飾語|2023年12月22日||
+|歯科診療行為||未対応|
+|調剤行為||未対応|
+|歯式||未対応|
+|訪問看護療養費||未対応|
 
 * [厚生労働省のマスター](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/rezeptsystem/index.html)は上記のとおりファイル名を変更してください。
 
