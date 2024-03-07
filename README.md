@@ -9,13 +9,14 @@ var $rezept : cs.ssk.Rezept
 $rezept:=cs.ssk.Rezept.new()
 ```
 
-- コメント
-- 医薬品
-- 修飾語
-- 傷病名
-- 診療行為
-- 地方公費
-- 特定器材
+* クエリ例
+
+```4d
+$診療行為:=$rezept.診療行為.query("基本漢字名称 == :1"; "@術中術後自己血回収術@")
+$医薬品:=$rezept.医薬品.query("後発品.項目.同一剤形・規格の後発医薬品がある先発医薬品 == :1"; "○")
+```
+
+対象コレクション：`コメント` `医薬品` `修飾語` `傷病名` `診療行為` `地方公費` `特定器材`
 
 # [基本マスター](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/index.html)
 
