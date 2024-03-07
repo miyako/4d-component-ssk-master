@@ -4,19 +4,19 @@ Function _getTablePointer() : Pointer
 	
 	return Table:C252(This:C1470.getInfo().tableNumber)
 	
-Function _pauseIndexes() : cs:C1710.医薬品
+Function _pauseIndexes() : cs:C1710.診療行為
 	
 	PAUSE INDEXES:C1293(This:C1470._getTablePointer()->)
 	
 	return This:C1470
 	
-Function _resumeIndexes() : cs:C1710.医薬品
+Function _resumeIndexes() : cs:C1710.診療行為
 	
 	RESUME INDEXES:C1294(This:C1470._getTablePointer()->; *)
 	
 	return This:C1470
 	
-Function _truncateTable() : cs:C1710.医薬品
+Function _truncateTable() : cs:C1710.診療行為
 	
 	var $pTable : Pointer
 	$pTable:=This:C1470._getTablePointer()

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="5">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="7">
 	<com.4d>
 		<php ip_address="127.0.0.1"/>
 		<sql>
@@ -32,7 +32,8 @@
 		</database>
 		<compiler>
 			<typage default_for_button="2" default_for_numeric="1"/>
-			<options error_file="true" symbol_file="true" target="all"/>
+			<options error_file="true" symbol_file="true" syntax_file="true" target="all"/>
 		</compiler>
+		<general component_classStore_name="ssk"/>
 	</com.4d>
 </preferences>
