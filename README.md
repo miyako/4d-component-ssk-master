@@ -22,6 +22,7 @@ $医薬品:=$rezept.医薬品.query("後発品.項目.同一剤形・規格の�
 
 ```4d
 $診療行為:=$rezept.get("診療行為"; "150405210")
+$医薬品:=$rezept.get("医薬品"; "610406079")
 ```
 
 # [基本マスター](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/index.html)
