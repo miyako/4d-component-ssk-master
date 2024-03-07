@@ -36,7 +36,7 @@ Function _getFiles() : Collection
 	$folder:=This:C1470._getDataFolder().folder("地方公費")
 	
 	$files:=$folder.files()
-	return $files.query("extension in :1"; $names; [".xlsx"])
+	return $files.query("extension in :1"; [".xlsx"])
 	
 Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 	
@@ -56,8 +56,8 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 			$CLI.print($file.path; "244").LF()
 		End for each 
 		
-		var $番号 : cs:C1710.番号
-		$番号:=cs:C1710.番号.new()
+		var $番号 : cs:C1710._番号
+		$番号:=cs:C1710._番号.new()
 		
 		This:C1470._truncateTable()._pauseIndexes()
 		
@@ -160,7 +160,7 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 		
 		This:C1470._resumeIndexes()
 		
-		cs:C1710.Package.new().setProperty("地方公費"; $files.extract("fullName"))
+		cs:C1710._Package.new().setProperty("地方公費"; $files.extract("fullName"))
 		
 	End if 
 	

@@ -206,7 +206,7 @@
 			</editor_table_info>
 		</table_extra>
 	</table>
-	<table name="医薬品" uuid="FE5C16A612CE49AC8B3CABCB2B36C085" id="6">
+	<table name="_医薬品" uuid="FE5C16A612CE49AC8B3CABCB2B36C085" id="6">
 		<field name="ID" uuid="A98FF576E78E4BF89F9702DA23ECAD67" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
 		<field name="医薬品コード" uuid="E06439D347584DD881B349044C7077C3" type="10" limiting_length="9" never_null="true" id="2">
 			<field_extra>
@@ -272,7 +272,7 @@
 			</editor_table_info>
 		</table_extra>
 	</table>
-	<table name="一般名処方" uuid="ED38EA3426504DA38ACD1CE4AA59C32E" id="7">
+	<table name="_一般名処方" uuid="ED38EA3426504DA38ACD1CE4AA59C32E" id="7">
 		<field name="ID" uuid="3D79C58402684FC2B1FA60560692A932" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
 		<field name="一般名コード" uuid="002A931932524598AD4C0FCD56101ECC" type="10" limiting_length="12" never_null="true" id="2">
 			<field_extra>
@@ -348,7 +348,7 @@
 			</editor_table_info>
 		</table_extra>
 	</table>
-	<table name="後発医薬品" uuid="569C488BC02A4072AE3DAEA6954192EC" id="10">
+	<table name="_後発医薬品" uuid="569C488BC02A4072AE3DAEA6954192EC" id="10">
 		<field name="ID" uuid="742C3DD2EA6C44C4B6988FE4291F8B57" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
 		<field name="薬価基準収載医薬品コード" uuid="00DBC20DED994102870141A3C4754B2B" type="10" limiting_length="255" never_null="true" id="2">
 			<field_extra>
@@ -388,17 +388,17 @@
 	</table>
 	<index kind="regular" uuid="0671AB491ABF4C1B9FAC8A1E6A78CC32" type="3">
 		<field_ref uuid="7BA9D1A5F2D74241B3D7EDBEF1A1AB9E" name="項目">
-			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="一般名処方"/>
+			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="_一般名処方"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="098C5C1E18A74B8BA0642D8EF0AB55CD" type="3">
 		<field_ref uuid="57B87A8879A34AA999483B315B1170DF" name="医薬品名・規格名">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="0CBD2621B8D04E1D87FB778EFF9024E8" type="1">
 		<field_ref uuid="002A931932524598AD4C0FCD56101ECC" name="一般名コード">
-			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="一般名処方"/>
+			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="_一般名処方"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="0DFAF2A4B5A84F18B7F2ECCF857C9296" type="1">
@@ -418,7 +418,7 @@
 	</index>
 	<index kind="regular" uuid="2008E12E887F4E8AA2121F070F4A7926" type="3">
 		<field_ref uuid="FDF146466C1E4CD2944C57F7B57DB460" name="項目">
-			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="_後発医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="2337F3B324BF40D5927F2A3FE5CF2EF1" type="3">
@@ -438,12 +438,12 @@
 	</index>
 	<index kind="regular" uuid="2EAC3DBE040F45E195AE456A0B8696D1" type="3">
 		<field_ref uuid="9514E15F457E4AC6B63B186C20C707A1" name="メーカー名">
-			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="_後発医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="2EB33D27F2F94B239937FC23F6B5BDEF" type="1">
 		<field_ref uuid="00DBC20DED994102870141A3C4754B2B" name="薬価基準収載医薬品コード">
-			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="_後発医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="2F26886BA8C24654B20F283B543787D4" type="1">
@@ -458,12 +458,12 @@
 	</index>
 	<index kind="regular" uuid="3B2720385A8A449DAAF0CC6E6FA4EB80" type="1">
 		<field_ref uuid="E06439D347584DD881B349044C7077C3" name="医薬品コード">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="4772B7B179CF4536B54B4613435FA15B" type="7">
 		<field_ref uuid="A98FF576E78E4BF89F9702DA23ECAD67" name="ID">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="489401DCCAAE447A9BCBBD58E4A85E2C" type="3">
@@ -513,7 +513,7 @@
 	</index>
 	<index kind="regular" uuid="6C86EA7A73164AB49EB0A8CD0C79CB99" type="1">
 		<field_ref uuid="F1F2B1A4B2024C33A16D2C3FCF030A9E" name="一般名処方の標準的な記載">
-			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="一般名処方"/>
+			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="_一般名処方"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="71C35D8F7C99482D8701114A61AD1326" type="3">
@@ -543,12 +543,12 @@
 	</index>
 	<index kind="regular" unique_keys="true" uuid="80B7C0AA80884CCCABCB970D28E2077A" type="7">
 		<field_ref uuid="742C3DD2EA6C44C4B6988FE4291F8B57" name="ID">
-			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="_後発医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="8413740D23734F4E97A7A4981260CDA8" type="7">
 		<field_ref uuid="3D79C58402684FC2B1FA60560692A932" name="ID">
-			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="一般名処方"/>
+			<table_ref uuid="ED38EA3426504DA38ACD1CE4AA59C32E" name="_一般名処方"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="85A86175B30746F69185F7795E6BEC78" type="3">
@@ -558,7 +558,7 @@
 	</index>
 	<index kind="regular" uuid="8D5A824E5FB24330B88DDDBF96545240" type="3">
 		<field_ref uuid="A523734AE8E042318EDD5454BEFAFAB2" name="品名">
-			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="後発医薬品"/>
+			<table_ref uuid="569C488BC02A4072AE3DAEA6954192EC" name="_後発医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="8E3D8E8BBC124F3BAB200816B4749E5D" type="3">
@@ -568,7 +568,7 @@
 	</index>
 	<index kind="regular" uuid="9BA6A7490A6E4370818E8325E51DE015" type="1">
 		<field_ref uuid="242B2AE2ED754019B6AE8D5588E4AEE2" name="基本漢字名称">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="9CC85DA02171412AB2BDBDD18E2B6AD7" type="1">
@@ -583,12 +583,12 @@
 	</index>
 	<index kind="regular" uuid="A30B1D11CC93407B9163F2DE1A1F6138" type="3">
 		<field_ref uuid="8AE484C9C07F4131B2A2E5A479CDE543" name="単位">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="A782E0EDB2394C22B0E092B6A706F341" type="3">
 		<field_ref uuid="3C04683E739B4EAFB3945BF31CFD7DF5" name="一般名処方マスタ">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="AC94275970EA4F4DB9C947F19DF3C819" type="3">
@@ -598,7 +598,7 @@
 	</index>
 	<index kind="regular" uuid="B2169F9A9293492492861C8A30FED613" type="3">
 		<field_ref uuid="3C38AA23F7F443A48615351A6A9013F3" name="項目">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="B58FBD81E17E4F87AEC50C3D9926A6B9" type="3">
@@ -608,7 +608,7 @@
 	</index>
 	<index kind="regular" uuid="B8B3E8D52DF848139FB9FD98C2271EA0" type="3">
 		<field_ref uuid="A5A29154D9BA4A2CB9E9F2AAAD64CFBE" name="新又は現金額">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="BA55E0E8E83944D683ED0FF45899779E" type="1">
@@ -643,7 +643,7 @@
 	</index>
 	<index kind="regular" uuid="EB857E3C31B84A7FB843B098C55A786F" type="3">
 		<field_ref uuid="1710D439651044DBA3FC0C3AFECA190D" name="旧金額">
-			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="医薬品"/>
+			<table_ref uuid="FE5C16A612CE49AC8B3CABCB2B36C085" name="_医薬品"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="F909CD5F18B54591893C06948E8E18F8" type="1">

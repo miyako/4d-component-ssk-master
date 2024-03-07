@@ -13,103 +13,55 @@ If (Get application info:C1599.headless)
 	var $options : Collection
 	$options:=Split string:C1554($userParamValue; ","; sk ignore empty strings:K86:1 | sk trim spaces:K86:2)
 	
-	var $verbose; $regenerate : Boolean
+	var $verbose; $regenerate; $export : Boolean
 	$verbose:=$options.includes("verbose")
-	$regenerate:=$options.includes("verbose")
+	$regenerate:=$options.includes("regenerate")
+	$export:=$options.includes("export")
 	
 	$CLI.print("verbose..."; "bold")
 	If ($verbose)
 		$CLI.print("yes"; "39").LF()
 	Else 
-		$CLI.print("yes"; "196;bold").LF()
+		$CLI.print("no"; "196;bold").LF()
 	End if 
 	
 	$CLI.print("regenerate..."; "bold")
 	If ($regenerate)
 		$CLI.print("yes"; "39").LF()
 	Else 
-		$CLI.print("yes"; "196;bold").LF()
+		$CLI.print("no"; "196;bold").LF()
+	End if 
+	
+	$CLI.print("export..."; "bold")
+	If ($export)
+		$CLI.print("yes"; "39").LF()
+	Else 
+		$CLI.print("no"; "196;bold").LF()
 	End if 
 	
 	If ($regenerate)
-		ds:C1482.医薬品.regenerate($CLI; $verbose)
-		ds:C1482.一般名処方.regenerate($CLI; $verbose)
-		ds:C1482.後発医薬品.regenerate($CLI; $verbose)
+		
+		//一般名処方,後発医薬品,医薬品がセット（医薬品に統合する）
+		ds:C1482._一般名処方.regenerate($CLI; $verbose)
+		ds:C1482._後発医薬品.regenerate($CLI; $verbose)
+		ds:C1482._医薬品.regenerate($CLI; $verbose)
+		
+		ds:C1482._傷病名.regenerate($CLI; $verbose)
+		ds:C1482._修飾語.regenerate($CLI; $verbose)
+		
+		//診療行為,特定器材,コメントがセット（記載事項等で参照する）
+		ds:C1482._診療行為.regenerate($CLI; $verbose)
+		ds:C1482._特定器材.regenerate($CLI; $verbose)
+		ds:C1482._コメント.regenerate($CLI; $verbose)
 		
 		ds:C1482._地方公費.regenerate($CLI; $verbose)
-		ds:C1482._特定器材.regenerate($CLI; $verbose)
-		ds:C1482._修飾語.regenerate($CLI; $verbose)
-		ds:C1482._コメント.regenerate($CLI; $verbose)
-		ds:C1482._傷病名.regenerate($CLI; $verbose)
-		ds:C1482._診療行為.regenerate($CLI; $verbose)
+		
+		//TODO: 記載事項等をインポートする方法を考える
+		
 	End if 
 	
-	If ($options.includes("export"))
-		
-		ds医薬品
-		
-		var $dataFile : 4D:C1709.File
-		
-		$dataFile:=Folder:C1567("/RESOURCES/").file("医薬品.data")
-		$CLI.print("generate data file..."; "bold")
-		If ($dataFile.exists)
-			$CLI.print("success"; "82;bold").LF()
-			$CLI.print($dataFile.path; "244").LF()
-			$CLI.print("size: "; "bold").print(String:C10($dataFile.size); "39").LF()
-		Else 
-			$CLI.print("failure"; "196;bold").LF()
-		End if 
-		
-		$dataFile:=Folder:C1567("/RESOURCES/").file("特定器材.data")
-		$CLI.print("generate data file..."; "bold")
-		If ($dataFile.exists)
-			$CLI.print("success"; "82;bold").LF()
-			$CLI.print($dataFile.path; "244").LF()
-			$CLI.print("size: "; "bold").print(String:C10($dataFile.size); "39").LF()
-		Else 
-			$CLI.print("failure"; "196;bold").LF()
-		End if 
-		
-		$dataFile:=Folder:C1567("/RESOURCES/").file("修飾語.data")
-		$CLI.print("generate data file..."; "bold")
-		If ($dataFile.exists)
-			$CLI.print("success"; "82;bold").LF()
-			$CLI.print($dataFile.path; "244").LF()
-			$CLI.print("size: "; "bold").print(String:C10($dataFile.size); "39").LF()
-		Else 
-			$CLI.print("failure"; "196;bold").LF()
-		End if 
-		
-		$dataFile:=Folder:C1567("/RESOURCES/").file("診療行為.data")
-		$CLI.print("generate data file..."; "bold")
-		If ($dataFile.exists)
-			$CLI.print("success"; "82;bold").LF()
-			$CLI.print($dataFile.path; "244").LF()
-			$CLI.print("size: "; "bold").print(String:C10($dataFile.size); "39").LF()
-		Else 
-			$CLI.print("failure"; "196;bold").LF()
-		End if 
-		
-		$dataFile:=Folder:C1567("/RESOURCES/").file("傷病名.data")
-		$CLI.print("generate data file..."; "bold")
-		If ($dataFile.exists)
-			$CLI.print("success"; "82;bold").LF()
-			$CLI.print($dataFile.path; "244").LF()
-			$CLI.print("size: "; "bold").print(String:C10($dataFile.size); "39").LF()
-		Else 
-			$CLI.print("failure"; "196;bold").LF()
-		End if 
-		
-		$dataFile:=Folder:C1567("/RESOURCES/").file("コメント.data")
-		$CLI.print("generate data file..."; "bold")
-		If ($dataFile.exists)
-			$CLI.print("success"; "82;bold").LF()
-			$CLI.print($dataFile.path; "244").LF()
-			$CLI.print("size: "; "bold").print(String:C10($dataFile.size); "39").LF()
-		Else 
-			$CLI.print("failure"; "196;bold").LF()
-		End if 
-		
+	If ($export)
+		cs:C1710.Rezept.new()
 	End if 
 	
 	$CLI.showCursor()

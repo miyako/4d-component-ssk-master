@@ -1,52 +1,51 @@
 {
-	"4DB": {
+	"(import)": {},
+	"ORDA": {
 		"tables": [
 			"_コメント",
+			"_医薬品",
+			"_一般名処方",
+			"_後発医薬品",
 			"_修飾語",
 			"_傷病名",
 			"_診療行為",
 			"_地方公費",
 			"_特定器材",
-			"医薬品",
-			"一般名処方",
-			"一般名処方例外",
-			"後発医薬品"
+			"一般名処方例外"
 		],
 		"classes": [
 			"_コメント",
+			"_医薬品",
+			"_一般名処方",
+			"_後発医薬品",
 			"_修飾語",
 			"_傷病名",
 			"_診療行為",
 			"_地方公費",
-			"_特定器材",
-			"番号"
+			"_特定器材"
 		]
 	},
-	"function": {
+	"private": {
 		"methods": [
-			"m_setup",
-			"m_setup_i",
-			"new_query_params",
-			"str_trim"
-		]
-	},
-	"import": {
-		"methods": [
-			"create_記載事項等",
-			"load_collection",
-			"save_collection"
-		]
-	},
-	"prototype": {
+			"generic_error_handler"
+		],
 		"classes": [
-			"_export",
-			"_params"
+			"_Export",
+			"_Package",
+			"_Params",
+			"_公費",
+			"_番号"
 		]
 	},
-	"test": {
-		"methods": [
-			"test_inport_診療行為"
+	"public": {
+		"classes": [
+			"CLI",
+			"Rezept"
 		]
 	},
-	"trash": {}
+	"trash": {
+		"groups": [
+			"(import)"
+		]
+	}
 }

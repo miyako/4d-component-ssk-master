@@ -111,9 +111,6 @@ Function _color($color : Text)->$ANSI : Collection
 	
 	$attributes:=Split string:C1554($color; ";"; sk ignore empty strings:K86:1 | sk trim spaces:K86:2)
 	
-	ARRAY LONGINT:C221($pos; 0)
-	ARRAY LONGINT:C221($len; 0)
-	
 	var $set : Boolean
 	
 	For each ($attribute; $attributes)

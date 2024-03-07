@@ -94,7 +94,7 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 			
 		End while 
 		
-		cs:C1710.Package.new().setProperty("診療行為"; $file1.fullName)
+		cs:C1710._Package.new().setProperty("診療行為"; $file1.fullName)
 		
 		$CLI.CR().print("records imported..."; "bold")
 		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
@@ -124,7 +124,7 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 			
 		End while 
 		
-		cs:C1710.Package.new().setProperty("労災診療行為"; $file2.fullName)
+		cs:C1710._Package.new().setProperty("労災診療行為"; $file2.fullName)
 		
 		$CLI.CR().print("records imported..."; "bold")
 		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()

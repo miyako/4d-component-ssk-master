@@ -4,19 +4,19 @@ Function _getTablePointer() : Pointer
 	
 	return Table:C252(This:C1470.getInfo().tableNumber)
 	
-Function _pauseIndexes() : cs:C1710._修飾語
+Function _pauseIndexes() : cs:C1710._医薬品
 	
 	PAUSE INDEXES:C1293(This:C1470._getTablePointer()->)
 	
 	return This:C1470
 	
-Function _resumeIndexes() : cs:C1710._修飾語
+Function _resumeIndexes() : cs:C1710._医薬品
 	
 	RESUME INDEXES:C1294(This:C1470._getTablePointer()->; *)
 	
 	return This:C1470
 	
-Function _truncateTable() : cs:C1710._修飾語
+Function _truncateTable() : cs:C1710._医薬品
 	
 	var $pTable : Pointer
 	$pTable:=This:C1470._getTablePointer()
@@ -55,13 +55,13 @@ Function _getFile($names : Collection) : 4D:C1709.File
 Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 	
 	var $file : 4D:C1709.File
-	$file:=This:C1470._getFile(["z@"; "修飾語@"])
+	$file:=This:C1470._getFile(["y@"; "医薬品@"])
 	
 	If ($CLI=Null:C1517)
 		$CLI:=cs:C1710.CLI.new()
 	End if 
 	
-	$CLI.print("master for 修飾語..."; "bold")
+	$CLI.print("master for 医薬品..."; "bold")
 	
 	If ($file=Null:C1517)
 		$CLI.print("not found"; "196;bold").LF()
@@ -95,7 +95,7 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 		
 		This:C1470._resumeIndexes()
 		
-		cs:C1710._Package.new().setProperty("修飾語"; $file.fullName)
+		cs:C1710._Package.new().setProperty("医薬品"; $file.fullName)
 		
 	End if 
 	
@@ -109,32 +109,75 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection; $verbose : Bo
 	$e:=$dataClass.new()
 	
 	$e["項目"]:={}
+	$e["医薬品名・規格名"]:={}
+	$e["単位"]:={}
+	$e["新又は現金額"]:={}
+	$e["旧金額"]:={}
+	
 	$e["項目"]["変更区分"]:=$values[0]
 	$e["項目"]["マスター種別"]:=$values[1]
-	$e["修飾語コード"]:=$values[2]
+	$e["医薬品コード"]:=$values[2]
+	$e["医薬品名・規格名"]["漢字有効桁数"]:=$values[3]
+	$e["医薬品名・規格名"]["漢字名称"]:=$values[4]
+	$e["医薬品名・規格名"]["カナ有効桁数"]:=$values[5]
+	$e["医薬品名・規格名"]["カナ名称"]:=$values[6]
+	$e["単位"]["コード"]:=$values[7]
+	$e["単位"]["漢字有効桁数"]:=$values[8]
+	$e["単位"]["漢字名称"]:=$values[9]
+	$e["新又は現金額"]["金額種別"]:=$values[10]
+	$e["新又は現金額"]["新又は現金額"]:=$values[11]
 	//予備
+	$e["項目"]["麻薬・毒薬・覚せい剤原料・向精神薬"]:=$values[13]
+	$e["項目"]["神経破壊剤"]:=$values[14]
+	$e["項目"]["生物学的製剤"]:=$values[15]
+	$e["項目"]["後発品"]:=$values[16]
 	//予備
-	$e["項目"]["修飾語名称桁数"]:=$values[5]
-	$e["項目"]["修飾語名称"]:=$values[6]
+	$e["項目"]["歯科特定薬剤"]:=$values[18]
+	$e["項目"]["造影(補助)剤"]:=$values[19]
+	$e["項目"]["注射容量"]:=$values[20]
+	$e["項目"]["収載方式等識別"]:=$values[21]
+	$e["項目"]["商品名等関連"]:=$values[22]
+	$e["旧金額"]["旧金額種別"]:=$values[23]
+	$e["旧金額"]["旧金額"]:=$values[24]
+	$e["項目"]["漢字名称変更区分"]:=$values[25]
+	$e["項目"]["カナ名称変更区分"]:=$values[26]
+	$e["項目"]["剤形"]:=$values[27]
 	//予備
-	$e["項目"]["修飾語カナ名称桁数"]:=$values[8]
-	$e["項目"]["修飾語カナ名称"]:=$values[9]
-	//予備
-	$e["項目"]["修飾語名称_変更情報"]:=$values[11]
-	$e["項目"]["修飾語カナ名称_変更情報"]:=$values[12]
-	$e["項目"]["収載年月日"]:=$values[13]
-	$e["項目"]["変更年月日"]:=$values[14]
-	$e["項目"]["廃止年月日"]:=$values[15]
-	$e["項目"]["修飾語管理番号"]:=$values[16]
-	$e["項目"]["修飾語交換用コード"]:=$values[17]
-	$e["項目"]["修飾語区分"]:=$values[18]
+	$e["項目"]["変更年月日"]:=$values[29]
+	$e["項目"]["廃止年月日"]:=$values[30]
+	$e["項目"]["薬価基準コード"]:=$values[31]
+	$e["項目"]["公表順序番号"]:=$values[32]
+	$e["項目"]["経過措置年月日又は商品名医薬品コード使用期限"]:=$values[33]
+	$e["基本漢字名称"]:=$values[34]
 	
-	$e["修飾語名称"]:=$values[6]
+	var $newFormat : Boolean
+	
+	If ($values.length>35)
+		$newFormat:=True:C214
+		$e["項目"]["薬価基準収載年月日"]:=$values[35]
+		If ($values.length>36)
+			$e["一般名処方マスタ"]:={}
+			$e["一般名処方マスタ"]["一般名コード"]:=$values[36]
+		End if 
+		If ($values.length>37)
+			$e["一般名処方マスタ"]["一般名処方の標準的な記載"]:=$values[37]
+		End if 
+		If ($values.length>38)
+			$e["一般名処方マスタ"]["一般名処方加算対象区分"]:=$values[38]
+		End if 
+		If ($values.length>39)
+			$e["項目"]["抗HIV薬区分"]:=$values[39]
+		End if 
+	End if 
 	
 	$e.save()
 	
 	If ($verbose)
-		$CLI.CR().print($values[6]; "226").EL()
+		$CLI.CR().print($values[4]; "226")
+		If ($newFormat)
+			$CLI.print(" 【新】"; "82;bold")
+		End if 
+		$CLI.EL()
 	End if 
 	
 Function _trimDoubleQuotes($values : Variant)->$value : Variant

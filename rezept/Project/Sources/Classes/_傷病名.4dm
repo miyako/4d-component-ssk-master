@@ -96,7 +96,7 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 		
 		This:C1470._resumeIndexes()
 		
-		cs:C1710.Package.new().setProperty("傷病名"; $file.fullName)
+		cs:C1710._Package.new().setProperty("傷病名"; $file.fullName)
 		
 	End if 
 	

@@ -1,149 +1,21 @@
 {
-	"_method_": {
-		"ds地方公費": {
-			"Syntax": "**ds地方公費**( *p1* :  ) : Object",
-			"Params": [
-				[
-					"p1",
-					"",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"ds傷病名": {
-			"Syntax": "**ds傷病名**( *p1* :  ) : Object",
-			"Params": [
-				[
-					"p1",
-					"",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"公費": {
-			"Syntax": "**公費**()->公費 : cs.ssk.公費",
-			"Params": [
-				[
-					"公費",
-					"cs.ssk.公費",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"dsコメント": {
-			"Syntax": "**dsコメント**( *p1* :  ) : Object",
-			"Params": [
-				[
-					"p1",
-					"",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"ds単位": {
-			"Syntax": "**ds単位**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"ds修飾語": {
-			"Syntax": "**ds修飾語**( *p1* :  ) : Object",
-			"Params": [
-				[
-					"p1",
-					"",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"ds医薬品": {
-			"Syntax": "**ds医薬品**( *p1* :  ) : Object",
-			"Params": [
-				[
-					"p1",
-					"",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"ds特定器材": {
-			"Syntax": "**ds特定器材**( *p1* :  ) : Object",
-			"Params": [
-				[
-					"p1",
-					"",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"ds記載事項等": {
-			"Syntax": "**ds記載事項等**( *p1* :  ) : Object",
-			"Params": [
-				[
-					"p1",
-					"",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		}
-	},
+	"_method_": {},
 	"cs.ssk": {
-		"_params": {
+		"_番号": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
 				"Summary": ""
 			}
 		},
-		"_export": {
+		"_Package": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"_Export": {
 			"new()": {
 				"Syntax": "**.new**( *dataClassName* : Text )",
 				"Params": [
@@ -156,14 +28,7 @@
 				"Summary": ""
 			}
 		},
-		"番号": {
-			"new()": {
-				"Syntax": "**.new**()",
-				"Params": [],
-				"Summary": ""
-			}
-		},
-		"Package": {
+		"Rezept": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
@@ -177,46 +42,25 @@
 				"Summary": ""
 			}
 		},
-		"公費": {
+		"_Params": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
 				"Summary": ""
 			}
 		},
-		"rezept": {
+		"_公費": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
 				"Summary": ""
 			}
-		},
-		"診療行為": {
-			"new()": {
-				"Syntax": "**.new**( *診療行為* : cs.ssk._診療行為Entity )",
-				"Params": [
-					[
-						"診療行為",
-						"cs.ssk._診療行為Entity",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
 		}
 	},
-	"_params": {},
-	"_export": {
-		"setup()": {
-			"Syntax": "**.setup**()",
-			"Params": [],
-			"Summary": ""
-		}
-	},
-	"番号": {},
-	"Package": {
+	"_番号": {},
+	"_Package": {
 		"setProperty()": {
-			"Syntax": "**.setProperty**( *key* : Text; *value* : Variant ) : cs.ssk.Package",
+			"Syntax": "**.setProperty**( *key* : Text; *value* : Variant ) : cs.ssk._Package",
 			"Params": [
 				[
 					"key",
@@ -230,11 +74,144 @@
 				],
 				[
 					"",
-					"cs.ssk.Package",
+					"cs.ssk._Package",
 					"<-"
 				]
 			],
 			"Summary": ""
+		}
+	},
+	"_Export": {
+		"setup_k()": {
+			"Syntax": "**.setup_k**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"str_trim()": {
+			"Syntax": "**.str_trim**( *src* : Text ) : Text",
+			"Params": [
+				[
+					"src",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"コメント()": {
+			"Syntax": "**.コメント**( *code* : Text; *collection* : Collection )->isComment : Boolean",
+			"Params": [
+				[
+					"code",
+					"Text",
+					"->"
+				],
+				[
+					"collection",
+					"Collection",
+					"->"
+				],
+				[
+					"isComment",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"診療行為()": {
+			"Syntax": "**.診療行為**( *code* : Text; *collection* : Collection )",
+			"Params": [
+				[
+					"code",
+					"Text",
+					"->"
+				],
+				[
+					"collection",
+					"Collection",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"setup_i()": {
+			"Syntax": "**.setup_i**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"setup_t()": {
+			"Syntax": "**.setup_t**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"setup()": {
+			"Syntax": "**.setup**()",
+			"Params": [],
+			"Summary": ""
+		}
+	},
+	"Rezept": {
+		"公費()": {
+			"Syntax": "**.公費**() : cs.ssk._公費",
+			"Params": [
+				[
+					"",
+					"cs.ssk._公費",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get()": {
+			"Syntax": "**.get**( *dataClassName* : Text; *code* : Text ) : Object",
+			"Params": [
+				[
+					"dataClassName",
+					"Text",
+					"->"
+				],
+				[
+					"code",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"医薬品": {
+			"Syntax": "医薬品 : Object"
+		},
+		"傷病名": {
+			"Syntax": "傷病名 : Object"
+		},
+		"修飾語": {
+			"Syntax": "修飾語 : Object"
+		},
+		"地方公費": {
+			"Syntax": "地方公費 : Object"
+		},
+		"診療行為": {
+			"Syntax": "診療行為 : Object"
+		},
+		"特定器材": {
+			"Syntax": "特定器材 : Object"
+		},
+		"単位": {
+			"Syntax": "単位 : Object"
+		},
+		"コメント": {
+			"Syntax": "コメント : Object"
 		}
 	},
 	"CLI": {
@@ -390,7 +367,8 @@
 			"Summary": ""
 		}
 	},
-	"公費": {
+	"_Params": {},
+	"_公費": {
 		"parse()": {
 			"Syntax": "**.parse**( *保険者番号* : Text )->status : Object",
 			"Params": [
@@ -535,53 +513,6 @@
 			],
 			"Summary": ""
 		},
-		"_inheritedFrom_": "番号"
-	},
-	"rezept": {
-		"get _診療行為()": {
-			"Syntax": "**.get _診療行為**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"params()": {
-			"Syntax": "**.params**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"診療行為": {
-			"Syntax": "診療行為 : Object"
-		}
-	},
-	"診療行為": {
-		"診療行為省略名称": {
-			"Syntax": "診療行為省略名称 : Object"
-		},
-		"旧点数": {
-			"Syntax": "旧点数 : Object"
-		},
-		"診療行為コード": {
-			"Syntax": "診療行為コード : Text"
-		},
-		"新又は現点数": {
-			"Syntax": "新又は現点数 : Object"
-		},
-		"項目": {
-			"Syntax": "項目 : Object"
-		},
-		"基本漢字名称": {
-			"Syntax": "基本漢字名称 : Text"
-		}
+		"_inheritedFrom_": "_番号"
 	}
 }
