@@ -1,5 +1,4 @@
 {
-	"(公費)": {},
 	"4DB": {
 		"tables": [
 			"コメント",
@@ -12,19 +11,6 @@
 			"診療行為",
 			"地方公費",
 			"特定器材"
-		],
-		"methods": [
-			"dsコメント",
-			"ds医薬品",
-			"ds一般名検索",
-			"ds記載事項等",
-			"ds後発品検索",
-			"ds修飾語",
-			"ds傷病名",
-			"ds診療行為",
-			"ds単位",
-			"ds地方公費",
-			"ds特定器材"
 		],
 		"classes": [
 			"番号"
@@ -51,29 +37,5 @@
 			"診療行為_get"
 		]
 	},
-	"ビルド": {
-		"methods": [
-			"generic_error_handler",
-			"sign"
-		],
-		"classes": [
-			"_CLI",
-			"_CLI_Controller",
-			"_SettingsXmlParser",
-			"_XmlParser",
-			"Build",
-			"BuildApp",
-			"BuildApp_CLI",
-			"CLI",
-			"Package",
-			"SignApp",
-			"SignApp_Controller",
-			"SignAppUI_Controller"
-		]
-	},
-	"trash": {
-		"groups": [
-			"(公費)"
-		]
-	}
+	"trash": {}
 }

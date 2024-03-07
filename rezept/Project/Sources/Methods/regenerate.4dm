@@ -120,10 +120,6 @@ If (Get application info:C1599.headless)
 		
 	End if 
 	
-	If ($options.includes("build"))
-		cs:C1710.Build.new().build()
-	End if 
-	
 	$CLI.showCursor()
 	
 	If (False:C215)
