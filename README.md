@@ -30,7 +30,7 @@ tool4d.app/Contents/MacOS/tool4d
  --project=/Users/miyako/Documents/GitHub/4d-component-ssk-master/rezept/Project/rezept.4DProject
  --startup-method=regenerate
  --skip-onstartup
- --user-param="verbose,regenereate,export,build"
+ --user-param="verbose,regenereate,export"
 ```
 
 GitHub Actionsで自動的にデータを生成する場合は`verbose`を省略してください。
