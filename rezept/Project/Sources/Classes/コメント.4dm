@@ -180,7 +180,7 @@ Function _createRecords($CLI : cs:C1710.CLI; $values : Collection; $verbose : Bo
 	$e.save()
 	
 	If ($verbose)
-		$CLI.CR().print(This:C1470._truncateString($values[6]; 20); "226").EL()
+		$CLI.CR().print(This:C1470._truncateString($values[6]; 40); "226").EL()
 	End if 
 	
 Function _truncateString($value : Text; $length : Integer) : Text
