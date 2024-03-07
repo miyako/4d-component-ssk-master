@@ -3,3 +3,6 @@ rezept/Project/DerivedData/*
 rezept/Data/*
 Components/*
 rezept/Libraries/lib4d-arm64.dylib
+SAMPLE/Data/*
+SAMPLE/Project/DerivedData/*
+SAMPLE/userPreferences.*
