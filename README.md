@@ -4,6 +4,19 @@
 
 GitHub Actionsと`tool4d`を活用し，マスターファイルを更新したら自動的にコンポーネントを再生成します。コンポーネントなので，データファイルはありません。代わりに共有オブジェクト（シングルトン）をファイルとしてエクスポートし，初回の参照でインポートします。
 
+　```4d
+var $rezept : cs.ssk.Rezept
+$rezept:=cs.ssk.Rezept.new()
+```
+
+- コメント
+- 医薬品
+- 修飾語
+- 傷病名
+- 診療行為
+- 地方公費
+- 特定器材
+
 # [基本マスター](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/index.html)
 
 |ファイル|更新日|ファイル名|
