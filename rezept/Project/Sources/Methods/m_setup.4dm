@@ -18,7 +18,13 @@ Use ($sharedCollection)
 	If ($noHost)
 		//データ再構築
 		For each ($entity; $dataClass.all())
-			$sharedCollection.push(OB Copy:C1225($entity.toObject(); ck shared:K85:29; $sharedCollection))
+			Case of 
+				: ($dataClassName="診療行為")
+					$instance:=OB Copy:C1225(cs:C1710._診療行為.new($entity); ck shared:K85:29; $sharedCollection)
+				Else 
+					$instance:=OB Copy:C1225($entity.toObject(); ck shared:K85:29; $sharedCollection)
+			End case 
+			$sharedCollection.push($instance)
 		End for each 
 		
 		C_OBJECT:C1216($sharedObject)

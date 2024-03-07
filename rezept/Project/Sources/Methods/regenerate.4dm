@@ -35,11 +35,12 @@ If (Get application info:C1599.headless)
 		ds:C1482.医薬品.regenerate($CLI; $verbose)
 		ds:C1482.一般名処方.regenerate($CLI; $verbose)
 		ds:C1482.後発医薬品.regenerate($CLI; $verbose)
-		ds:C1482.特定器材.regenerate($CLI; $verbose)
-		ds:C1482.修飾語.regenerate($CLI; $verbose)
-		ds:C1482.コメント.regenerate($CLI; $verbose)
-		ds:C1482.傷病名.regenerate($CLI; $verbose)
-		ds:C1482.診療行為.regenerate($CLI; $verbose)
+		
+		ds:C1482._特定器材.regenerate($CLI; $verbose)
+		ds:C1482._修飾語.regenerate($CLI; $verbose)
+		ds:C1482._コメント.regenerate($CLI; $verbose)
+		ds:C1482._傷病名.regenerate($CLI; $verbose)
+		ds:C1482._診療行為.regenerate($CLI; $verbose)
 	End if 
 	
 	If ($options.includes("export"))
@@ -58,8 +59,6 @@ If (Get application info:C1599.headless)
 			$CLI.print("failure"; "196;bold").LF()
 		End if 
 		
-		ds特定器材
-		
 		$dataFile:=Folder:C1567("/RESOURCES/").file("特定器材.data")
 		$CLI.print("generate data file..."; "bold")
 		If ($dataFile.exists)
@@ -69,8 +68,6 @@ If (Get application info:C1599.headless)
 		Else 
 			$CLI.print("failure"; "196;bold").LF()
 		End if 
-		
-		ds修飾語
 		
 		$dataFile:=Folder:C1567("/RESOURCES/").file("修飾語.data")
 		$CLI.print("generate data file..."; "bold")
@@ -82,8 +79,6 @@ If (Get application info:C1599.headless)
 			$CLI.print("failure"; "196;bold").LF()
 		End if 
 		
-		ds診療行為
-		
 		$dataFile:=Folder:C1567("/RESOURCES/").file("診療行為.data")
 		$CLI.print("generate data file..."; "bold")
 		If ($dataFile.exists)
@@ -94,8 +89,6 @@ If (Get application info:C1599.headless)
 			$CLI.print("failure"; "196;bold").LF()
 		End if 
 		
-		ds傷病名
-		
 		$dataFile:=Folder:C1567("/RESOURCES/").file("傷病名.data")
 		$CLI.print("generate data file..."; "bold")
 		If ($dataFile.exists)
@@ -105,8 +98,6 @@ If (Get application info:C1599.headless)
 		Else 
 			$CLI.print("failure"; "196;bold").LF()
 		End if 
-		
-		dsコメント
 		
 		$dataFile:=Folder:C1567("/RESOURCES/").file("コメント.data")
 		$CLI.print("generate data file..."; "bold")

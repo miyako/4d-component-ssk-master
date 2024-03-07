@@ -12,7 +12,7 @@ If (Storage:C1525.地方公費=Null:C1517)
 	
 	$EXPORT:=New shared object:C1526("地方公費"; New shared collection:C1527; "code"; New shared object:C1526)
 	
-	Formula:C1597(m_setup).call($EXPORT; "地方公費"; ds:C1482.地方公費; $noHost)
+	Formula:C1597(m_setup).call($EXPORT; "地方公費"; ds:C1482._地方公費; $noHost)
 	
 	Use (Storage:C1525)
 		Storage:C1525.地方公費:=$EXPORT

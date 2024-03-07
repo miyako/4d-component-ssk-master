@@ -17,7 +17,10 @@ End if
 
 */
 
-$s:=ds診療行為.診療行為.query("基本漢字名称 == :1"; "@術中術後自己血回収術@")
+var $rezept : cs:C1710.rezept
+$rezept:=cs:C1710.rezept.new()
+
+$s:=$rezept.診療行為.query("基本漢字名称 == :1"; "@術中術後自己血回収術@")
 
 $ds:=ds記載事項等
 

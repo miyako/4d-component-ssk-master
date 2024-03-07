@@ -1,40 +1,51 @@
 {
 	"4DB": {
 		"tables": [
-			"コメント",
+			"_コメント",
+			"_修飾語",
+			"_傷病名",
+			"_診療行為",
+			"_地方公費",
+			"_特定器材",
 			"医薬品",
 			"一般名処方",
 			"一般名処方例外",
-			"後発医薬品",
-			"修飾語",
-			"傷病名",
-			"診療行為",
-			"地方公費",
-			"特定器材"
+			"後発医薬品"
 		],
 		"classes": [
+			"_コメント",
+			"_修飾語",
+			"_傷病名",
+			"_診療行為",
+			"_特定器材",
 			"番号"
 		]
 	},
 	"function": {
 		"methods": [
-			"double_quote",
 			"m_setup",
 			"m_setup_i",
 			"new_query_params",
-			"str_trim",
-			"trim_double_quotes"
+			"str_trim"
 		]
 	},
 	"import": {
 		"methods": [
 			"create_記載事項等",
-			"formula_ippanmei",
 			"import_地方公費",
 			"load_collection",
-			"save_collection",
-			"コメント_get",
-			"診療行為_get"
+			"save_collection"
+		]
+	},
+	"prototype": {
+		"classes": [
+			"_export",
+			"_params"
+		]
+	},
+	"test": {
+		"methods": [
+			"test_inport_診療行為"
 		]
 	},
 	"trash": {}

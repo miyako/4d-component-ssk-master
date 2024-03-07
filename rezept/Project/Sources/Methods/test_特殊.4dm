@@ -1,5 +1,10 @@
 //%attributes = {"invisible":true,"preemptive":"incapable"}
-$ds:=dsコメント
+cs:C1710._export.new().コメント("@"; New shared collection:C1527)
+
+
+
+
+//$ds:=dsコメント
 
 $comment:=$ds.code["840000082"]
 

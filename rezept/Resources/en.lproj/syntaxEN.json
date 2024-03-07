@@ -1,60 +1,587 @@
 {
 	"_method_": {
 		"ds地方公費": {
-			"Syntax": "**ds地方公費**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"ds傷病名": {
-			"Syntax": "**ds傷病名**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"公費": {
-			"Syntax": "**公費**()->公費 : Object",
+			"Syntax": "**ds地方公費**( *p1* :  ) : Object",
 			"Params": [
 				[
-					"公費",
+					"p1",
+					"",
+					"->"
+				],
+				[
+					"",
 					"Object",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
+		"ds傷病名": {
+			"Syntax": "**ds傷病名**( *p1* :  ) : Object",
+			"Params": [
+				[
+					"p1",
+					"",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"公費": {
+			"Syntax": "**公費**()->公費 : cs.ssk.公費",
+			"Params": [
+				[
+					"公費",
+					"cs.ssk.公費",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"dsコメント": {
-			"Syntax": "**dsコメント**()",
-			"Params": [],
+			"Syntax": "**dsコメント**( *p1* :  ) : Object",
+			"Params": [
+				[
+					"p1",
+					"",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
 			"Summary": ""
 		},
 		"ds単位": {
-			"Syntax": "**ds単位**()",
-			"Params": [],
+			"Syntax": "**ds単位**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
 			"Summary": ""
 		},
 		"ds修飾語": {
-			"Syntax": "**ds修飾語**()",
-			"Params": [],
+			"Syntax": "**ds修飾語**( *p1* :  ) : Object",
+			"Params": [
+				[
+					"p1",
+					"",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
 			"Summary": ""
 		},
 		"ds医薬品": {
-			"Syntax": "**ds医薬品**()",
-			"Params": [],
+			"Syntax": "**ds医薬品**( *p1* :  ) : Object",
+			"Params": [
+				[
+					"p1",
+					"",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
 			"Summary": ""
 		},
 		"ds特定器材": {
-			"Syntax": "**ds特定器材**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"ds診療行為": {
-			"Syntax": "**ds診療行為**()",
-			"Params": [],
+			"Syntax": "**ds特定器材**( *p1* :  ) : Object",
+			"Params": [
+				[
+					"p1",
+					"",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
 			"Summary": ""
 		},
 		"ds記載事項等": {
-			"Syntax": "**ds記載事項等**()",
+			"Syntax": "**ds記載事項等**( *p1* :  ) : Object",
+			"Params": [
+				[
+					"p1",
+					"",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"cs.ssk": {
+		"_params": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"_export": {
+			"new()": {
+				"Syntax": "**.new**( *dataClassName* : Text )",
+				"Params": [
+					[
+						"dataClassName",
+						"Text",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"番号": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"Package": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"CLI": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"公費": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"rezept": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"診療行為": {
+			"new()": {
+				"Syntax": "**.new**( *診療行為* : cs.ssk._診療行為Entity )",
+				"Params": [
+					[
+						"診療行為",
+						"cs.ssk._診療行為Entity",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		}
+	},
+	"_params": {},
+	"_export": {
+		"setup()": {
+			"Syntax": "**.setup**()",
 			"Params": [],
 			"Summary": ""
+		}
+	},
+	"番号": {},
+	"Package": {
+		"setProperty()": {
+			"Syntax": "**.setProperty**( *key* : Text; *value* : Variant ) : cs.ssk.Package",
+			"Params": [
+				[
+					"key",
+					"Text",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.ssk.Package",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"CLI": {
+		"LF()": {
+			"Syntax": "**.LF**()->this : cs.ssk.CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"print()": {
+			"Syntax": "**.print**( *message* : Text; *style* : Text )->this : cs.ssk.CLI",
+			"Params": [
+				[
+					"message",
+					"Text",
+					"->"
+				],
+				[
+					"style",
+					"Text",
+					"->"
+				],
+				[
+					"this",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"logo()": {
+			"Syntax": "**.logo**()->CLI : cs.ssk.CLI",
+			"Params": [
+				[
+					"CLI",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"escape()": {
+			"Syntax": "**.escape**( *message* : Text; *style* : Text )->ANSI : Text",
+			"Params": [
+				[
+					"message",
+					"Text",
+					"->"
+				],
+				[
+					"style",
+					"Text",
+					"->"
+				],
+				[
+					"ANSI",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"showCursor()": {
+			"Syntax": "**.showCursor**()->this : cs.ssk.CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"hideCursor()": {
+			"Syntax": "**.hideCursor**()->this : cs.ssk.CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"XY()": {
+			"Syntax": "**.XY**( *x* : Integer; *y* : Integer )->this : cs.ssk.CLI",
+			"Params": [
+				[
+					"x",
+					"Integer",
+					"->"
+				],
+				[
+					"y",
+					"Integer",
+					"->"
+				],
+				[
+					"this",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"ES()": {
+			"Syntax": "**.ES**()->this : cs.ssk.CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"version()": {
+			"Syntax": "**.version**()->CLI : cs.ssk.CLI",
+			"Params": [
+				[
+					"CLI",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"EL()": {
+			"Syntax": "**.EL**()->this : cs.ssk.CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"CR()": {
+			"Syntax": "**.CR**()->this : cs.ssk.CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk.CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"公費": {
+		"parse()": {
+			"Syntax": "**.parse**( *保険者番号* : Text )->status : Object",
+			"Params": [
+				[
+					"保険者番号",
+					"Text",
+					"->"
+				],
+				[
+					"status",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"薬剤負担区分()": {
+			"Syntax": "**.薬剤負担区分**( *code* : Integer )->stringValue : Text",
+			"Params": [
+				[
+					"code",
+					"Integer",
+					"->"
+				],
+				[
+					"stringValue",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"レセプト記載区分()": {
+			"Syntax": "**.レセプト記載区分**( *code* : Integer )->stringValue : Text",
+			"Params": [
+				[
+					"code",
+					"Integer",
+					"->"
+				],
+				[
+					"stringValue",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"食事療養費()": {
+			"Syntax": "**.食事療養費**( *code* : Integer )->stringValue : Text",
+			"Params": [
+				[
+					"code",
+					"Integer",
+					"->"
+				],
+				[
+					"stringValue",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"レセプト負担金額区分()": {
+			"Syntax": "**.レセプト負担金額区分**( *code* : Integer )->stringValue : Text",
+			"Params": [
+				[
+					"code",
+					"Integer",
+					"->"
+				],
+				[
+					"stringValue",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"外来負担区分()": {
+			"Syntax": "**.外来負担区分**( *code* : Integer )->stringValue : Text",
+			"Params": [
+				[
+					"code",
+					"Integer",
+					"->"
+				],
+				[
+					"stringValue",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"レセプト請求区分()": {
+			"Syntax": "**.レセプト請求区分**( *code* : Integer )->stringValue : Text",
+			"Params": [
+				[
+					"code",
+					"Integer",
+					"->"
+				],
+				[
+					"stringValue",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"保険公費種別区分()": {
+			"Syntax": "**.保険公費種別区分**( *code* : Integer )->stringValue : Text",
+			"Params": [
+				[
+					"code",
+					"Integer",
+					"->"
+				],
+				[
+					"stringValue",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"入院負担区分()": {
+			"Syntax": "**.入院負担区分**( *code* : Integer )->stringValue : Text",
+			"Params": [
+				[
+					"code",
+					"Integer",
+					"->"
+				],
+				[
+					"stringValue",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"_inheritedFrom_": "番号"
+	},
+	"rezept": {
+		"get _診療行為()": {
+			"Syntax": "**.get _診療行為**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"params()": {
+			"Syntax": "**.params**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"診療行為": {
+			"Syntax": "診療行為 : Object"
+		}
+	},
+	"診療行為": {
+		"診療行為省略名称": {
+			"Syntax": "診療行為省略名称 : Object"
+		},
+		"旧点数": {
+			"Syntax": "旧点数 : Object"
+		},
+		"診療行為コード": {
+			"Syntax": "診療行為コード : Text"
+		},
+		"新又は現点数": {
+			"Syntax": "新又は現点数 : Object"
+		},
+		"項目": {
+			"Syntax": "項目 : Object"
+		},
+		"基本漢字名称": {
+			"Syntax": "基本漢字名称 : Text"
 		}
 	}
 }

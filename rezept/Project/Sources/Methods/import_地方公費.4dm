@@ -1,6 +1,6 @@
 //%attributes = {"invisible":true,"preemptive":"incapable"}
-TRUNCATE TABLE:C1051([地方公費:9])
-SET DATABASE PARAMETER:C642([地方公費:9]; Table sequence number:K37:31; 0)
+TRUNCATE TABLE:C1051([_地方公費:9])
+SET DATABASE PARAMETER:C642([_地方公費:9]; Table sequence number:K37:31; 0)
 
 $valuesFolder:=Folder:C1567("/DATA/").folder("地方公費")
 $files:=$valuesFolder.files(fk ignore invisible:K87:22)
@@ -98,7 +98,7 @@ End for each
 
 For each ($value; $values)
 	
-	$e地方公費:=ds:C1482.地方公費.new()
+	$e地方公費:=ds:C1482._地方公費.new()
 	
 	$e地方公費.法別番号:=$value.法別番号
 	$e地方公費.都道府県コード:=$value.都道府県コード
