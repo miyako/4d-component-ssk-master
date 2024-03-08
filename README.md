@@ -63,3 +63,12 @@ tool4d.app/Contents/MacOS/tool4d \
 ```
 
 GitHub Actionsで自動的にデータを生成する場合は`verbose`を省略してください。
+
+# 公費
+
+```4d
+Form.parser:=cs.ssk.Rezept.new().公費()
+```
+`/DATA/地方公費/`フォルダーのエクセルファイルをインポートしたオブジェクトです。検証番号をチェックし，制度の詳細を返します。
+
+![](https://github.com/miyako/4d-component-ssk-master/assets/1725068/48d4fe95-7379-4bee-b818-aa93df615cf3)
