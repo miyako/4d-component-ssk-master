@@ -18,7 +18,11 @@ Class constructor
 	
 Function getInfo() : Object
 	
-	return cs:C1710._Export.new().getInfo()
+	If (Application type:C494=4D Remote mode:K5:5)
+		return get_info_s
+	Else 
+		return cs:C1710._Export.new().getInfo()
+	End if 
 	
 Function get($dataClassName : Text; $code : Text) : Object
 	

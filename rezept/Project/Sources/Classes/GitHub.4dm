@@ -10,7 +10,7 @@ Class constructor
 	If (Application type:C494=4D Remote mode:K5:5)
 		new_github_s
 	Else 
-		CALL WORKER:C1389(1; This:C1470._fetch; $options)
+		CALL WORKER:C1389(Application type:C494=4D Server:K5:6 ? "rezept" : 1; This:C1470._fetch; $options)
 	End if 
 	
 	//MARK:private
@@ -67,7 +67,7 @@ Function _get($release : Object)
 		$options.release:=$release
 		$options.dataType:="blob"
 		$options.automaticRedirections:=True:C214
-		CALL WORKER:C1389(1; This:C1470._download; $options)
+		CALL WORKER:C1389(Application type:C494=4D Server:K5:6 ? "rezept" : 1; This:C1470._download; $options)
 	End if 
 	
 Function _getDataFolder($tag : Text)
