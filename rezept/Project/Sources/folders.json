@@ -29,16 +29,12 @@
 			"generic_error_handler"
 		],
 		"classes": [
+			"_CLI",
 			"_Export",
 			"_Package",
 			"_Params",
 			"_公費",
 			"_番号"
-		]
-	},
-	"public": {
-		"classes": [
-			"CLI"
 		]
 	},
 	"trash": {}

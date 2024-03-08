@@ -38,12 +38,12 @@ Function _getFiles() : Collection
 	$files:=$folder.files()
 	return $files.query("extension in :1"; [".xlsx"])
 	
-Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
+Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 	
 	$files:=This:C1470._getFiles()
 	
 	If ($CLI=Null:C1517)
-		$CLI:=cs:C1710.CLI.new()
+		$CLI:=cs:C1710._CLI.new()
 	End if 
 	
 	$CLI.print("master for 地方公費..."; "bold")
@@ -164,7 +164,7 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 		
 	End if 
 	
-Function _createRecords($CLI : cs:C1710.CLI; $value : Object; $verbose : Boolean)
+Function _createRecords($CLI : cs:C1710._CLI; $value : Object; $verbose : Boolean)
 	
 	var $e : 4D:C1709.Entity
 	var $dataClass : 4D:C1709.DataClass

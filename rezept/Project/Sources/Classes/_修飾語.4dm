@@ -52,13 +52,13 @@ Function _getFile($names : Collection) : 4D:C1709.File
 		End if 
 	End if 
 	
-Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
+Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 	
 	var $file : 4D:C1709.File
 	$file:=This:C1470._getFile(["z@"; "修飾語@"])
 	
 	If ($CLI=Null:C1517)
-		$CLI:=cs:C1710.CLI.new()
+		$CLI:=cs:C1710._CLI.new()
 	End if 
 	
 	$CLI.print("master for 修飾語..."; "bold")
@@ -99,7 +99,7 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 		
 	End if 
 	
-Function _createRecords($CLI : cs:C1710.CLI; $values : Collection; $verbose : Boolean)
+Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : Boolean)
 	
 	var $e : 4D:C1709.Entity
 	var $dataClass : 4D:C1709.DataClass

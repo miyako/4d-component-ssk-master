@@ -31,31 +31,31 @@ Class constructor
 	This:C1470.CURSOR.RIGHT:="C"
 	This:C1470.CURSOR.LEFT:="D"
 	
-Function CR()->$this : cs:C1710.CLI
+Function CR()->$this : cs:C1710._CLI
 	
 	$this:=This:C1470.print(This:C1470.ASCII.CR)
 	
-Function LF()->$this : cs:C1710.CLI
+Function LF()->$this : cs:C1710._CLI
 	
 	$this:=This:C1470.print(This:C1470.ASCII.LF)
 	
-Function EL()->$this : cs:C1710.CLI
+Function EL()->$this : cs:C1710._CLI
 	
 	$this:=This:C1470.print(This:C1470.ASCII.ESC+"[K")
 	
-Function ES()->$this : cs:C1710.CLI
+Function ES()->$this : cs:C1710._CLI
 	
 	$this:=This:C1470.print(This:C1470.ASCII.ESC+"[2J")
 	
-Function XY($x : Integer; $y : Integer)->$this : cs:C1710.CLI
+Function XY($x : Integer; $y : Integer)->$this : cs:C1710._CLI
 	
 	$this:=This:C1470.print(This:C1470.ASCII.ESC+"["+String:C10(Abs:C99($x))+";"+String:C10(Abs:C99($y))+"H")
 	
-Function hideCursor()->$this : cs:C1710.CLI
+Function hideCursor()->$this : cs:C1710._CLI
 	
 	$this:=This:C1470.print(This:C1470.ASCII.ESC+"[?25l")
 	
-Function showCursor()->$this : cs:C1710.CLI
+Function showCursor()->$this : cs:C1710._CLI
 	
 	$this:=This:C1470.print(This:C1470.ASCII.ESC+"[?25h")
 	
@@ -69,7 +69,7 @@ Function escape($message : Text; $style : Text)->$ANSI : Text
 		$ANSI:=$message
 	End if 
 	
-Function logo()->$CLI : cs:C1710.CLI
+Function logo()->$CLI : cs:C1710._CLI
 	
 	$CLI:=This:C1470
 	
@@ -80,7 +80,7 @@ Function logo()->$CLI : cs:C1710.CLI
 		$CLI.print($line; "117;18;bold").LF()
 	End for each 
 	
-Function print($message : Text; $style : Text)->$this : cs:C1710.CLI
+Function print($message : Text; $style : Text)->$this : cs:C1710._CLI
 	
 	$ANSI:=This:C1470.escape($message; $style)
 	
@@ -88,7 +88,7 @@ Function print($message : Text; $style : Text)->$this : cs:C1710.CLI
 	
 	$this:=This:C1470
 	
-Function version()->$CLI : cs:C1710.CLI
+Function version()->$CLI : cs:C1710._CLI
 	
 	$CLI:=This:C1470
 	
@@ -188,7 +188,7 @@ Function _color($color : Text)->$ANSI : Collection
 		End case 
 	End for each 
 	
-Function _cursor($units : Integer; $code : Text)->$this : cs:C1710.CLI
+Function _cursor($units : Integer; $code : Text)->$this : cs:C1710._CLI
 	
 	If ($units>0)
 		$ANSI:=This:C1470.ASCII.ESC+"["+String:C10($units)+$code

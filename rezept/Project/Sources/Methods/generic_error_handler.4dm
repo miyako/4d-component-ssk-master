@@ -1,7 +1,7 @@
 //%attributes = {"invisible":true}
-var $CLI : cs:C1710.CLI
+var $CLI : cs:C1710._CLI
 
-$CLI:=cs:C1710.CLI.new()
+$CLI:=cs:C1710._CLI.new()
 
 $CLI\
 .print("ERROR"; "red;bold")\

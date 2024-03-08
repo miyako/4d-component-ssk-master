@@ -572,7 +572,6 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 											$i:=$pos{1}+$len{1}
 											
 											Case of 
-												: ($code="810000001")
 												: ($export._link("コメント"; $code; $collection; $コメント))
 													//コメントコード 
 												: ($export._link("診療行為"; $code; $collection; $診療行為))
@@ -627,8 +626,8 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 					$file.setContent($blob)
 					This:C1470.file:=$file
 					
-					var $CLI : cs:C1710.CLI
-					$CLI:=cs:C1710.CLI.new()
+					var $CLI : cs:C1710._CLI
+					$CLI:=cs:C1710._CLI.new()
 					
 					$CLI.print("generate data file for "+$dataClassName+"..."; "bold")
 					$CLI.print("success"; "82;bold").LF()
@@ -822,8 +821,8 @@ Function setup_t()
 		$file.setContent($data)
 		This:C1470.file:=$file
 		
-		var $CLI : cs:C1710.CLI
-		$CLI:=cs:C1710.CLI.new()
+		var $CLI : cs:C1710._CLI
+		$CLI:=cs:C1710._CLI.new()
 		
 		$CLI.print("generate data file for "+$dataClassName+"..."; "bold")
 		$CLI.print("success"; "82;bold").LF()
@@ -902,8 +901,8 @@ Function setup_i()
 		$file.setContent($data)
 		This:C1470.file:=$file
 		
-		var $CLI : cs:C1710.CLI
-		$CLI:=cs:C1710.CLI.new()
+		var $CLI : cs:C1710._CLI
+		$CLI:=cs:C1710._CLI.new()
 		
 		$CLI.print("generate data file for "+$dataClassName+"..."; "bold")
 		$CLI.print("success"; "82;bold").LF()
@@ -999,8 +998,8 @@ Function setup()
 		$file.setContent($data)
 		This:C1470.file:=$file
 		
-		var $CLI : cs:C1710.CLI
-		$CLI:=cs:C1710.CLI.new()
+		var $CLI : cs:C1710._CLI
+		$CLI:=cs:C1710._CLI.new()
 		
 		$CLI.print("generate data file for "+$dataClassName+"..."; "bold")
 		$CLI.print("success"; "82;bold").LF()

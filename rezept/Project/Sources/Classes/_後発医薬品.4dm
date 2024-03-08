@@ -52,13 +52,13 @@ Function _getFiles($names : Collection) : Collection
 	$files:=$folder.files()
 	return $files.query("name in :1 and extension in :2"; $names; [".xlsx"])
 	
-Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
+Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 	
 	var $files : Collection
 	$files:=This:C1470._getFiles(["tp@"; "後発医薬品@"])
 	
 	If ($CLI=Null:C1517)
-		$CLI:=cs:C1710.CLI.new()
+		$CLI:=cs:C1710._CLI.new()
 	End if 
 	
 	$CLI.print("master for 後発医薬品..."; "bold")
@@ -102,7 +102,7 @@ Function regenerate($CLI : cs:C1710.CLI; $verbose : Boolean)
 		
 	End if 
 	
-Function _createRecords($CLI : cs:C1710.CLI; $values : Collection; $verbose : Boolean)
+Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : Boolean)
 	
 	var $e : 4D:C1709.Entity
 	var $dataClass : 4D:C1709.DataClass
