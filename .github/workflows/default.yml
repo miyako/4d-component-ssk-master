@@ -141,7 +141,7 @@ jobs:
           dmg_path: ${{ steps.zip.outputs.dmg_path }}
           zip_path: ${{ steps.zip.outputs.zip_path }}    
           tag_name: ${{ steps.version.outputs.versions }}   
-          release_name: ${{ teps.tag.outputs.release_name }}  
+          release_name: ${{ steps.tag.outputs.release_name }}  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
 
