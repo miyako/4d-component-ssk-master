@@ -36,7 +36,7 @@ Function _getFile($names : Collection) : 4D:C1709.File
 	$folder:=This:C1470._getDataFolder()
 	
 	$files:=$folder.files()
-	$files:=$files.query("name in :1 and extension in :2"; $names; [".csv"; ".zip"])
+	$files:=$files.query("name in :1 and extension in :2"; $names; [".csv"; ".txt"; ".zip"])
 	
 	If ($files.length#0)
 		var $file : 4D:C1709.File

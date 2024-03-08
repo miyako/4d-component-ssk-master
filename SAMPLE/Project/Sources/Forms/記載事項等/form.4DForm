@@ -1,0 +1,431 @@
+{
+	"destination": "detailScreen",
+	"formSizeAnchor": "登録",
+	"rightMargin": 10,
+	"bottomMargin": 10,
+	"menuBar": "メニューバー #1",
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onUnload"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"Line": {
+					"type": "line",
+					"top": 28,
+					"left": 10,
+					"width": 490,
+					"sizingX": "grow"
+				},
+				"診療行為名称等": {
+					"type": "input",
+					"top": 9,
+					"left": 110,
+					"width": 390,
+					"height": 17,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.診療行為名称等",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"区分": {
+					"type": "input",
+					"top": 9,
+					"left": 40,
+					"width": 70,
+					"height": 17,
+					"dataSource": "Form:C1466.区分",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"項番": {
+					"type": "input",
+					"top": 9,
+					"left": 10,
+					"width": 30,
+					"height": 17,
+					"dataSource": "Form:C1466.項番",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"v2": {
+					"type": "input",
+					"top": 64,
+					"left": 10,
+					"width": 490,
+					"height": 17,
+					"visibility": "hidden",
+					"sizingX": "grow",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none"
+				},
+				"v1": {
+					"type": "input",
+					"top": 37,
+					"left": 10,
+					"width": 490,
+					"height": 17,
+					"visibility": "hidden",
+					"fontWeight": "bold",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none"
+				}
+			}
+		},
+		{
+			"objects": {
+				"指示": {
+					"type": "input",
+					"top": 64,
+					"left": 10,
+					"width": 490,
+					"height": 17,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.指示",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"条件": {
+					"type": "input",
+					"top": 37,
+					"left": 10,
+					"width": 490,
+					"height": 17,
+					"dataSource": "Form:C1466.条件",
+					"fontWeight": "bold",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"category": {
+					"type": "dropdown",
+					"top": 91,
+					"left": 10,
+					"width": 490,
+					"height": 21,
+					"sizingX": "grow",
+					"focusable": false,
+					"method": "ObjectMethods/category.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"list": {
+					"type": "dropdown",
+					"top": 117,
+					"left": 10,
+					"width": 490,
+					"height": 21,
+					"sizingX": "grow",
+					"focusable": false,
+					"method": "ObjectMethods/list.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"コメント": {
+					"type": "input",
+					"top": 145,
+					"left": 10,
+					"width": 490,
+					"height": 17,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSource": "Form:C1466.comment",
+					"contextMenu": "none",
+					"multiline": "no",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/コメント.4dm",
+					"events": [
+						"onClick",
+						"onDataChange"
+					]
+				},
+				"<": {
+					"type": "button",
+					"top": 218,
+					"left": 10,
+					"width": 70,
+					"height": 22,
+					"sizingY": "move",
+					"text": "<",
+					"focusable": false,
+					"method": "ObjectMethods/%3C.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				">": {
+					"type": "button",
+					"top": 218,
+					"left": 90,
+					"width": 70,
+					"height": 22,
+					"sizingY": "move",
+					"text": ">",
+					"focusable": false,
+					"method": "ObjectMethods/%3E.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"キャンセル": {
+					"type": "button",
+					"top": 218,
+					"left": 310,
+					"width": 90,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "cancel",
+					"shortcutKey": "[Esc]",
+					"text": "キャンセル",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"登録": {
+					"type": "button",
+					"top": 218,
+					"left": 410,
+					"width": 90,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "登録",
+					"defaultButton": true,
+					"method": "ObjectMethods/登録.4dm",
+					"events": [
+						"onClick"
+					],
+					"focusable": false
+				},
+				"p.10": {
+					"type": "text",
+					"top": 191,
+					"left": 250,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "10"
+				},
+				"p.20": {
+					"type": "text",
+					"top": 191,
+					"left": 275,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "20"
+				},
+				"p.30": {
+					"type": "text",
+					"top": 191,
+					"left": 300,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "30"
+				},
+				"p.31": {
+					"type": "text",
+					"top": 191,
+					"left": 325,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "31"
+				},
+				"p.40": {
+					"type": "text",
+					"top": 191,
+					"left": 350,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "40"
+				},
+				"p.42": {
+					"type": "text",
+					"top": 191,
+					"left": 375,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "42"
+				},
+				"p.50": {
+					"type": "text",
+					"top": 191,
+					"left": 400,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "50"
+				},
+				"p.51": {
+					"type": "text",
+					"top": 191,
+					"left": 425,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "51"
+				},
+				"p.52": {
+					"type": "text",
+					"top": 191,
+					"left": 450,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "52"
+				},
+				"p.90": {
+					"type": "text",
+					"top": 191,
+					"left": 475,
+					"width": 25,
+					"height": 17,
+					"sizingY": "move",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"text": "90"
+				},
+				"厚労省マスター": {
+					"type": "input",
+					"top": 191,
+					"left": 10,
+					"width": 210,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.厚労省マスター",
+					"stroke": "#6495ED",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none"
+				}
+			},
+			"entryOrder": [
+				"category",
+				"list",
+				"コメント",
+				"<",
+				">",
+				"キャンセル",
+				"登録"
+			]
+		}
+	],
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {},
+			"View 2": {},
+			"View 3": {},
+			"View 4": {},
+			"View 5": {
+				"objects": [
+					"診療行為名称等",
+					"区分",
+					"項番",
+					"厚労省マスター"
+				]
+			},
+			"View 6": {},
+			"View 7": {},
+			"View 8": {},
+			"View 9": {}
+		}
+	},
+	"geometryStamp": 7,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

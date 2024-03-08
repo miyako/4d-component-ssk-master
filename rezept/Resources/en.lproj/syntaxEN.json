@@ -83,8 +83,24 @@
 	},
 	"_Export": {
 		"setup_k()": {
-			"Syntax": "**.setup_k**()",
-			"Params": [],
+			"Syntax": "**.setup_k**( *診療行為* : Collection; *特定器材* : Collection; *コメント* : Collection )",
+			"Params": [
+				[
+					"診療行為",
+					"Collection",
+					"->"
+				],
+				[
+					"特定器材",
+					"Collection",
+					"->"
+				],
+				[
+					"コメント",
+					"Collection",
+					"->"
+				]
+			],
 			"Summary": ""
 		},
 		"str_trim()": {
@@ -99,43 +115,6 @@
 					"",
 					"Text",
 					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"コメント()": {
-			"Syntax": "**.コメント**( *code* : Text; *collection* : Collection )->isComment : Boolean",
-			"Params": [
-				[
-					"code",
-					"Text",
-					"->"
-				],
-				[
-					"collection",
-					"Collection",
-					"->"
-				],
-				[
-					"isComment",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"診療行為()": {
-			"Syntax": "**.診療行為**( *code* : Text; *collection* : Collection )",
-			"Params": [
-				[
-					"code",
-					"Text",
-					"->"
-				],
-				[
-					"collection",
-					"Collection",
-					"->"
 				]
 			],
 			"Summary": ""

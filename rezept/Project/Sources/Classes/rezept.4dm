@@ -53,7 +53,7 @@ Function _ds($dataClassName : Text) : Object
 				: ($dataClassName="単位")
 					$export.setup_t()
 				: ($dataClassName="記載事項等")
-					$export.setup_k()
+					$export.setup_k(This:C1470.診療行為; This:C1470.特定器材; This:C1470.コメント)
 				: ($dataClassName="医薬品")
 					$export.setup_i()
 				Else 
