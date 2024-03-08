@@ -71,7 +71,7 @@ Form.parser:=cs.ssk.Rezept.new().公費()
 ```
 `/DATA/地方公費/`フォルダーのエクセルファイルをインポートしたオブジェクトです。検証番号をチェックし，制度の詳細を返します。
 
-<img src="(https://github.com/miyako/4d-component-ssk-master/assets/1725068/086b25b8-084a-450a-8d7c-6ea2ceb06de7" style="height:120px;width:auto" />
+<img src="https://github.com/miyako/4d-component-ssk-master/assets/1725068/086b25b8-084a-450a-8d7c-6ea2ceb06de7" style="height:120px;width:auto" />
 
 ```json
 [
