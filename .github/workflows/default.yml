@@ -54,7 +54,8 @@ jobs:
         run: |
           path="${GITHUB_WORKSPACE}/package.json"
           release_name=$(cat "${path}" | jq -r '.release_name')    
-
+          echo "release_name=${release_name}" >> $GITHUB_OUTPUT 
+          
       - name: get tool version
         id: tool
         uses: miyako/4D/.github/actions/tool4d-get-version@v1
@@ -140,7 +141,7 @@ jobs:
         with: 
           dmg_path: ${{ steps.zip.outputs.dmg_path }}
           zip_path: ${{ steps.zip.outputs.zip_path }}    
-          tag_name: ${{ steps.version.outputs.versions }}   
+          tag_name: ${{ steps.version.outputs.version }}   
           release_name: ${{ steps.tag.outputs.release_name }}  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
