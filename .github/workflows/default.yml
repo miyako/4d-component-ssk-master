@@ -49,6 +49,12 @@ jobs:
         with:
           mode: ${{ inputs.mode }}
 
+      - name: get tag
+        id: tag
+        run: |
+          path="${GITHUB_WORKSPACE}/package.json"
+          release_name=$(cat "${path}" | jq -r '.release_name')    
+
       - name: get tool version
         id: tool
         uses: miyako/4D/.github/actions/tool4d-get-version@v1
@@ -134,7 +140,84 @@ jobs:
         with: 
           dmg_path: ${{ steps.zip.outputs.dmg_path }}
           zip_path: ${{ steps.zip.outputs.zip_path }}    
-          tag_name: ${{ steps.version.outputs.version }}   
-          release_name: ${{ steps.version.outputs.version }}  
+          tag_name: ${{ steps.version.outputs.versions }}   
+          release_name: ${{ teps.tag.outputs.release_name }}  
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+
+      - name: upload 1
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: コメント.zip
+          asset_name: コメント.zip
+          asset_content_type: application/zip   
+          
+      - name: upload 2
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: 医薬品.zip
+          asset_name: 医薬品.zip
+          asset_content_type: application/zip  
+
+      - name: upload 3
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: 記載事項等.zip
+          asset_name: 記載事項等.zip
+          asset_content_type: application/zip  
+
+      - name: upload 4
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: 修飾語.zip
+          asset_name: 修飾語.zip
+          asset_content_type: application/zip  
+
+      - name: upload 5
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: 傷病名.zip
+          asset_name: 傷病名.zip
+          asset_content_type: application/zip  
+          
+      - name: upload 6
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: 診療行為.zip
+          asset_name: 診療行為.zip
+          asset_content_type: application/zip     
+
+      - name: upload 7
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: 単位.zip
+          asset_name: 単位.zip
+          asset_content_type: application/zip   
+          
+      - name: upload 8
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: 地方公費.zip
+          asset_name: 地方公費.zip
+          asset_content_type: application/zip   
+          
+      - name: upload 9
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: 特定器材.zip
+          asset_name: 特定器材.zip
+          asset_content_type: application/zip     
+
+
+          
+          
+          
