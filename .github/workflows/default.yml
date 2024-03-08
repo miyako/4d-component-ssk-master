@@ -146,74 +146,97 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
 
+      - name: get path
+        id: path
+        run: |  
+          echo "upload_name_1=コメント.zip" >> $GITHUB_OUTPUT 
+          echo "upload_name_2=医薬品.zip" >> $GITHUB_OUTPUT 
+          echo "upload_name_3=記載事項等.zip" >> $GITHUB_OUTPUT 
+          echo "upload_name_4=修飾語.zip" >> $GITHUB_OUTPUT 
+          echo "upload_name_5=傷病名.zip" >> $GITHUB_OUTPUT 
+          echo "upload_name_6=診療行為.zip" >> $GITHUB_OUTPUT 
+          echo "upload_name_7=単位.zip" >> $GITHUB_OUTPUT 
+          echo "upload_name_8=地方公費.zip" >> $GITHUB_OUTPUT 
+          echo "upload_name_9=特定器材.zip" >> $GITHUB_OUTPUT 
+          
+          echo "upload_path_1=${GITHUB_WORKSPACE}/${upload_path_1}" >> $GITHUB_OUTPUT 
+          echo "upload_path_2=${GITHUB_WORKSPACE}/${upload_path_2}" >> $GITHUB_OUTPUT 
+          echo "upload_path_3=${GITHUB_WORKSPACE}/${upload_path_3}" >> $GITHUB_OUTPUT 
+          echo "upload_path_4=${GITHUB_WORKSPACE}/${upload_path_4}" >> $GITHUB_OUTPUT 
+          echo "upload_path_5=${GITHUB_WORKSPACE}/${upload_path_5}" >> $GITHUB_OUTPUT 
+          echo "upload_path_6=${GITHUB_WORKSPACE}/${upload_path_6}" >> $GITHUB_OUTPUT 
+          echo "upload_path_7=${GITHUB_WORKSPACE}/${upload_path_7}" >> $GITHUB_OUTPUT 
+          echo "upload_path_8=${GITHUB_WORKSPACE}/${upload_path_8}" >> $GITHUB_OUTPUT 
+          echo "upload_path_9=${GITHUB_WORKSPACE}/${upload_path_9}" >> $GITHUB_OUTPUT 
+          
       - name: upload 1
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: コメント.zip
-          asset_name: コメント.zip
+          asset_path: ${{ steps.path.outputs.upload_path_1 }}
+          asset_name: ${{ steps.path.outputs.upload_name_1 }}
           asset_content_type: application/zip   
           
       - name: upload 2
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: 医薬品.zip
-          asset_name: 医薬品.zip
+          asset_path: ${{ steps.path.outputs.upload_path_2 }}
+          asset_name: ${{ steps.path.outputs.upload_name_2 }}
           asset_content_type: application/zip  
 
       - name: upload 3
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: 記載事項等.zip
-          asset_name: 記載事項等.zip
+          asset_path: ${{ steps.path.outputs.upload_path_3 }}
+          asset_name: ${{ steps.path.outputs.upload_name_3 }}
           asset_content_type: application/zip  
 
       - name: upload 4
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: 修飾語.zip
-          asset_name: 修飾語.zip
+          asset_path: ${{ steps.path.outputs.upload_path_4 }}
+          asset_name: ${{ steps.path.outputs.upload_name_4 }}
           asset_content_type: application/zip  
 
       - name: upload 5
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: 傷病名.zip
-          asset_name: 傷病名.zip
+          asset_path: ${{ steps.path.outputs.upload_path_5 }}
+          asset_name: ${{ steps.path.outputs.upload_name_5 }}
           asset_content_type: application/zip  
           
       - name: upload 6
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: 診療行為.zip
-          asset_name: 診療行為.zip
+          asset_path: ${{ steps.path.outputs.upload_path_6 }}
+          asset_name: ${{ steps.path.outputs.upload_name_6 }}
           asset_content_type: application/zip     
 
       - name: upload 7
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: 単位.zip
-          asset_name: 単位.zip
+          asset_path: ${{ steps.path.outputs.upload_path_7 }}
+          asset_name: ${{ steps.path.outputs.upload_name_7 }}
           asset_content_type: application/zip   
           
       - name: upload 8
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: 地方公費.zip
-          asset_name: 地方公費.zip
+          asset_path: ${{ steps.path.outputs.upload_path_8 }}
+          asset_name: ${{ steps.path.outputs.upload_name_8 }}
           asset_content_type: application/zip   
           
       - name: upload 9
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: 特定器材.zip
-          asset_name: 特定器材.zip
+          asset_path: ${{ steps.path.outputs.upload_path_9 }}
+          asset_name: ${{ steps.path.outputs.upload_name_9 }}
           asset_content_type: application/zip     
