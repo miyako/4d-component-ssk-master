@@ -2,7 +2,12 @@
 
 # 概要
 
-GitHub Actionsと`tool4d`を活用し，マスターファイルを更新したら自動的にコンポーネントを再生成します。
+レセプト処置で使用する基本マスターをオブジェクトで返します。
+
+* 診療行為（医）には労災診療行為が統合されています。
+* 特定器材には労災特定器材が統合されています。
+* コメントには労災コメントが統合されています。
+* 医薬品には一般名と後発品が統合されています。
 
 ```4d
 var $rezept : cs.ssk.Rezept
@@ -54,6 +59,10 @@ $医薬品:=$rezept.get("医薬品"; "610406079")
 
 * [厚生労働省のマスター](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/rezeptsystem/index.html)は上記のとおりファイル名を変更してください。
 
+# 保守
+
+/DATA/配下のファイルを更新すると，自動的にGitHub Actionsが発動し，v20コンポーネントとファイル化したオブジェクトをReleasesにアップロードします。
+
 * ローカルで実行する場合
 
 ```
@@ -64,8 +73,6 @@ tool4d.app/Contents/MacOS/tool4d \
  --user-param="verbose,regenereate,export" \
  --create-data
 ```
-
-GitHub Actionsで自動的にデータを生成する場合は`verbose`を省略してください。
 
 # 記載事項等
 
