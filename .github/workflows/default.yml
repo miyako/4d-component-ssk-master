@@ -159,6 +159,9 @@ jobs:
           echo "upload_name_8=地方公費.zip" >> $GITHUB_OUTPUT 
           echo "upload_name_9=特定器材.zip" >> $GITHUB_OUTPUT 
           
+      - name: get path
+        id: name
+        run: |     
           echo "upload_path_1=${GITHUB_WORKSPACE}/${upload_name_1}" >> $GITHUB_OUTPUT 
           echo "upload_path_2=${GITHUB_WORKSPACE}/${upload_name_2}" >> $GITHUB_OUTPUT 
           echo "upload_path_3=${GITHUB_WORKSPACE}/${upload_name_3}" >> $GITHUB_OUTPUT 
@@ -168,13 +171,23 @@ jobs:
           echo "upload_path_7=${GITHUB_WORKSPACE}/${upload_name_7}" >> $GITHUB_OUTPUT 
           echo "upload_path_8=${GITHUB_WORKSPACE}/${upload_name_8}" >> $GITHUB_OUTPUT 
           echo "upload_path_9=${GITHUB_WORKSPACE}/${upload_name_9}" >> $GITHUB_OUTPUT 
+        env:
+          upload_name_1: ${{ steps.path.outputs.upload_name_1 }}
+          upload_name_2: ${{ steps.path.outputs.upload_name_2 }}
+          upload_name_3: ${{ steps.path.outputs.upload_name_3 }}
+          upload_name_4: ${{ steps.path.outputs.upload_name_4 }}
+          upload_name_5: ${{ steps.path.outputs.upload_name_5 }}
+          upload_name_6: ${{ steps.path.outputs.upload_name_6 }}
+          upload_name_7: ${{ steps.path.outputs.upload_name_7 }}
+          upload_name_8: ${{ steps.path.outputs.upload_name_8 }}
+          upload_name_9: ${{ steps.path.outputs.upload_name_9 }}
           
       - name: upload 1
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_1 }}
-          asset_name: ${{ steps.path.outputs.upload_name_1 }}
+          asset_name: ${{ steps.name.outputs.upload_name_1 }}
           asset_content_type: application/zip   
           
       - name: upload 2
@@ -182,7 +195,7 @@ jobs:
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_2 }}
-          asset_name: ${{ steps.path.outputs.upload_name_2 }}
+          asset_name: ${{ steps.name.outputs.upload_name_2 }}
           asset_content_type: application/zip  
 
       - name: upload 3
@@ -190,7 +203,7 @@ jobs:
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_3 }}
-          asset_name: ${{ steps.path.outputs.upload_name_3 }}
+          asset_name: ${{ steps.name.outputs.upload_name_3 }}
           asset_content_type: application/zip  
 
       - name: upload 4
@@ -198,7 +211,7 @@ jobs:
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_4 }}
-          asset_name: ${{ steps.path.outputs.upload_name_4 }}
+          asset_name: ${{ steps.name.outputs.upload_name_4 }}
           asset_content_type: application/zip  
 
       - name: upload 5
@@ -206,7 +219,7 @@ jobs:
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_5 }}
-          asset_name: ${{ steps.path.outputs.upload_name_5 }}
+          asset_name: ${{ steps.name.outputs.upload_name_5 }}
           asset_content_type: application/zip  
           
       - name: upload 6
@@ -214,7 +227,7 @@ jobs:
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_6 }}
-          asset_name: ${{ steps.path.outputs.upload_name_6 }}
+          asset_name: ${{ steps.name.outputs.upload_name_6 }}
           asset_content_type: application/zip     
 
       - name: upload 7
@@ -222,7 +235,7 @@ jobs:
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_7 }}
-          asset_name: ${{ steps.path.outputs.upload_name_7 }}
+          asset_name: ${{ steps.name.outputs.upload_name_7 }}
           asset_content_type: application/zip   
           
       - name: upload 8
@@ -230,7 +243,7 @@ jobs:
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_8 }}
-          asset_name: ${{ steps.path.outputs.upload_name_8 }}
+          asset_name: ${{ steps.name.outputs.upload_name_8 }}
           asset_content_type: application/zip   
           
       - name: upload 9
@@ -238,5 +251,5 @@ jobs:
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: ${{ steps.path.outputs.upload_path_9 }}
-          asset_name: ${{ steps.path.outputs.upload_name_9 }}
+          asset_name: ${{ steps.name.outputs.upload_name_9 }}
           asset_content_type: application/zip     
