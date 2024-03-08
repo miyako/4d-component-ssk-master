@@ -624,8 +624,17 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 					
 					VARIABLE TO BLOB:C532($sharedObject; $blob)
 					
-					$file:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".data")
-					$file.setContent($blob)
+					$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+					$asset:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".zip")
+					$file.setContent($data)
+					
+					var $zip : Object
+					$zip:={}
+					$zip.files:=[$file]
+					$zip.compression:=ZIP Compression LZMA:K91:9
+					
+					$error:=ZIP Create archive:C1640($zip; $asset)
+					
 					This:C1470.file:=$file
 					
 					var $CLI : cs:C1710._CLI
@@ -819,8 +828,17 @@ Function setup_t()
 		
 		VARIABLE TO BLOB:C532($sharedObject; $data)
 		
-		$file:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".data")
+		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$asset:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".zip")
 		$file.setContent($data)
+		
+		var $zip : Object
+		$zip:={}
+		$zip.files:=[$file]
+		$zip.compression:=ZIP Compression LZMA:K91:9
+		
+		$error:=ZIP Create archive:C1640($zip; $asset)
+		
 		This:C1470.file:=$file
 		
 		var $CLI : cs:C1710._CLI
@@ -899,8 +917,17 @@ Function setup_i()
 		
 		VARIABLE TO BLOB:C532($sharedObject; $data)
 		
-		$file:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".data")
+		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$asset:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".zip")
 		$file.setContent($data)
+		
+		var $zip : Object
+		$zip:={}
+		$zip.files:=[$file]
+		$zip.compression:=ZIP Compression LZMA:K91:9
+		
+		$error:=ZIP Create archive:C1640($zip; $asset)
+		
 		This:C1470.file:=$file
 		
 		var $CLI : cs:C1710._CLI
@@ -996,8 +1023,17 @@ Function setup()
 		
 		VARIABLE TO BLOB:C532($sharedObject; $data)
 		
-		$file:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".data")
+		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$asset:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".zip")
 		$file.setContent($data)
+		
+		var $zip : Object
+		$zip:={}
+		$zip.files:=[$file]
+		$zip.compression:=ZIP Compression LZMA:K91:9
+		
+		$error:=ZIP Create archive:C1640($zip; $asset)
+		
 		This:C1470.file:=$file
 		
 		var $CLI : cs:C1710._CLI
