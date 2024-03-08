@@ -66,7 +66,7 @@ Function _truncateTable() : cs:C1710._一般名処方
 	
 Function _getDataFolder() : 4D:C1709.Folder
 	
-	return Folder:C1567(Folder:C1567("/PROJECT/").platformPath; fk platform path:K87:2).parent.parent.folder("DATA")
+	return cs:C1710._Core.new()._getDataFolder()
 	
 Function _getFile($names : Collection) : 4D:C1709.File
 	
