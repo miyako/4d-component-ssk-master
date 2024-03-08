@@ -71,6 +71,5 @@ Case of
 		
 	: ($event=On Unload:K2:2)
 		
-		local_settings.WindPosSet(Current form name:C1298)
 		
 End case 

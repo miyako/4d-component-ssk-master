@@ -6,8 +6,12 @@ Class constructor($menu : Text)
 		This:C1470.menu:=1
 	End if 
 	
-	This:C1470.記載事項等:=ds記載事項等
-	This:C1470.診療行為:=ds診療行為
+	var $rezept : cs:C1710.ssk.Rezept
+	
+	$rezept:=cs:C1710.ssk.Rezept.new()
+	
+	This:C1470.記載事項等:=$rezept
+	This:C1470.診療行為:=$rezept
 	
 Function _getKind($item : Object)->$kind : Text
 	
@@ -632,7 +636,7 @@ Function pattern_set()
 	
 	If ($pattern#"")
 		
-		OBJECT SET RGB COLORS:C628(*; "p."+$pattern; selected_fill_dark_red)
+		OBJECT SET RGB COLORS:C628(*; "p."+$pattern; "#B24356")
 		
 	End if 
 	
