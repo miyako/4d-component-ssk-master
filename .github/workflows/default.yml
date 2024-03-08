@@ -186,9 +186,11 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.upload.outputs.upload_url }}
-          asset_path: ${{ steps.path.outputs.upload_path_1 }}
+          asset_path: コメント.zip
           asset_name: data.1.zip
           asset_content_type: application/zip   
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           
       - name: upload 2
         uses: actions/upload-release-asset@v1
@@ -197,7 +199,9 @@ jobs:
           asset_path: ${{ steps.path.outputs.upload_path_2 }}
           asset_name: data.2.zip
           asset_content_type: application/zip  
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
       - name: upload 3
         uses: actions/upload-release-asset@v1
         with:
@@ -205,7 +209,9 @@ jobs:
           asset_path: ${{ steps.path.outputs.upload_path_3 }}
           asset_name: data.3.zip
           asset_content_type: application/zip  
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
       - name: upload 4
         uses: actions/upload-release-asset@v1
         with:
@@ -213,7 +219,9 @@ jobs:
           asset_path: ${{ steps.path.outputs.upload_path_4 }}
           asset_name: data.4.zip
           asset_content_type: application/zip  
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
       - name: upload 5
         uses: actions/upload-release-asset@v1
         with:
@@ -221,6 +229,8 @@ jobs:
           asset_path: ${{ steps.path.outputs.upload_path_5 }}
           asset_name: data.5.zip
           asset_content_type: application/zip  
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           
       - name: upload 6
         uses: actions/upload-release-asset@v1
@@ -229,7 +239,9 @@ jobs:
           asset_path: ${{ steps.path.outputs.upload_path_6 }}
           asset_name: data.6.zip
           asset_content_type: application/zip     
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
       - name: upload 7
         uses: actions/upload-release-asset@v1
         with:
@@ -237,6 +249,8 @@ jobs:
           asset_path: ${{ steps.path.outputs.upload_path_7 }}
           asset_name: data.7.zip
           asset_content_type: application/zip   
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           
       - name: upload 8
         uses: actions/upload-release-asset@v1
@@ -245,6 +259,8 @@ jobs:
           asset_path: ${{ steps.path.outputs.upload_path_8 }}
           asset_name: data.8.zip
           asset_content_type: application/zip   
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           
       - name: upload 9
         uses: actions/upload-release-asset@v1
@@ -253,3 +269,5 @@ jobs:
           asset_path: ${{ steps.path.outputs.upload_path_9 }}
           asset_name: data.9.zip
           asset_content_type: application/zip     
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
