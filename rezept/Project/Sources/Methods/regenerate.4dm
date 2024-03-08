@@ -3,7 +3,7 @@ If (Get application info:C1599.headless)
 	
 	var $CLI : cs:C1710._CLI
 	$CLI:=cs:C1710._CLI.new().ES().XY(0; 0)
-	$CLI.logo().version().hideCursor()
+	$CLI.logo().version()  //.hideCursor()
 	
 	ON ERR CALL:C155(Formula:C1597(generic_error_handler).source)
 	
@@ -64,7 +64,7 @@ If (Get application info:C1599.headless)
 		cs:C1710.Rezept.new()
 	End if 
 	
-	$CLI.showCursor()
+	//$CLI.showCursor()
 	
 	If (False:C215)
 		$CLI.print("白"; "bold")
