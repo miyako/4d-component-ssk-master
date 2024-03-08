@@ -159,15 +159,15 @@ jobs:
           echo "upload_name_8=地方公費.zip" >> $GITHUB_OUTPUT 
           echo "upload_name_9=特定器材.zip" >> $GITHUB_OUTPUT 
           
-          echo "upload_path_1=${GITHUB_WORKSPACE}/${upload_path_1}" >> $GITHUB_OUTPUT 
-          echo "upload_path_2=${GITHUB_WORKSPACE}/${upload_path_2}" >> $GITHUB_OUTPUT 
-          echo "upload_path_3=${GITHUB_WORKSPACE}/${upload_path_3}" >> $GITHUB_OUTPUT 
-          echo "upload_path_4=${GITHUB_WORKSPACE}/${upload_path_4}" >> $GITHUB_OUTPUT 
-          echo "upload_path_5=${GITHUB_WORKSPACE}/${upload_path_5}" >> $GITHUB_OUTPUT 
-          echo "upload_path_6=${GITHUB_WORKSPACE}/${upload_path_6}" >> $GITHUB_OUTPUT 
-          echo "upload_path_7=${GITHUB_WORKSPACE}/${upload_path_7}" >> $GITHUB_OUTPUT 
-          echo "upload_path_8=${GITHUB_WORKSPACE}/${upload_path_8}" >> $GITHUB_OUTPUT 
-          echo "upload_path_9=${GITHUB_WORKSPACE}/${upload_path_9}" >> $GITHUB_OUTPUT 
+          echo "upload_path_1=${GITHUB_WORKSPACE}/${upload_name_1}" >> $GITHUB_OUTPUT 
+          echo "upload_path_2=${GITHUB_WORKSPACE}/${upload_name_2}" >> $GITHUB_OUTPUT 
+          echo "upload_path_3=${GITHUB_WORKSPACE}/${upload_name_3}" >> $GITHUB_OUTPUT 
+          echo "upload_path_4=${GITHUB_WORKSPACE}/${upload_name_4}" >> $GITHUB_OUTPUT 
+          echo "upload_path_5=${GITHUB_WORKSPACE}/${upload_name_5}" >> $GITHUB_OUTPUT 
+          echo "upload_path_6=${GITHUB_WORKSPACE}/${upload_name_6}" >> $GITHUB_OUTPUT 
+          echo "upload_path_7=${GITHUB_WORKSPACE}/${upload_name_7}" >> $GITHUB_OUTPUT 
+          echo "upload_path_8=${GITHUB_WORKSPACE}/${upload_name_8}" >> $GITHUB_OUTPUT 
+          echo "upload_path_9=${GITHUB_WORKSPACE}/${upload_name_9}" >> $GITHUB_OUTPUT 
           
       - name: upload 1
         uses: actions/upload-release-asset@v1
