@@ -14,9 +14,11 @@ Class constructor
 		This:C1470[$property]:=This:C1470._ds($property)[$property]
 	End for each 
 	
-	This:C1470.記載事項等:=This:C1470._ds("記載事項等").記載事項等
-	
 	//MARK:public
+	
+Function getInfo() : Object
+	
+	return cs:C1710._Export.new().getInfo()
 	
 Function get($dataClassName : Text; $code : Text) : Object
 	
@@ -26,6 +28,22 @@ Function get($dataClassName : Text; $code : Text) : Object
 		Else 
 			return 
 	End case 
+	
+Function switch($release : Object) : cs:C1710.Rezept
+	
+	If ($release#Null:C1517)
+		$file:=$release.file
+		If ($file.exists)
+			$json:=$file.getText()
+			$manifest:=JSON Parse:C1218($json)
+			$export:=cs:C1710._Export.new().setManifest($file.parent; $manifest)
+			var $property : Text
+			For each ($property; This:C1470._properties())
+				OB REMOVE:C1226(Storage:C1525; $property)
+			End for each 
+		End if 
+	End if 
+	
 	
 	//MARK:-
 	
@@ -39,7 +57,7 @@ Function 公費() : cs:C1710._公費
 	
 Function _properties() : Collection
 	
-	return ["コメント"; "診療行為"; "修飾語"; "特定器材"; "地方公費"; "傷病名"; "医薬品"; "単位"]
+	return ["コメント"; "診療行為"; "修飾語"; "特定器材"; "地方公費"; "傷病名"; "医薬品"; "単位"; "記載事項等"]
 	
 Function _ds($dataClassName : Text) : Object
 	

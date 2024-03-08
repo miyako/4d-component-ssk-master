@@ -5,9 +5,15 @@
 
 */
 
-var $rezept : cs:C1710.ssk.Rezept
+cs:C1710.ssk.GitHub.new()  //最新のマスターを非同期ダウンロードする
 
+var $rezept : cs:C1710.ssk.Rezept
 $rezept:=cs:C1710.ssk.Rezept.new()
+
+$info:=$rezept.getInfo()
+If (False:C215)
+	$rezept.switch($info.data[1])  //マスターを切り替える
+End if 
 
 $コメント:=$rezept.get("コメント"; "810000001")
 
@@ -19,6 +25,5 @@ $診療行為:=$rezept.get("診療行為"; "160230050")
 
 $医薬品:=$rezept.医薬品.query("後発品.項目.同一剤形・規格の後発医薬品がある先発医薬品 == :1"; "○")
 $医薬品:=$rezept.get("医薬品"; "610406079")
-
 
 $公費:=$rezept.公費().parse("9947")

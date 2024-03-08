@@ -1,14 +1,21 @@
 {
 	"_method_": {},
 	"cs.ssk": {
-		"_番号": {
+		"_Package": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
 				"Summary": ""
 			}
 		},
-		"_Package": {
+		"_Core": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"_CLI": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
@@ -35,7 +42,7 @@
 				"Summary": ""
 			}
 		},
-		"CLI": {
+		"_番号": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
@@ -43,6 +50,13 @@
 			}
 		},
 		"_Params": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"GitHub": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
@@ -57,7 +71,6 @@
 			}
 		}
 	},
-	"_番号": {},
 	"_Package": {
 		"setProperty()": {
 			"Syntax": "**.setProperty**( *key* : Text; *value* : Variant ) : cs.ssk._Package",
@@ -81,7 +94,176 @@
 			"Summary": ""
 		}
 	},
+	"_Core": {},
+	"_CLI": {
+		"LF()": {
+			"Syntax": "**.LF**()->this : cs.ssk._CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"print()": {
+			"Syntax": "**.print**( *message* : Text; *style* : Text )->this : cs.ssk._CLI",
+			"Params": [
+				[
+					"message",
+					"Text",
+					"->"
+				],
+				[
+					"style",
+					"Text",
+					"->"
+				],
+				[
+					"this",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"logo()": {
+			"Syntax": "**.logo**()->CLI : cs.ssk._CLI",
+			"Params": [
+				[
+					"CLI",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"escape()": {
+			"Syntax": "**.escape**( *message* : Text; *style* : Text )->ANSI : Text",
+			"Params": [
+				[
+					"message",
+					"Text",
+					"->"
+				],
+				[
+					"style",
+					"Text",
+					"->"
+				],
+				[
+					"ANSI",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"showCursor()": {
+			"Syntax": "**.showCursor**()->this : cs.ssk._CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"hideCursor()": {
+			"Syntax": "**.hideCursor**()->this : cs.ssk._CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"XY()": {
+			"Syntax": "**.XY**( *x* : Integer; *y* : Integer )->this : cs.ssk._CLI",
+			"Params": [
+				[
+					"x",
+					"Integer",
+					"->"
+				],
+				[
+					"y",
+					"Integer",
+					"->"
+				],
+				[
+					"this",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"ES()": {
+			"Syntax": "**.ES**()->this : cs.ssk._CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"version()": {
+			"Syntax": "**.version**()->CLI : cs.ssk._CLI",
+			"Params": [
+				[
+					"CLI",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"EL()": {
+			"Syntax": "**.EL**()->this : cs.ssk._CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"CR()": {
+			"Syntax": "**.CR**()->this : cs.ssk._CLI",
+			"Params": [
+				[
+					"this",
+					"cs.ssk._CLI",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
 	"_Export": {
+		"setup()": {
+			"Syntax": "**.setup**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"setup_i()": {
+			"Syntax": "**.setup_i**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"setup_t()": {
+			"Syntax": "**.setup_t**()",
+			"Params": [],
+			"Summary": ""
+		},
 		"setup_k()": {
 			"Syntax": "**.setup_k**( *診療行為* : Collection; *特定器材* : Collection; *コメント* : Collection )",
 			"Params": [
@@ -103,39 +285,78 @@
 			],
 			"Summary": ""
 		},
-		"str_trim()": {
-			"Syntax": "**.str_trim**( *src* : Text ) : Text",
+		"setManifest()": {
+			"Syntax": "**.setManifest**( *folder* : 4D.Folder; *manifest* : Object ) : cs.ssk._Export",
 			"Params": [
 				[
-					"src",
-					"Text",
+					"folder",
+					"4D.Folder",
+					"->"
+				],
+				[
+					"manifest",
+					"Object",
 					"->"
 				],
 				[
 					"",
-					"Text",
+					"cs.ssk._Export",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"setup_i()": {
-			"Syntax": "**.setup_i**()",
-			"Params": [],
+		"getManifest()": {
+			"Syntax": "**.getManifest**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
 			"Summary": ""
 		},
-		"setup_t()": {
-			"Syntax": "**.setup_t**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"setup()": {
-			"Syntax": "**.setup**()",
-			"Params": [],
+		"getInfo()": {
+			"Syntax": "**.getInfo**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
 			"Summary": ""
 		}
 	},
 	"Rezept": {
+		"getInfo()": {
+			"Syntax": "**.getInfo**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"switch()": {
+			"Syntax": "**.switch**( *release* : Object ) : cs.ssk.Rezept",
+			"Params": [
+				[
+					"release",
+					"Object",
+					"->"
+				],
+				[
+					"",
+					"cs.ssk.Rezept",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"公費()": {
 			"Syntax": "**.公費**() : cs.ssk._公費",
 			"Params": [
@@ -193,160 +414,112 @@
 			"Syntax": "コメント : Object"
 		}
 	},
-	"CLI": {
-		"LF()": {
-			"Syntax": "**.LF**()->this : cs.ssk.CLI",
+	"_番号": {},
+	"_Params": {},
+	"GitHub": {
+		"fetch()": {
+			"Syntax": "**.fetch**() : cs.ssk.GitHub",
 			"Params": [
 				[
-					"this",
-					"cs.ssk.CLI",
+					"",
+					"cs.ssk.GitHub",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"print()": {
-			"Syntax": "**.print**( *message* : Text; *style* : Text )->this : cs.ssk.CLI",
+		"get()": {
+			"Syntax": "**.get**( *release* : Object )",
 			"Params": [
 				[
-					"message",
-					"Text",
+					"release",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"onTerminate()": {
+			"Syntax": "**.onTerminate**( *request* : 4D.HTTPRequest; *event* : Object )",
+			"Params": [
+				[
+					"request",
+					"4D.HTTPRequest",
 					"->"
 				],
 				[
-					"style",
-					"Text",
+					"event",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"onResponse()": {
+			"Syntax": "**.onResponse**( *request* : 4D.HTTPRequest; *event* : Object )",
+			"Params": [
+				[
+					"request",
+					"4D.HTTPRequest",
 					"->"
 				],
 				[
-					"this",
-					"cs.ssk.CLI",
-					"<-"
+					"event",
+					"Object",
+					"->"
 				]
 			],
 			"Summary": ""
 		},
-		"logo()": {
-			"Syntax": "**.logo**()->CLI : cs.ssk.CLI",
+		"onError()": {
+			"Syntax": "**.onError**( *request* : 4D.HTTPRequest; *event* : Object )",
 			"Params": [
 				[
-					"CLI",
-					"cs.ssk.CLI",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"escape()": {
-			"Syntax": "**.escape**( *message* : Text; *style* : Text )->ANSI : Text",
-			"Params": [
-				[
-					"message",
-					"Text",
+					"request",
+					"4D.HTTPRequest",
 					"->"
 				],
 				[
-					"style",
-					"Text",
+					"event",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"onData()": {
+			"Syntax": "**.onData**( *request* : 4D.HTTPRequest; *event* : Object )",
+			"Params": [
+				[
+					"request",
+					"4D.HTTPRequest",
 					"->"
 				],
 				[
-					"ANSI",
-					"Text",
-					"<-"
+					"event",
+					"Object",
+					"->"
 				]
 			],
 			"Summary": ""
 		},
-		"showCursor()": {
-			"Syntax": "**.showCursor**()->this : cs.ssk.CLI",
+		"onHeaders()": {
+			"Syntax": "**.onHeaders**( *request* : 4D.HTTPRequest; *event* : Object )",
 			"Params": [
 				[
-					"this",
-					"cs.ssk.CLI",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"hideCursor()": {
-			"Syntax": "**.hideCursor**()->this : cs.ssk.CLI",
-			"Params": [
-				[
-					"this",
-					"cs.ssk.CLI",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"XY()": {
-			"Syntax": "**.XY**( *x* : Integer; *y* : Integer )->this : cs.ssk.CLI",
-			"Params": [
-				[
-					"x",
-					"Integer",
+					"request",
+					"4D.HTTPRequest",
 					"->"
 				],
 				[
-					"y",
-					"Integer",
+					"event",
+					"Object",
 					"->"
-				],
-				[
-					"this",
-					"cs.ssk.CLI",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"ES()": {
-			"Syntax": "**.ES**()->this : cs.ssk.CLI",
-			"Params": [
-				[
-					"this",
-					"cs.ssk.CLI",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"version()": {
-			"Syntax": "**.version**()->CLI : cs.ssk.CLI",
-			"Params": [
-				[
-					"CLI",
-					"cs.ssk.CLI",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"EL()": {
-			"Syntax": "**.EL**()->this : cs.ssk.CLI",
-			"Params": [
-				[
-					"this",
-					"cs.ssk.CLI",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"CR()": {
-			"Syntax": "**.CR**()->this : cs.ssk.CLI",
-			"Params": [
-				[
-					"this",
-					"cs.ssk.CLI",
-					"<-"
 				]
 			],
 			"Summary": ""
 		}
 	},
-	"_Params": {},
 	"_公費": {
 		"parse()": {
 			"Syntax": "**.parse**( *保険者番号* : Text )->status : Object",

@@ -5,9 +5,79 @@ Class constructor($dataClassName : Text)
 	This:C1470.code:={}
 	This:C1470.file:=Null:C1517
 	
+	$folder:=This:C1470._getDataFolder()
+	
+	This:C1470._dataFolder:=Folder:C1567("/RESOURCES/")
+	
+	var $manifest : Object
+	$manifest:=This:C1470.getManifest()
+	If ($manifest#Null:C1517) && ($manifest.file.exists)
+		This:C1470._dataFolder:=$manifest.file.parent
+	End if 
+	
+Function getInfo() : Object
+	
+	var $manifests; $manifest : Collection
+	$manifests:=This:C1470._scanDataFolder()
+	
+	$info:={data: $manifests}
+	
+	$manifest:=$manifests.query("active == true")
+	If ($manifest.length#0)
+		$info.active:=$manifest[0]
+	End if 
+	
+	return $info
+	
+Function getManifest() : Object
+	
+	$manifests:=This:C1470._scanDataFolder().query("active == true")
+	
+	If ($manifests.length#0)
+		return $manifests[0]
+	End if 
+	
+Function setManifest($folder : 4D:C1709.Folder; $manifest : Object) : cs:C1710._Export
+	
+	This:C1470._unsetManifest()
+	
+	$manifest.active:=True:C214
+	
+	$folder.file("manifest.json").setText(JSON Stringify:C1217($manifest; *))
+	
+	return This:C1470
+	
+Function _unsetManifest() : cs:C1710._Export
+	
+	$manifests:=This:C1470._getManifests()
+	
+	For each ($file; $manifests)
+		$manifest:=$file.getText()
+		$json:=JSON Parse:C1218($manifest)
+		$json.active:=False:C215
+		$manifest:=JSON Stringify:C1217($json)
+		$file.setText($manifest)
+	End for each 
+	
+	return This:C1470
+	
+Function _getManifests() : Collection
+	
+	return This:C1470._getDataFolder().files(fk ignore invisible:K87:22 | fk recursive:K87:7).query("fullName == :1"; "manifest.json")
+	
+Function _scanDataFolder() : Collection
+	
+	$manifests:=[]
+	
+	For each ($file; This:C1470._getManifests())
+		$manifest:=JSON Parse:C1218($file.getText())
+		$manifest.file:=$file
+		$manifests.push($manifest)
+	End for each 
+	
+	return $manifests
+	
 Function _getDataFolder() : 4D:C1709.Folder
-	
-	
 	
 	var $folder : 4D:C1709.Folder
 	$folder:=Folder:C1567(fk user preferences folder:K87:10).parent
@@ -19,14 +89,6 @@ Function _getDataFolder() : 4D:C1709.Folder
 Function _isComponent() : Boolean
 	
 	return (Folder:C1567(fk database folder:K87:14).platformPath#Folder:C1567(fk database folder:K87:14; *).platformPath)
-	
-Function _loadCollection($folder : 4D:C1709.Folder; $name : Text) : Collection
-	
-	$json:=$folder.file($name+".json").getText("utf-8"; Document with LF:K24:22)
-	
-	$col:=JSON Parse:C1218($json; Is collection:K8:32)
-	
-	return $col
 	
 Function _link($dataClassName : Text; $code : Text; $collection : Collection; $data : Collection) : Boolean
 	
@@ -56,7 +118,15 @@ Function _link($dataClassName : Text; $code : Text; $collection : Collection; $d
 			
 	End case 
 	
-Function str_trim($src : Text) : Text
+Function _loadCollection($folder : 4D:C1709.Folder; $name : Text) : Collection
+	
+	$json:=$folder.file($name+".json").getText("utf-8"; Document with LF:K24:22)
+	
+	$col:=JSON Parse:C1218($json; Is collection:K8:32)
+	
+	return $col
+	
+Function _trim($src : Text) : Text
 	
 	$dst:=$src
 	
@@ -71,6 +141,8 @@ Function str_trim($src : Text) : Text
 	$dst:=Replace string:C233($dst; Char:C90(0x000D); ""; *)
 	
 	return $dst
+	
+	//MARK:setup
 	
 Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメント : Collection)
 	
@@ -314,7 +386,7 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 								$診療行為名称等:=Delete string:C232($診療行為名称等; $pos{1}; $len{1})
 							End while 
 							
-							$診療行為名称等:=This:C1470.str_trim($診療行為名称等)
+							$診療行為名称等:=This:C1470._trim($診療行為名称等)
 							
 							$o.診療行為名称:=$診療行為名称等
 							
@@ -646,6 +718,8 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 					$CLI.print($asset.path; "244").LF()
 					$CLI.print("size: "; "bold").print(String:C10($file.size); "39").LF()
 					
+					$file.copyTo(Folder:C1567("/RESOURCES/"); fk overwrite:K87:5)
+					
 				End if 
 			End if 
 			
@@ -653,7 +727,7 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 		
 	Else 
 		
-		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$file:=This:C1470._dataFolder.file($dataClassName+".data")
 		
 		If ($file#Null:C1517) && ($file.exists)
 			
@@ -851,13 +925,16 @@ Function setup_t()
 		$CLI.print($asset.path; "244").LF()
 		$CLI.print("size: "; "bold").print(String:C10($file.size); "39").LF()
 		
+		$file.copyTo(Folder:C1567("/RESOURCES/"); fk overwrite:K87:5)
+		
 	Else 
 		
-		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$file:=This:C1470._dataFolder.file($dataClassName+".data")
 		
 		If ($file#Null:C1517) && ($file.exists)
 			
 			$data:=$file.getContent()
+			
 			BLOB TO VARIABLE:C533($data; $object)
 			
 			This:C1470[$dataClassName]:=$object[$dataClassName]
@@ -941,15 +1018,18 @@ Function setup_i()
 		$CLI.print($asset.path; "244").LF()
 		$CLI.print("size: "; "bold").print(String:C10($file.size); "39").LF()
 		
+		$file.copyTo(Folder:C1567("/RESOURCES/"); fk overwrite:K87:5)
+		
 	Else 
 		
-		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$file:=This:C1470._dataFolder.file($dataClassName+".data")
 		
 		If ($file#Null:C1517) && ($file.exists)
 			
 			$data:=$file.getContent()
 			
 			BLOB TO VARIABLE:C533($data; $object)
+			
 			$object:=OB Copy:C1225($object; ck shared:K85:29; This:C1470)
 			
 			This:C1470[$dataClassName]:=$object[$dataClassName]
@@ -1048,13 +1128,16 @@ Function setup()
 		$CLI.print($asset.path; "244").LF()
 		$CLI.print("size: "; "bold").print(String:C10($file.size); "39").LF()
 		
+		$file.copyTo(Folder:C1567("/RESOURCES/"); fk overwrite:K87:5)
+		
 	Else 
 		
-		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$file:=This:C1470._dataFolder.file($dataClassName+".data")
 		
 		If ($file#Null:C1517) && ($file.exists)
 			
 			$data:=$file.getContent()
+			
 			BLOB TO VARIABLE:C533($data; $object)
 			
 			This:C1470[$dataClassName]:=$object[$dataClassName]
