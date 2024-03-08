@@ -36,14 +36,14 @@ Function switch($release : Object) : cs:C1710.Rezept
 		If ($file.exists)
 			$json:=$file.getText()
 			$manifest:=JSON Parse:C1218($json)
-			$export:=cs:C1710._Export.new().setManifest($file.parent; $manifest)
+			$manifest.active:=True:C214
+			$export:=cs:C1710._Export.new()._unsetManifest().setManifest($file.parent; $manifest)
 			var $property : Text
 			For each ($property; This:C1470._properties())
 				OB REMOVE:C1226(Storage:C1525; $property)
 			End for each 
 		End if 
 	End if 
-	
 	
 	//MARK:-
 	
@@ -89,3 +89,4 @@ Function _ds($dataClassName : Text) : Object
 		return $export
 		
 	End if 
+	

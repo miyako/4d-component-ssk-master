@@ -39,10 +39,6 @@ Function getManifest() : Object
 	
 Function setManifest($folder : 4D:C1709.Folder; $manifest : Object) : cs:C1710._Export
 	
-	This:C1470._unsetManifest()
-	
-	$manifest.active:=True:C214
-	
 	$folder.file("manifest.json").setText(JSON Stringify:C1217($manifest; *))
 	
 	return This:C1470
@@ -727,13 +723,9 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 		
 	Else 
 		
-		$file:=This:C1470._dataFolder.file($dataClassName+".data")
+		$object:=get_data_s($dataClassName)
 		
-		If ($file#Null:C1517) && ($file.exists)
-			
-			$blob:=$file.getContent()
-			
-			BLOB TO VARIABLE:C533($blob; $object)
+		If ($object#Null:C1517)
 			
 			This:C1470[$dataClassName]:=$object[$dataClassName]
 			This:C1470.code:=$object.code
@@ -929,13 +921,9 @@ Function setup_t()
 		
 	Else 
 		
-		$file:=This:C1470._dataFolder.file($dataClassName+".data")
+		$object:=get_data_s($dataClassName)
 		
-		If ($file#Null:C1517) && ($file.exists)
-			
-			$data:=$file.getContent()
-			
-			BLOB TO VARIABLE:C533($data; $object)
+		If ($object#Null:C1517)
 			
 			This:C1470[$dataClassName]:=$object[$dataClassName]
 			This:C1470.code:=$object.code
@@ -1022,13 +1010,9 @@ Function setup_i()
 		
 	Else 
 		
-		$file:=This:C1470._dataFolder.file($dataClassName+".data")
+		$object:=get_data_s($dataClassName)
 		
-		If ($file#Null:C1517) && ($file.exists)
-			
-			$data:=$file.getContent()
-			
-			BLOB TO VARIABLE:C533($data; $object)
+		If ($object#Null:C1517)
 			
 			$object:=OB Copy:C1225($object; ck shared:K85:29; This:C1470)
 			
@@ -1132,13 +1116,9 @@ Function setup()
 		
 	Else 
 		
-		$file:=This:C1470._dataFolder.file($dataClassName+".data")
+		$object:=get_data_s($dataClassName)
 		
-		If ($file#Null:C1517) && ($file.exists)
-			
-			$data:=$file.getContent()
-			
-			BLOB TO VARIABLE:C533($data; $object)
+		If ($object#Null:C1517)
 			
 			This:C1470[$dataClassName]:=$object[$dataClassName]
 			This:C1470.code:=$object.code
@@ -1146,3 +1126,4 @@ Function setup()
 			
 		End if 
 	End if 
+	

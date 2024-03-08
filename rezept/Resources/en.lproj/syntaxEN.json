@@ -417,22 +417,16 @@
 	"_番号": {},
 	"_Params": {},
 	"GitHub": {
-		"fetch()": {
-			"Syntax": "**.fetch**() : cs.ssk.GitHub",
+		"onHeaders()": {
+			"Syntax": "**.onHeaders**( *request* : 4D.HTTPRequest; *event* : Object )",
 			"Params": [
 				[
-					"",
-					"cs.ssk.GitHub",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get()": {
-			"Syntax": "**.get**( *release* : Object )",
-			"Params": [
+					"request",
+					"4D.HTTPRequest",
+					"->"
+				],
 				[
-					"release",
+					"event",
 					"Object",
 					"->"
 				]
@@ -489,22 +483,6 @@
 		},
 		"onData()": {
 			"Syntax": "**.onData**( *request* : 4D.HTTPRequest; *event* : Object )",
-			"Params": [
-				[
-					"request",
-					"4D.HTTPRequest",
-					"->"
-				],
-				[
-					"event",
-					"Object",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"onHeaders()": {
-			"Syntax": "**.onHeaders**( *request* : 4D.HTTPRequest; *event* : Object )",
 			"Params": [
 				[
 					"request",
