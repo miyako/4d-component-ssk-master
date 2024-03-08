@@ -149,7 +149,7 @@ jobs:
       - name: upload 1
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: コメント.zip
           asset_name: コメント.zip
           asset_content_type: application/zip   
@@ -157,7 +157,7 @@ jobs:
       - name: upload 2
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: 医薬品.zip
           asset_name: 医薬品.zip
           asset_content_type: application/zip  
@@ -165,7 +165,7 @@ jobs:
       - name: upload 3
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: 記載事項等.zip
           asset_name: 記載事項等.zip
           asset_content_type: application/zip  
@@ -173,7 +173,7 @@ jobs:
       - name: upload 4
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: 修飾語.zip
           asset_name: 修飾語.zip
           asset_content_type: application/zip  
@@ -181,7 +181,7 @@ jobs:
       - name: upload 5
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: 傷病名.zip
           asset_name: 傷病名.zip
           asset_content_type: application/zip  
@@ -189,7 +189,7 @@ jobs:
       - name: upload 6
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: 診療行為.zip
           asset_name: 診療行為.zip
           asset_content_type: application/zip     
@@ -197,7 +197,7 @@ jobs:
       - name: upload 7
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: 単位.zip
           asset_name: 単位.zip
           asset_content_type: application/zip   
@@ -205,7 +205,7 @@ jobs:
       - name: upload 8
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: 地方公費.zip
           asset_name: 地方公費.zip
           asset_content_type: application/zip   
@@ -213,12 +213,7 @@ jobs:
       - name: upload 9
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.upload.outputs.upload_url }}
           asset_path: 特定器材.zip
           asset_name: 特定器材.zip
           asset_content_type: application/zip     
-
-
-          
-          
-          
