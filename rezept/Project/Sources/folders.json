@@ -1,5 +1,4 @@
 {
-	"(import)": {},
 	"ORDA": {
 		"tables": [
 			"_コメント",
@@ -39,13 +38,8 @@
 	},
 	"public": {
 		"classes": [
-			"CLI",
-			"Rezept"
+			"CLI"
 		]
 	},
-	"trash": {
-		"groups": [
-			"(import)"
-		]
-	}
+	"trash": {}
 }
