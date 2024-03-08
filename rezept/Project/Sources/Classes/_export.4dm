@@ -7,6 +7,8 @@ Class constructor($dataClassName : Text)
 	
 Function _getDataFolder() : 4D:C1709.Folder
 	
+	
+	
 	var $folder : 4D:C1709.Folder
 	$folder:=Folder:C1567(fk user preferences folder:K87:10).parent
 	$folder:=$folder.folder("com.4d.rezept")
@@ -622,7 +624,7 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 					
 					VARIABLE TO BLOB:C532($sharedObject; $blob)
 					
-					$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+					$file:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".data")
 					$file.setContent($blob)
 					This:C1470.file:=$file
 					
@@ -817,7 +819,7 @@ Function setup_t()
 		
 		VARIABLE TO BLOB:C532($sharedObject; $data)
 		
-		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$file:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".data")
 		$file.setContent($data)
 		This:C1470.file:=$file
 		
@@ -897,7 +899,7 @@ Function setup_i()
 		
 		VARIABLE TO BLOB:C532($sharedObject; $data)
 		
-		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$file:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".data")
 		$file.setContent($data)
 		This:C1470.file:=$file
 		
@@ -994,7 +996,7 @@ Function setup()
 		
 		VARIABLE TO BLOB:C532($sharedObject; $data)
 		
-		$file:=This:C1470._getDataFolder().file($dataClassName+".data")
+		$file:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".data")
 		$file.setContent($data)
 		This:C1470.file:=$file
 		
