@@ -626,7 +626,7 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 					
 					$file:=This:C1470._getDataFolder().file($dataClassName+".data")
 					$asset:=cs:C1710._Core.new()._getDataExportFolder().file($dataClassName+".zip")
-					$file.setContent($data)
+					$file.setContent($blob)
 					
 					var $zip : Object
 					$zip:={}
@@ -643,6 +643,7 @@ Function setup_k($診療行為 : Collection; $特定器材 : Collection; $コメ
 					$CLI.print("generate data file for "+$dataClassName+"..."; "bold")
 					$CLI.print("success"; "82;bold").LF()
 					$CLI.print($file.path; "244").LF()
+					$CLI.print($asset.path; "244").LF()
 					$CLI.print("size: "; "bold").print(String:C10($file.size); "39").LF()
 					
 				End if 
@@ -847,6 +848,7 @@ Function setup_t()
 		$CLI.print("generate data file for "+$dataClassName+"..."; "bold")
 		$CLI.print("success"; "82;bold").LF()
 		$CLI.print($file.path; "244").LF()
+		$CLI.print($asset.path; "244").LF()
 		$CLI.print("size: "; "bold").print(String:C10($file.size); "39").LF()
 		
 	Else 
@@ -936,6 +938,7 @@ Function setup_i()
 		$CLI.print("generate data file for "+$dataClassName+"..."; "bold")
 		$CLI.print("success"; "82;bold").LF()
 		$CLI.print($file.path; "244").LF()
+		$CLI.print($asset.path; "244").LF()
 		$CLI.print("size: "; "bold").print(String:C10($file.size); "39").LF()
 		
 	Else 
@@ -1042,6 +1045,7 @@ Function setup()
 		$CLI.print("generate data file for "+$dataClassName+"..."; "bold")
 		$CLI.print("success"; "82;bold").LF()
 		$CLI.print($file.path; "244").LF()
+		$CLI.print($asset.path; "244").LF()
 		$CLI.print("size: "; "bold").print(String:C10($file.size); "39").LF()
 		
 	Else 
