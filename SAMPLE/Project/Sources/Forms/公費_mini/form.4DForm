@@ -1,0 +1,166 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad"
+	],
+	"windowTitle": "",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"負担者番号1": {
+					"type": "input",
+					"left": 40,
+					"top": 85,
+					"width": 130,
+					"height": 17,
+					"dataSource": "Form:C1466.負担者番号1",
+					"events": [
+						"onGettingFocus",
+						"onAfterEdit"
+					],
+					"method": "ObjectMethods/負担者番号1.4dm",
+					"right": 170
+				},
+				"都道府県番号1": {
+					"type": "input",
+					"left": 40,
+					"top": 105,
+					"width": 44,
+					"height": 15,
+					"dataSource": "Form:C1466.都道府県番号1",
+					"contextMenu": "none",
+					"enterable": false,
+					"focusable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#6495ed",
+					"fontWeight": "bold",
+					"fontTheme": "additional"
+				},
+				"warning1": {
+					"type": "picture",
+					"top": 85,
+					"left": 176,
+					"width": 16,
+					"height": 16,
+					"picture": "Images/alert.png",
+					"pictureFormat": "scaled",
+					"visibility": "hidden"
+				},
+				"検証番号1": {
+					"type": "input",
+					"left": 193,
+					"top": 86,
+					"width": 24,
+					"height": 17,
+					"dataSource": "Form:C1466.検証番号1",
+					"contextMenu": "none",
+					"enterable": false,
+					"focusable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#6495ed",
+					"textAlign": "left",
+					"fontStyle": "normal",
+					"fontWeight": "normal"
+				},
+				"保険制度1": {
+					"type": "input",
+					"left": 75,
+					"top": 105,
+					"width": 130,
+					"height": 15,
+					"dataSource": "Form:C1466.保険制度1",
+					"contextMenu": "none",
+					"enterable": false,
+					"focusable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#6495ed",
+					"fontWeight": "bold",
+					"fontTheme": "additional"
+				},
+				"区分": {
+					"type": "input",
+					"left": 40,
+					"top": 30,
+					"width": 390,
+					"height": 49,
+					"dataSource": "Form:C1466.区分",
+					"contextMenu": "none",
+					"enterable": false,
+					"focusable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#696969",
+					"textAlign": "left",
+					"styledText": true
+				},
+				"txt.地方公費入力支援": {
+					"type": "text",
+					"text": "地方公費入力支援",
+					"top": 9,
+					"left": 8,
+					"width": 411,
+					"height": 16,
+					"fontWeight": "bold"
+				},
+				"txt.区分": {
+					"type": "text",
+					"text": "区分",
+					"top": 30,
+					"left": 8,
+					"width": 31,
+					"height": 16,
+					"fontWeight": "bold"
+				},
+				"Button": {
+					"type": "button",
+					"text": "詳細をペーストボードに転写",
+					"top": 99,
+					"left": 264,
+					"width": 166,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"action": "showClipboard",
+					"focusable": false,
+					"method": "ObjectMethods/Button.4dm"
+				}
+			}
+		}
+	],
+	"geometryStamp": 1176,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm",
+	"rightMargin": 10,
+	"bottomMargin": 10
+}
