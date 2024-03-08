@@ -146,8 +146,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
 
-      - name: get path
-        id: path
+      - name: get name
+        id: name
         run: |  
           echo "upload_name_1=コメント.zip" >> $GITHUB_OUTPUT 
           echo "upload_name_2=医薬品.zip" >> $GITHUB_OUTPUT 
@@ -160,7 +160,7 @@ jobs:
           echo "upload_name_9=特定器材.zip" >> $GITHUB_OUTPUT 
           
       - name: get path
-        id: name
+        id: path
         run: |     
           echo "upload_path_1=${GITHUB_WORKSPACE}/${upload_name_1}" >> $GITHUB_OUTPUT 
           echo "upload_path_2=${GITHUB_WORKSPACE}/${upload_name_2}" >> $GITHUB_OUTPUT 
@@ -172,15 +172,15 @@ jobs:
           echo "upload_path_8=${GITHUB_WORKSPACE}/${upload_name_8}" >> $GITHUB_OUTPUT 
           echo "upload_path_9=${GITHUB_WORKSPACE}/${upload_name_9}" >> $GITHUB_OUTPUT 
         env:
-          upload_name_1: ${{ steps.path.outputs.upload_name_1 }}
-          upload_name_2: ${{ steps.path.outputs.upload_name_2 }}
-          upload_name_3: ${{ steps.path.outputs.upload_name_3 }}
-          upload_name_4: ${{ steps.path.outputs.upload_name_4 }}
-          upload_name_5: ${{ steps.path.outputs.upload_name_5 }}
-          upload_name_6: ${{ steps.path.outputs.upload_name_6 }}
-          upload_name_7: ${{ steps.path.outputs.upload_name_7 }}
-          upload_name_8: ${{ steps.path.outputs.upload_name_8 }}
-          upload_name_9: ${{ steps.path.outputs.upload_name_9 }}
+          upload_name_1: ${{ steps.name.outputs.upload_name_1 }}
+          upload_name_2: ${{ steps.name.outputs.upload_name_2 }}
+          upload_name_3: ${{ steps.name.outputs.upload_name_3 }}
+          upload_name_4: ${{ steps.name.outputs.upload_name_4 }}
+          upload_name_5: ${{ steps.name.outputs.upload_name_5 }}
+          upload_name_6: ${{ steps.name.outputs.upload_name_6 }}
+          upload_name_7: ${{ steps.name.outputs.upload_name_7 }}
+          upload_name_8: ${{ steps.name.outputs.upload_name_8 }}
+          upload_name_9: ${{ steps.name.outputs.upload_name_9 }}
           
       - name: upload 1
         uses: actions/upload-release-asset@v1
