@@ -59,6 +59,10 @@ $医薬品:=$rezept.get("医薬品"; "610406079")
 
 * [厚生労働省のマスター](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/rezeptsystem/index.html)は上記のとおりファイル名を変更してください。
 
+# 保守
+
+/DATA/配下のファイルを更新すると，自動的にGitHub Actionsが発動し，v20コンポーネントとファイル化したオブジェクトをReleasesにアップロードします。
+
 * ローカルで実行する場合
 
 ```
@@ -69,8 +73,6 @@ tool4d.app/Contents/MacOS/tool4d \
  --user-param="verbose,regenereate,export" \
  --create-data
 ```
-
-GitHub Actionsで自動的にデータを生成する場合は`verbose`を省略してください。
 
 # 記載事項等
 
