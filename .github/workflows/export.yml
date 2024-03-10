@@ -1,0 +1,168 @@
+name: Export
+  
+on:
+  push:
+    branches:
+    - main
+    paths:
+      - 'DATA/*'
+  workflow_dispatch:
+    inputs:
+        mode:
+          type: choice
+          description: semantic versioning
+          options: 
+          - patch
+          - minor 
+          - major
+          required: true
+
+env: 
+  project_path: rezept/Project/rezept.4DProject
+  
+jobs:
+
+  export:
+    permissions: write-all
+    runs-on: [macos-latest]
+    steps:
+
+      - name: configure
+        id: configure
+        run: |
+          if [ ${mode} = '' ]; then
+          echo "mode=patch" >> $GITHUB_OUTPUT          
+          else
+          echo "mode=${mode}" >> $GITHUB_OUTPUT
+          fi
+          echo "project_path=${GITHUB_WORKSPACE}/${project_path}" >> $GITHUB_OUTPUT 
+        shell: bash
+        env:
+          mode: ${{ inputs.mode }} 
+
+      - name: checkout 
+        uses: actions/checkout@v4
+
+      - name: set version
+        id: version
+        uses: miyako/4D/.github/actions/package-set-version@v1
+        with:
+          mode: ${{ inputs.mode }}
+
+      - name: get tag
+        id: tag
+        run: |
+          path="${GITHUB_WORKSPACE}/package.json"
+          release_name=$(cat "${path}" | jq -r '.release_name')    
+          echo "release_name=${release_name}" >> $GITHUB_OUTPUT 
+          
+      - name: get tool version
+        id: tool
+        uses: miyako/4D/.github/actions/tool4d-get-version@v1
+        
+      - name: get tool4d
+        id: get
+        uses: miyako/4D/.github/actions/tool4d-download@v1
+        with:
+          platform: ${{ steps.tool.outputs.platform }}
+          branch: ${{ steps.tool.outputs.branch }}
+          version: ${{ steps.tool.outputs.version }}
+          build: ${{ steps.tool.outputs.build }}
+          arch: ${{ steps.tool.outputs.arch }}
+
+      - name: generate
+        id: generate
+        run: |
+          tool4d.app/Contents/MacOS/tool4d "${PROJECT_PATH}" --skip-onstartup --startup-method=regenerate --user-param="regenerate,export" --create-data
+        env: 
+          PROJECT_PATH: ${{ steps.configure.outputs.project_path }} 
+          
+      - name: upload 1
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: コメント.zip
+          asset_name: data.1.zip
+          asset_content_type: application/zip   
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: upload 2
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: 医薬品.zip
+          asset_name: data.2.zip
+          asset_content_type: application/zip  
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: upload 3
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: 記載事項等.zip
+          asset_name: data.3.zip
+          asset_content_type: application/zip  
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: upload 4
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: 修飾語.zip
+          asset_name: data.4.zip
+          asset_content_type: application/zip  
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: upload 5
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: 傷病名.zip
+          asset_name: data.5.zip
+          asset_content_type: application/zip  
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: upload 6
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: 診療行為.zip
+          asset_name: data.6.zip
+          asset_content_type: application/zip     
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: upload 7
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: 単位.zip
+          asset_name: data.7.zip
+          asset_content_type: application/zip   
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: upload 8
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: 地方公費.zip
+          asset_name: data.8.zip
+          asset_content_type: application/zip   
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: upload 9
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.upload.outputs.upload_url }}
+          asset_path: 特定器材.zip
+          asset_name: data.9.zip
+          asset_content_type: application/zip     
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
