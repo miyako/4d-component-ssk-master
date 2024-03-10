@@ -85,7 +85,8 @@ jobs:
           release_name: ${{ steps.tag.outputs.release_name }} 
           draft: false
           prerelease: false 
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           
       - name: upload 1
         uses: actions/upload-release-asset@v1
