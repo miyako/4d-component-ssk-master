@@ -22,7 +22,7 @@ env:
   
 jobs:
 
-  publish:
+  export:
     permissions: write-all
     runs-on: [macos-latest]
     steps:
