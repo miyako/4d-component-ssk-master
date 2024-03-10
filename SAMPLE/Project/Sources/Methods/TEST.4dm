@@ -13,7 +13,7 @@ $rezept:=cs:C1710.ssk.Rezept.new()
 $info:=$rezept.getInfo()
 
 If (False:C215)
-	$rezept.switch($info.data[1])  //マスターを切り替える
+	$rezept.switch($info.data[0])  //マスターを切り替える
 End if 
 
 $コメント:=$rezept.get("コメント"; "810000001")
