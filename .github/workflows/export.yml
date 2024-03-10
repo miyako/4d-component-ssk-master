@@ -76,6 +76,16 @@ jobs:
           tool4d.app/Contents/MacOS/tool4d "${PROJECT_PATH}" --skip-onstartup --startup-method=regenerate --user-param="regenerate,export" --create-data
         env: 
           PROJECT_PATH: ${{ steps.configure.outputs.project_path }} 
+
+      - name: create release
+        id: upload
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.version }} 
+          release_name: ${{ steps.tag.outputs.release_name }} 
+          draft: false
+          prerelease: false 
+
           
       - name: upload 1
         uses: actions/upload-release-asset@v1
