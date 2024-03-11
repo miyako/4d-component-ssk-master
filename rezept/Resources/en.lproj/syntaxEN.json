@@ -342,17 +342,12 @@
 			"Summary": ""
 		},
 		"switch()": {
-			"Syntax": "**.switch**( *release* : Object ) : cs.ssk.Rezept",
+			"Syntax": "**.switch**( *release* : Object )",
 			"Params": [
 				[
 					"release",
 					"Object",
 					"->"
-				],
-				[
-					"",
-					"cs.ssk.Rezept",
-					"<-"
 				]
 			],
 			"Summary": ""

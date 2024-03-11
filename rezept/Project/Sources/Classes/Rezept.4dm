@@ -33,19 +33,23 @@ Function get($dataClassName : Text; $code : Text) : Object
 			return 
 	End case 
 	
-Function switch($release : Object) : cs:C1710.Rezept
+Function switch($release : Object)
 	
-	If ($release#Null:C1517)
-		$file:=$release.file
-		If ($file.exists)
-			$json:=$file.getText()
-			$manifest:=JSON Parse:C1218($json)
-			$manifest.active:=True:C214
-			$export:=cs:C1710._Export.new()._unsetManifest().setManifest($file.parent; $manifest)
-			var $property : Text
-			For each ($property; This:C1470._properties())
-				OB REMOVE:C1226(Storage:C1525; $property)
-			End for each 
+	If (Application type:C494=4D Remote mode:K5:5)
+		select_s($release)
+	Else 
+		If ($release#Null:C1517)
+			$file:=$release.file
+			If ($file.exists)
+				$json:=$file.getText()
+				$manifest:=JSON Parse:C1218($json)
+				$manifest.active:=True:C214
+				$export:=cs:C1710._Export.new()._unsetManifest().setManifest($file.parent; $manifest)
+				var $property : Text
+				For each ($property; This:C1470._properties())
+					OB REMOVE:C1226(Storage:C1525; $property)
+				End for each 
+			End if 
 		End if 
 	End if 
 	

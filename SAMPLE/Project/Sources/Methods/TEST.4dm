@@ -21,10 +21,23 @@ $コメント:=$rezept.get("コメント"; "810000001")
 $単位:=$rezept.get("単位"; "1")
 $診療行為:=$rezept.get("診療行為"; "150405210")
 
-$診療行為:=$rezept.診療行為.query("基本漢字名称 == :1"; "@術中術後自己血回収術@")
-$診療行為:=$rezept.get("診療行為"; "160230050")
+$queryParams:={}
+$queryParams.attributes:={ベースアップ評価料1: "項目.外来・在宅ベースアップ評価料(1)"}
+$queryParams.parameters:={空: ""}
 
-$医薬品:=$rezept.医薬品.query("後発品.項目.同一剤形・規格の後発医薬品がある先発医薬品 == :1"; "○")
+$診療行為:=$rezept.診療行為.query(":ベースアップ評価料1 == :空"; $queryParams)
+
+$診療行為:=$rezept.get("診療行為"; "150444590")
+
+
+$特定器材:=$rezept.特定器材.query("項目.再製造単回使用医療機器 != :1"; "")
+
+
+
+$医薬品:=$rezept.医薬品.query("項目.薬価基準収載年月日 != :1"; "")
 $医薬品:=$rezept.get("医薬品"; "610406079")
+
+SET TEXT TO PASTEBOARD:C523(JSON Stringify:C1217($医薬品; *))
+
 
 $公費:=$rezept.公費().parse("9947")
