@@ -21,7 +21,7 @@ Function setProperty($key : Text; $value : Variant) : cs:C1710._Package
 	End if 
 	
 	$package[$key]:=$value
-	$file.setText(JSON Stringify:C1217($package))
+	$file.setText(JSON Stringify:C1217($package; *))
 	
 	return This:C1470
 	
