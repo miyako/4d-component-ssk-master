@@ -42,7 +42,7 @@ Function _getFiles($names : Collection) : Collection
 	
 	If ($files.length#0)
 		var $file : 4D:C1709.File
-		For each ($file; $files.orderBy(ck ascending:K85:9))
+		For each ($file; $files.orderBy("name desc"))
 			
 			If ($file.extension=".zip")
 				$archive:=ZIP Read archive:C1637($file)
@@ -101,31 +101,23 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 		This:C1470._truncateTable()._pauseIndexes()
 	End if 
 	
-	$merge:=False:C215
-	
 	If ($files1.length=0)
 		$CLI.print("not found"; "196;bold").LF()
 	Else 
 		$CLI.print("found"; "82;bold").LF()
+		$merge:=False:C215
 		For each ($file1; $files1)
 			$CLI.print($file1.path; "244").LF()
 			$csv:=$file1.getText("windows-31j"; Document with LF:K24:22)
-			
 			$i:=1
-			
 			While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
-				
 				$i:=$pos{1}+$len{1}
 				$line:=Substring:C12($csv; $pos{1}; $len{1})
 				$values:=Split string:C1554($line; ",")
-				
 				This:C1470._trimDoubleQuotes($values)
 				This:C1470._createRecords($CLI; $values; $verbose; $merge)
-				
 			End while 
-			
 			cs:C1710._Package.new().setProperty("診療行為"; $file1.fullName)
-			
 			If ($merge)
 				$CLI.CR().print("records merged..."; "bold")
 			Else 
@@ -134,7 +126,6 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 			$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
 			$merge:=True:C214
 		End for each 
-		
 	End if 
 	
 	$CLI.print("master for 労災診療行為..."; "bold")
@@ -142,13 +133,13 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 	If ($files2.length=0)
 		$CLI.print("not found"; "196;bold").LF()
 	Else 
+		$CLI.print("found"; "82;bold").LF()
+		$merge:=False:C215
 		For each ($file2; $files2)
 			$CLI.print("found"; "82;bold").LF()
 			$CLI.print($file2.path; "244").LF()
 			$csv:=$file2.getText("windows-31j"; Document with LF:K24:22)
-			
 			$i:=1
-			
 			While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
 				
 				$i:=$pos{1}+$len{1}
@@ -159,9 +150,7 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 				This:C1470._createRecords($CLI; $values; $verbose; $merge)
 				
 			End while 
-			
 			cs:C1710._Package.new().setProperty("労災診療行為"; $file2.fullName)
-			
 			If ($merge)
 				$CLI.CR().print("records merged..."; "bold")
 			Else 
@@ -186,7 +175,11 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 	
 	If (Not:C34($merge)) || ($values[0]="9")
 		
-		$e:=$dataClass.new()
+		$e:=$dataClass.query("診療行為コード == :1"; $values[2]).first()
+		
+		If ($e=Null:C1517)
+			$e:=$dataClass.new()
+		End if 
 		
 		$e["項目"]:={}
 		$e["項目"]["変更区分"]:=$values[0]
