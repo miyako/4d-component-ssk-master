@@ -1,6 +1,14 @@
 //%attributes = {}
 ds:C1482._診療行為.regenerate()
 
+//ds._傷病名.regenerate()
+//ds._修飾語.regenerate()
+//ds._コメント.regenerate()
+
+//ds._一般名処方.regenerate()
+//ds._後発医薬品.regenerate()
+//ds._医薬品.regenerate()
+
 
 
 
