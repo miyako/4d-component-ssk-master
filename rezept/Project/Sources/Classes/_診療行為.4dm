@@ -30,6 +30,34 @@ Function _getDataFolder() : 4D:C1709.Folder
 	
 	return cs:C1710._Core.new()._getDataFolder()
 	
+Function _getFiles($names : Collection) : Collection
+	
+	$dataFiles:=[]
+	
+	var $folder : 4D:C1709.Folder
+	$folder:=This:C1470._getDataFolder()
+	
+	$files:=$folder.files()
+	$files:=$files.query("name in :1 and extension in :2"; $names; [".csv"; ".txt"; ".zip"])
+	
+	If ($files.length#0)
+		var $file : 4D:C1709.File
+		For each ($file; $files.orderBy(ck descending:K85:8))
+			
+			If ($file.extension=".zip")
+				$archive:=ZIP Read archive:C1637($file)
+				$archiveFiles:=$archive.root.files()
+				If ($archiveFiles.length#0)
+					$dataFiles.push($archiveFiles[0])
+				End if 
+			Else 
+				$dataFiles.push($file)
+			End if 
+		End for each 
+	End if 
+	
+	return $dataFiles
+	
 Function _getFile($names : Collection) : 4D:C1709.File
 	
 	var $folder : 4D:C1709.Folder
@@ -59,9 +87,9 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 	
 	var $i : Integer
 	
-	var $file1; $file2 : 4D:C1709.File
-	$file1:=This:C1470._getFile(["s@"; "医科診療行為@"])
-	$file2:=This:C1470._getFile(["rezept-master-01@"])
+	var $files1; $files2 : Collection
+	$files1:=This:C1470._getFiles(["s@"; "医科診療行為@"])
+	$files2:=This:C1470._getFiles(["rezept-master-01@"])
 	
 	If ($CLI=Null:C1517)
 		$CLI:=cs:C1710._CLI.new()
@@ -69,69 +97,71 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 	
 	$CLI.print("master for 診療行為..."; "bold")
 	
-	If ($file1#Null:C1517) || ($file2#Null:C1517)
+	If ($files1.length#0) || ($files2.length#0)
 		This:C1470._truncateTable()._pauseIndexes()
 	End if 
 	
-	If ($file1=Null:C1517)
+	If ($files1.length=0)
 		$CLI.print("not found"; "196;bold").LF()
 	Else 
 		$CLI.print("found"; "82;bold").LF()
-		$CLI.print($file1.path; "244").LF()
-		
-		$csv:=$file1.getText("windows-31j"; Document with LF:K24:22)
-		
-		$i:=1
-		
-		While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
+		For each ($file1; $files1)
+			$CLI.print($file1.path; "244").LF()
+			$csv:=$file1.getText("windows-31j"; Document with LF:K24:22)
 			
-			$i:=$pos{1}+$len{1}
-			$line:=Substring:C12($csv; $pos{1}; $len{1})
-			$values:=Split string:C1554($line; ",")
+			$i:=1
 			
-			This:C1470._trimDoubleQuotes($values)
-			This:C1470._createRecords($CLI; $values; $verbose)
+			While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
+				
+				$i:=$pos{1}+$len{1}
+				$line:=Substring:C12($csv; $pos{1}; $len{1})
+				$values:=Split string:C1554($line; ",")
+				
+				This:C1470._trimDoubleQuotes($values)
+				This:C1470._createRecords($CLI; $values; $verbose)
+				
+			End while 
 			
-		End while 
-		
-		cs:C1710._Package.new().setProperty("診療行為"; $file1.fullName)
-		
-		$CLI.CR().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
+			cs:C1710._Package.new().setProperty("診療行為"; $file1.fullName)
+			
+			$CLI.CR().print("records imported..."; "bold")
+			$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
+		End for each 
 		
 	End if 
 	
 	$CLI.print("master for 労災診療行為..."; "bold")
 	
-	If ($file2=Null:C1517)
+	If ($files2.length=0)
 		$CLI.print("not found"; "196;bold").LF()
 	Else 
-		$CLI.print("found"; "82;bold").LF()
-		$CLI.print($file2.path; "244").LF()
-		
-		$csv:=$file2.getText("windows-31j"; Document with LF:K24:22)
-		
-		$i:=1
-		
-		While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
+		For each ($file2; $files2)
+			$CLI.print("found"; "82;bold").LF()
+			$CLI.print($file2.path; "244").LF()
+			$csv:=$file2.getText("windows-31j"; Document with LF:K24:22)
 			
-			$i:=$pos{1}+$len{1}
-			$line:=Substring:C12($csv; $pos{1}; $len{1})
-			$values:=Split string:C1554($line; ",")
+			$i:=1
 			
-			This:C1470._trimDoubleQuotes($values)
-			This:C1470._createRecords($CLI; $values; $verbose)
+			While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
+				
+				$i:=$pos{1}+$len{1}
+				$line:=Substring:C12($csv; $pos{1}; $len{1})
+				$values:=Split string:C1554($line; ",")
+				
+				This:C1470._trimDoubleQuotes($values)
+				This:C1470._createRecords($CLI; $values; $verbose)
+				
+			End while 
 			
-		End while 
-		
-		cs:C1710._Package.new().setProperty("労災診療行為"; $file2.fullName)
-		
-		$CLI.CR().print("records imported..."; "bold")
-		$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
+			cs:C1710._Package.new().setProperty("労災診療行為"; $file2.fullName)
+			
+			$CLI.CR().print("records imported..."; "bold")
+			$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
+		End for each 
 		
 	End if 
 	
-	If ($file1#Null:C1517) || ($file2#Null:C1517)
+	If ($files1.length#0) || ($files2.length#0)
 		This:C1470._resumeIndexes()
 	End if 
 	
@@ -142,7 +172,11 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 	
 	$dataClass:=This:C1470
 	
-	$e:=$dataClass.new()
+	$e:=$dataClass.query("診療行為コード == :1"; $values[2]).first()
+	
+	If ($e=Null:C1517)
+		$e:=$dataClass.new()
+	End if 
 	
 	$e["項目"]:={}
 	$e["項目"]["変更区分"]:=$values[0]
