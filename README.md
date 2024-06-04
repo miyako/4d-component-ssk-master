@@ -40,7 +40,7 @@ $医薬品:=$rezept.get("医薬品"; "610406079")
 |医科診療行為|2024年5月31日+廃止分（2024年5月31日~2024年3月6日）|s_ALL________.zip|
 |[労災診療行為](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/rezeptsystem/index.html#HID6-2)|2024年5月28日|ファイル名: rezept-master-01-yyyymmdd.csv|
 |特定器材|2024年3月15日|t_ALL________.zip|
-|労災特定器材|2024年5月28日+2021年1月29日|ファイル名: rezept-master-03-yyyymmdd.csv|
+|労災特定器材|2024年5月28日|ファイル名: rezept-master-03-yyyymmdd.csv|
 |コメント|2024年5月24日|c_ALL________.zip|
 |労災コメント|2020年4月15日|ファイル名: rezept-master-06-yyyymmdd.csv|
 |傷病名|2024年6月1日|b_ALL________.zip|
