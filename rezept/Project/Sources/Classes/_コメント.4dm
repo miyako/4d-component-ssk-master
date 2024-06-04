@@ -105,7 +105,6 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 		$CLI.print("not found"; "196;bold").LF()
 	Else 
 		$CLI.print("found"; "82;bold").LF()
-		$merge:=False:C215
 		For each ($file1; $files1)
 			$CLI.print($file1.path; "244").LF()
 			$csv:=$file1.getText("windows-31j"; Document with LF:K24:22)
@@ -115,16 +114,11 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 				$line:=Substring:C12($csv; $pos{1}; $len{1})
 				$values:=Split string:C1554($line; ",")
 				This:C1470._trimDoubleQuotes($values)
-				This:C1470._createRecords($CLI; $values; $verbose; $merge)
+				This:C1470._createRecords($CLI; $values; $verbose)
 			End while 
 			cs:C1710._Package.new().setProperty("コメント"; $file1.fullName)
-			If ($merge)
-				$CLI.CR().print("records merged..."; "bold")
-			Else 
-				$CLI.CR().print("records imported..."; "bold")
-			End if 
+			$CLI.CR().print("records imported..."; "bold")
 			$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
-			$merge:=True:C214
 		End for each 
 		
 	End if 
@@ -135,29 +129,20 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 		$CLI.print("not found"; "196;bold").LF()
 	Else 
 		$CLI.print("found"; "82;bold").LF()
-		$merge:=False:C215
 		For each ($file2; $files2)
 			$CLI.print($file2.path; "244").LF()
 			$csv:=$file2.getText("windows-31j"; Document with LF:K24:22)
 			$i:=1
 			While (Match regex:C1019("(.+)"; $csv; $i; $pos; $len))
-				
 				$i:=$pos{1}+$len{1}
 				$line:=Substring:C12($csv; $pos{1}; $len{1})
 				$values:=Split string:C1554($line; ",")
-				
 				This:C1470._trimDoubleQuotes($values)
-				This:C1470._createRecords($CLI; $values; $verbose; $merge)
-				
+				This:C1470._createRecords($CLI; $values; $verbose)
 			End while 
 			cs:C1710._Package.new().setProperty("労災コメント"; $file2.fullName)
-			If ($merge)
-				$CLI.CR().print("records merged..."; "bold")
-			Else 
-				$CLI.CR().print("records imported..."; "bold")
-			End if 
+			$CLI.CR().print("records imported..."; "bold")
 			$CLI.print(String:C10(This:C1470.getCount()); "82;bold").EL().LF()
-			$merge:=True:C214
 		End for each 
 		
 	End if 
@@ -166,23 +151,24 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 		This:C1470._resumeIndexes()
 	End if 
 	
-Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : Boolean; $merge : Boolean)
+Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : Boolean)
 	
 	var $e : 4D:C1709.Entity
 	var $dataClass : 4D:C1709.DataClass
 	
 	$dataClass:=This:C1470
 	
-	If (Not:C34($merge)) || ($values[0]="9")
+	$e:=$dataClass.query("コメントコード.区分 == :1 and コメントコード.パターン == :2 and コメントコード.番号 == :3"; $values[2]; $values[3]; $values[4]).first()
+	
+	If ($e=Null:C1517)
+		$e:=$dataClass.new()
+	End if 
+	
+	$e["項目"]:={}
+	$e["項目"]["変更区分"]:=$values[0]
+	
+	If ($values[0]#"9")
 		
-		$e:=$dataClass.query("コメントコード.区分 == :1 and コメントコード.パターン == :2 and コメントコード.番号 == :3"; $values[2]; $values[3]; $values[4]).first()
-		
-		If ($e=Null:C1517)
-			$e:=$dataClass.new()
-		End if 
-		
-		$e["項目"]:={}
-		$e["項目"]["変更区分"]:=$values[0]
 		$e["項目"]["マスター種別"]:=$values[1]
 		$e["コメントコード"]:={}
 		$e["コメントコード"]["区分"]:=$values[2]
@@ -214,12 +200,12 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 		$e["項目"]["漢字名称変更区分"]:=$values[17]
 		$e["項目"]["カナ名称変更区分"]:=$values[18]
 		
-		$e.save()
-		
-		If ($verbose)
-			$CLI.CR().print(This:C1470._truncateString($values[6]; 40); "226").EL()
-		End if 
-		
+	End if 
+	
+	$e.save()
+	
+	If ($verbose)
+		$CLI.CR().print(This:C1470._truncateString($values[6]; 40); "226").EL()
 	End if 
 	
 Function _truncateString($value : Text; $length : Integer) : Text

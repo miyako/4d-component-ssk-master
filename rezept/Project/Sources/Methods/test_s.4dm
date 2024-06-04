@@ -1,5 +1,7 @@
 //%attributes = {}
-ds:C1482._診療行為.regenerate()
+ds:C1482._一般名処方.regenerate()
+ds:C1482._後発医薬品.regenerate()
+ds:C1482._医薬品.regenerate()
 
 
 
