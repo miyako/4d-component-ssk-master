@@ -88,8 +88,8 @@ Function regenerate($CLI : cs:C1710._CLI; $verbose : Boolean)
 	var $i : Integer
 	
 	var $files1; $files2 : Collection
-	$file1:=This:C1470._getFiles(["t@"; "特定器材@"])
-	$file2:=This:C1470._getFiles(["rezept-master-03@"])
+	$files1:=This:C1470._getFiles(["t@"; "特定器材@"])
+	$files2:=This:C1470._getFiles(["rezept-master-03@"])
 	
 	If ($CLI=Null:C1517)
 		$CLI:=cs:C1710._CLI.new()
