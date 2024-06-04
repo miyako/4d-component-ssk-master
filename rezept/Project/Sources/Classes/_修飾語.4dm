@@ -106,35 +106,42 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 	
 	$dataClass:=This:C1470
 	
-	$e:=$dataClass.new()
+	$e:=$dataClass.query("修飾語コード == :1"; $values[2]).first()
 	
-	$e["項目"]:={}
-	$e["項目"]["変更区分"]:=$values[0]
-	$e["項目"]["マスター種別"]:=$values[1]
-	$e["修飾語コード"]:=$values[2]
-	//予備
-	//予備
-	$e["項目"]["修飾語名称桁数"]:=$values[5]
-	$e["項目"]["修飾語名称"]:=$values[6]
-	//予備
-	$e["項目"]["修飾語カナ名称桁数"]:=$values[8]
-	$e["項目"]["修飾語カナ名称"]:=$values[9]
-	//予備
-	$e["項目"]["修飾語名称_変更情報"]:=$values[11]
-	$e["項目"]["修飾語カナ名称_変更情報"]:=$values[12]
-	$e["項目"]["収載年月日"]:=$values[13]
-	$e["項目"]["変更年月日"]:=$values[14]
-	$e["項目"]["廃止年月日"]:=$values[15]
-	$e["項目"]["修飾語管理番号"]:=$values[16]
-	$e["項目"]["修飾語交換用コード"]:=$values[17]
-	$e["項目"]["修飾語区分"]:=$values[18]
+	If ($e=Null:C1517) && ($values[0]#"9")
+		$e:=$dataClass.new()
+	End if 
 	
-	$e["修飾語名称"]:=$values[6]
-	
-	$e.save()
-	
-	If ($verbose)
-		$CLI.CR().print($values[6]; "226").EL()
+	If ($e#Null:C1517)
+		$e["項目"]:={}
+		$e["項目"]["変更区分"]:=$values[0]
+		$e["項目"]["マスター種別"]:=$values[1]
+		$e["修飾語コード"]:=$values[2]
+		//予備
+		//予備
+		$e["項目"]["修飾語名称桁数"]:=$values[5]
+		$e["項目"]["修飾語名称"]:=$values[6]
+		//予備
+		$e["項目"]["修飾語カナ名称桁数"]:=$values[8]
+		$e["項目"]["修飾語カナ名称"]:=$values[9]
+		//予備
+		$e["項目"]["修飾語名称_変更情報"]:=$values[11]
+		$e["項目"]["修飾語カナ名称_変更情報"]:=$values[12]
+		$e["項目"]["収載年月日"]:=$values[13]
+		$e["項目"]["変更年月日"]:=$values[14]
+		$e["項目"]["廃止年月日"]:=$values[15]
+		$e["項目"]["修飾語管理番号"]:=$values[16]
+		$e["項目"]["修飾語交換用コード"]:=$values[17]
+		$e["項目"]["修飾語区分"]:=$values[18]
+		
+		$e["修飾語名称"]:=$values[6]
+		
+		$e.save()
+		
+		If ($verbose)
+			$CLI.CR().print($values[6]; "226").EL()
+		End if 
+		
 	End if 
 	
 Function _trimDoubleQuotes($values : Variant)->$value : Variant
