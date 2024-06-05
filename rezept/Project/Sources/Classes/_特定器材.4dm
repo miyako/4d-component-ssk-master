@@ -42,7 +42,7 @@ Function _getFiles($names : Collection) : Collection
 	
 	If ($files.length#0)
 		var $file : 4D:C1709.File
-		For each ($file; $files.orderBy("name desc"))
+		For each ($file; $files.orderBy("name asc"))
 			
 			If ($file.extension=".zip")
 				$archive:=ZIP Read archive:C1637($file)

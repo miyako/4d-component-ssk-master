@@ -42,7 +42,7 @@ Function _getFiles($names : Collection) : Collection
 	
 	If ($files.length#0)
 		var $file : 4D:C1709.File
-		For each ($file; $files.orderBy("name desc"))
+		For each ($file; $files.orderBy("name asc"))
 			
 			If ($file.extension=".zip")
 				$archive:=ZIP Read archive:C1637($file)
@@ -158,6 +158,10 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 	$dataClass:=This:C1470
 	
 	$e:=$dataClass.query("診療行為コード == :1"; $values[2]).first()
+	
+	If ($values[0]="9")
+		TRACE:C157
+	End if 
 	
 	If ($e=Null:C1517) && ($values[0]#"9")
 		$e:=$dataClass.new()

@@ -28,7 +28,7 @@
 					"dataSource": "Form:C1466.診療行為",
 					"top": 10,
 					"left": 10,
-					"width": 370,
+					"width": 490,
 					"height": 300,
 					"visibility": "visible",
 					"sizingX": "fixed",
@@ -46,7 +46,7 @@
 							"enterable": false,
 							"header": {
 								"text": "Id",
-								"name": ""
+								"name": "Header1"
 							},
 							"footer": {
 								"name": "1"
@@ -77,12 +77,23 @@
 							"footer": {
 								"name": "5"
 							}
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "変更区分"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.項目.変更区分"
 						}
 					]
 				}
 			}
 		}
 	],
-	"geometryStamp": 1,
+	"geometryStamp": 2,
 	"method": "method.4dm"
 }
