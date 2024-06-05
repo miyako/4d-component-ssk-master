@@ -15,7 +15,7 @@
 		"onLoad",
 		"onUnload"
 	],
-	"windowTitle": "window title",
+	"windowTitle": "",
 	"destination": "detailScreen",
 	"pages": [
 		{
@@ -38,6 +38,7 @@
 					"scrollbarHorizontal": "automatic",
 					"scrollbarVertical": "automatic",
 					"resizingMode": "legacy",
+					"currentItemSource": "Form:C1466.診療行為Item",
 					"columns": [
 						{
 							"name": "ID",
@@ -87,13 +88,35 @@
 							"footer": {
 								"name": "Footer1"
 							},
-							"dataSource": "This:C1470.項目.変更区分"
+							"dataSource": "This:C1470.項目.変更区分",
+							"width": 120
 						}
 					]
+				},
+				"Input": {
+					"type": "input",
+					"left": 511,
+					"top": 10,
+					"width": 226,
+					"height": 300,
+					"dataSource": "Form:C1466.診療行為Item.toObject()",
+					"dataSourceTypeHint": "object",
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"sizingX": "grow",
+					"sizingY": "grow"
 				}
 			}
 		}
 	],
-	"geometryStamp": 2,
-	"method": "method.4dm"
+	"geometryStamp": 11,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
 }

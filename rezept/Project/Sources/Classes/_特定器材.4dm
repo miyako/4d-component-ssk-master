@@ -30,6 +30,29 @@ Function _getDataFolder() : 4D:C1709.Folder
 	
 	return cs:C1710._Core.new()._getDataFolder()
 	
+Function _sortFiles($param : Object)
+	
+	var $file1; $file2 : 4D:C1709.File
+	
+	$file1:=$param.value
+	$file2:=$param.value2
+	
+	$name1:=$file1.name
+	$name2:=$file2.name
+	
+	ARRAY LONGINT:C221($pos; 0)
+	ARRAY LONGINT:C221($len; 0)
+	
+	If (Match regex:C1019(".+(\\d{8})"; $name1; 1; $pos; $len))
+		$name1:=Substring:C12($name1; $pos{1}; $len{1})
+	End if 
+	
+	If (Match regex:C1019(".+(\\d{8})"; $name2; 1; $pos; $len))
+		$name2:=Substring:C12($name2; $pos{1}; $len{1})
+	End if 
+	
+	$param.result:=$name1<$name2
+	
 Function _getFiles($names : Collection) : Collection
 	
 	$dataFiles:=[]
@@ -42,8 +65,7 @@ Function _getFiles($names : Collection) : Collection
 	
 	If ($files.length#0)
 		var $file : 4D:C1709.File
-		For each ($file; $files.orderBy("name asc"))
-			
+		For each ($file; $files.sort(This:C1470._sortFiles))
 			If ($file.extension=".zip")
 				$archive:=ZIP Read archive:C1637($file)
 				$archiveFiles:=$archive.root.files()
@@ -158,7 +180,7 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 	
 	$e:=$dataClass.query("特定器材コード == :1"; $values[2]).first()
 	
-	If ($e=Null:C1517) && ($values[0]#"9")
+	If ($e=Null:C1517) && This:C1470._mayCreate($values[0])
 		$e:=$dataClass.new()
 	End if 
 	
@@ -167,57 +189,63 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 		$e["項目"]:={}
 		$e["項目"]["変更区分"]:=$values[0]
 		
-		If ($values[0]#"9")
+		If (This:C1470._mayCreate($values[0]))
 			
-			$e["項目"]["マスター種別"]:=$values[1]
-			$e["特定器材コード"]:=$values[2]
+			$e["項目"]["マスター種別"]:=$values[1]="" ? $e["項目"]["マスター種別"] : $values[1]
+			$e["特定器材コード"]:=$values[2]="" ? $e["特定器材コード"] : $values[2]
+			
 			$e["特定器材名・規格名"]:={}
-			$e["特定器材名・規格名"]["漢字有効桁数"]:=$values[3]
-			$e["特定器材名・規格名"]["漢字名称"]:=$values[4]
-			$e["特定器材名・規格名"]["カナ有効桁数"]:=$values[5]
-			$e["特定器材名・規格名"]["カナ名称"]:=$values[6]
+			$e["特定器材名・規格名"]["漢字有効桁数"]:=$values[3]="" ? $e["特定器材名・規格名"]["漢字有効桁数"] : $values[3]
+			$e["特定器材名・規格名"]["漢字名称"]:=$values[4]="" ? $e["特定器材名・規格名"]["漢字名称"] : $values[4]
+			$e["特定器材名・規格名"]["カナ有効桁数"]:=$values[5]="" ? $e["特定器材名・規格名"]["カナ有効桁数"] : $values[5]
+			$e["特定器材名・規格名"]["カナ名称"]:=$values[6]="" ? $e["特定器材名・規格名"]["カナ名称"] : $values[6]
+			
 			$e["単位"]:={}
-			$e["単位"]["コード"]:=$values[7]
-			$e["単位"]["漢字有効桁数"]:=$values[8]
-			$e["単位"]["漢字名称"]:=$values[9]
+			$e["単位"]["コード"]:=$values[7]="" ? $e["単位"]["コード"] : $values[7]
+			$e["単位"]["漢字有効桁数"]:=$values[8]="" ? $e["単位"]["漢字有効桁数"] : $values[8]
+			$e["単位"]["漢字名称"]:=$values[9]="" ? $e["単位"]["漢字名称"] : $values[9]
+			
 			$e["新又は現金額"]:={}
-			$e["新又は現金額"]["金額種別"]:=$values[10]
-			$e["新又は現金額"]["新又は現金額"]:=$values[11]
-			$e["項目"]["名称使用識別"]:=$values[12]
-			$e["項目"]["年齢加算区分"]:=$values[13]
+			$e["新又は現金額"]["金額種別"]:=$values[10]="" ? $e["新又は現金額"]["金額種別"] : $values[10]
+			$e["新又は現金額"]["新又は現金額"]:=$values[11]="" ? $e["新又は現金額"]["新又は現金額"] : $values[11]
+			$e["項目"]["名称使用識別"]:=$values[12]="" ? $e["項目"]["名称使用識別"] : $values[12]
+			$e["項目"]["年齢加算区分"]:=$values[13]="" ? $e["項目"]["年齢加算区分"] : $values[13]
+			
 			$e["項目"]["上下限年齢"]:={}
-			$e["項目"]["上下限年齢"]["下限年齢"]:=$values[14]
-			$e["項目"]["上下限年齢"]["上限年齢"]:=$values[15]
+			$e["項目"]["上下限年齢"]["下限年齢"]:=$values[14]="" ? $e["項目"]["上下限年齢"]["下限年齢"] : $values[14]
+			$e["項目"]["上下限年齢"]["上限年齢"]:=$values[15]="" ? $e["項目"]["上下限年齢"]["上限年齢"] : $values[15]
+			
 			$e["旧金額"]:={}
-			$e["旧金額"]["旧金額種別"]:=$values[16]
-			$e["旧金額"]["旧金額"]:=$values[17]
-			$e["項目"]["漢字名称変更区分"]:=$values[18]
-			$e["項目"]["カナ名称変更区分"]:=$values[19]
-			$e["項目"]["酸素等区分"]:=$values[20]
-			$e["項目"]["特定器材種別(1)"]:=$values[21]
-			$e["項目"]["上限価格"]:=$values[22]
-			$e["項目"]["上限点数"]:=$values[23]
+			$e["旧金額"]["旧金額種別"]:=$values[16]="" ? $e["旧金額"]["旧金額種別"] : $values[16]
+			$e["旧金額"]["旧金額"]:=$values[17]="" ? $e["旧金額"]["旧金額"] : $values[17]
+			$e["項目"]["漢字名称変更区分"]:=$values[18]="" ? $e["項目"]["漢字名称変更区分"] : $values[18]
+			$e["項目"]["カナ名称変更区分"]:=$values[19]="" ? $e["項目"]["カナ名称変更区分"] : $values[19]
+			$e["項目"]["酸素等区分"]:=$values[20]="" ? $e["項目"]["酸素等区分"] : $values[20]
+			$e["項目"]["特定器材種別(1)"]:=$values[21]="" ? $e["項目"]["特定器材種別(1)"] : $values[21]
+			$e["項目"]["上限価格"]:=$values[22]="" ? $e["項目"]["上限価格"] : $values[22]
+			$e["項目"]["上限点数"]:=$values[23]="" ? $e["項目"]["上限点数"] : $values[23]
 			//予備
-			$e["項目"]["公表順序番号"]:=$values[25]
-			$e["項目"]["廃止・新設関連"]:=$values[26]
-			$e["項目"]["変更年月日"]:=$values[27]
-			$e["項目"]["経過措置年月日"]:=$values[28]
-			$e["項目"]["廃止年月日"]:=$values[29]
+			$e["項目"]["公表順序番号"]:=$values[25]="" ? $e["項目"]["公表順序番号"] : $values[25]
+			$e["項目"]["廃止・新設関連"]:=$values[26]="" ? $e["項目"]["廃止・新設関連"] : $values[26]
+			$e["項目"]["変更年月日"]:=$values[27]="" ? $e["項目"]["変更年月日"] : $values[27]
+			$e["項目"]["経過措置年月日"]:=$values[28]="" ? $e["項目"]["経過措置年月日"] : $values[28]
+			$e["項目"]["廃止年月日"]:=$values[29]="" ? $e["項目"]["廃止年月日"] : $values[29]
+			
 			$e["項目"]["告示番号"]:={}
-			$e["項目"]["告示番号"]["別表番号"]:=$values[30]
-			$e["項目"]["告示番号"]["区分番号"]:=$values[31]
-			$e["項目"]["DPC適用区分"]:=$values[32]
+			$e["項目"]["告示番号"]["別表番号"]:=$values[30]="" ? $e["項目"]["告示番号"]["別表番号"] : $values[30]
+			$e["項目"]["告示番号"]["区分番号"]:=$values[31]="" ? $e["項目"]["告示番号"]["区分番号"] : $values[31]
+			$e["項目"]["DPC適用区分"]:=$values[32]="" ? $e["項目"]["DPC適用区分"] : $values[32]
 			//予備
 			//予備
 			//予備
 			
-			$e["基本漢字名称"]:=$values[36]
+			$e["基本漢字名称"]:=$values[36]="" ? $e["基本漢字名称"] : $values[36]
 			
 			var $newFormat : Boolean
 			
 			If ($values.length>37)
 				$newFormat:=True:C214
-				$e["項目"]["再製造単回使用医療機器"]:=$values[37]
+				$e["項目"]["再製造単回使用医療機器"]:=$values[37]="" ? $e["項目"]["再製造単回使用医療機器"] : $values[37]
 			End if 
 			
 		End if 
@@ -232,6 +260,23 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 		End if 
 		
 	End if 
+	
+Function _mayCreate($value : Text) : Boolean
+	
+	Case of 
+		: ($value="0")  //継続
+			return True:C214
+		: ($value="1")  //抹消
+			return False:C215
+		: ($value="2")  //復活
+			return True:C214
+		: ($value="3")  //新規
+			return True:C214
+		: ($value="5")  //変更
+			return True:C214
+		: ($value="9")  //廃止
+			return False:C215
+	End case 
 	
 Function _trimDoubleQuotes($values : Variant)->$value : Variant
 	

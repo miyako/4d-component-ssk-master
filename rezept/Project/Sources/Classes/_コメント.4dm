@@ -30,6 +30,29 @@ Function _getDataFolder() : 4D:C1709.Folder
 	
 	return cs:C1710._Core.new()._getDataFolder()
 	
+Function _sortFiles($param : Object)
+	
+	var $file1; $file2 : 4D:C1709.File
+	
+	$file1:=$param.value
+	$file2:=$param.value2
+	
+	$name1:=$file1.name
+	$name2:=$file2.name
+	
+	ARRAY LONGINT:C221($pos; 0)
+	ARRAY LONGINT:C221($len; 0)
+	
+	If (Match regex:C1019(".+(\\d{8})"; $name1; 1; $pos; $len))
+		$name1:=Substring:C12($name1; $pos{1}; $len{1})
+	End if 
+	
+	If (Match regex:C1019(".+(\\d{8})"; $name2; 1; $pos; $len))
+		$name2:=Substring:C12($name2; $pos{1}; $len{1})
+	End if 
+	
+	$param.result:=$name1<$name2
+	
 Function _getFiles($names : Collection) : Collection
 	
 	$dataFiles:=[]
@@ -42,8 +65,7 @@ Function _getFiles($names : Collection) : Collection
 	
 	If ($files.length#0)
 		var $file : 4D:C1709.File
-		For each ($file; $files.orderBy("name asc"))
-			
+		For each ($file; $files.sort(This:C1470._sortFiles))
 			If ($file.extension=".zip")
 				$archive:=ZIP Read archive:C1637($file)
 				$archiveFiles:=$archive.root.files()
@@ -160,7 +182,7 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 	
 	$e:=$dataClass.query("コメントコード.区分 == :1 and コメントコード.パターン == :2 and コメントコード.番号 == :3"; $values[2]; $values[3]; $values[4]).first()
 	
-	If ($e=Null:C1517) && ($values[0]#"9")
+	If ($e=Null:C1517) && This:C1470._mayCreate($values[0])
 		$e:=$dataClass.new()
 	End if 
 	
@@ -169,38 +191,39 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 		$e["項目"]:={}
 		$e["項目"]["変更区分"]:=$values[0]
 		
-		If ($values[0]#"9")
+		If (This:C1470._mayCreate($values[0]))
 			
-			$e["項目"]["マスター種別"]:=$values[1]
+			$e["項目"]["マスター種別"]:=$values[1]="" ? $e["項目"]["マスター種別"] : $values[1]
+			
 			$e["コメントコード"]:={}
-			$e["コメントコード"]["区分"]:=$values[2]
-			$e["コメントコード"]["パターン"]:=$values[3]
-			$e["コメントコード"]["番号"]:=$values[4]
+			$e["コメントコード"]["区分"]:=$values[2]="" ? $e["コメントコード"]["区分"] : $values[2]
+			$e["コメントコード"]["パターン"]:=$values[3]="" ? $e["コメントコード"]["パターン"] : $values[3]
+			$e["コメントコード"]["番号"]:=$values[4]="" ? $e["コメントコード"]["番号"] : $values[4]
 			
 			$e["コメント文"]:={}
-			$e["コメント文"]["漢字有効桁数"]:=$values[5]
-			$e["コメント文"]["漢字名称"]:=$values[6]
-			$e["コメント文"]["カナ有効桁数"]:=$values[7]
-			$e["コメント文"]["カナ名称"]:=$values[8]
+			$e["コメント文"]["漢字有効桁数"]:=$values[5]="" ? $e["コメント文"]["漢字有効桁数"] : $values[5]
+			$e["コメント文"]["漢字名称"]:=$values[6]="" ? $e["コメント文"]["漢字名称"] : $values[6]
+			$e["コメント文"]["カナ有効桁数"]:=$values[7]="" ? $e["コメント文"]["カナ有効桁数"] : $values[7]
+			$e["コメント文"]["カナ名称"]:=$values[8]="" ? $e["コメント文"]["カナ名称"] : $values[8]
 			
 			$e["項目"]["レセプト編集情報1"]:={}
-			$e["項目"]["レセプト編集情報1"]["カラム位置"]:=$values[9]
-			$e["項目"]["レセプト編集情報1"]["桁数"]:=$values[10]
+			$e["項目"]["レセプト編集情報1"]["カラム位置"]:=$values[9]="" ? $e["項目"]["レセプト編集情報1"]["カラム位置"] : $values[9]
+			$e["項目"]["レセプト編集情報1"]["桁数"]:=$values[10]="" ? $e["項目"]["レセプト編集情報1"]["桁数"] : $values[10]
 			
 			$e["項目"]["レセプト編集情報2"]:={}
-			$e["項目"]["レセプト編集情報2"]["カラム位置"]:=$values[11]
-			$e["項目"]["レセプト編集情報2"]["桁数"]:=$values[12]
+			$e["項目"]["レセプト編集情報2"]["カラム位置"]:=$values[11]="" ? $e["項目"]["レセプト編集情報2"]["カラム位置"] : $values[11]
+			$e["項目"]["レセプト編集情報2"]["桁数"]:=$values[12]="" ? $e["項目"]["レセプト編集情報2"]["桁数"] : $values[12]
 			
 			$e["項目"]["レセプト編集情報3"]:={}
-			$e["項目"]["レセプト編集情報3"]["カラム位置"]:=$values[13]
-			$e["項目"]["レセプト編集情報3"]["桁数"]:=$values[14]
+			$e["項目"]["レセプト編集情報3"]["カラム位置"]:=$values[13]="" ? $e["項目"]["レセプト編集情報3"]["カラム位置"] : $values[13]
+			$e["項目"]["レセプト編集情報3"]["桁数"]:=$values[14]="" ? $e["項目"]["レセプト編集情報3"]["桁数"] : $values[14]
 			
 			$e["項目"]["レセプト編集情報4"]:={}
-			$e["項目"]["レセプト編集情報4"]["カラム位置"]:=$values[15]
-			$e["項目"]["レセプト編集情報4"]["桁数"]:=$values[16]
+			$e["項目"]["レセプト編集情報4"]["カラム位置"]:=$values[15]="" ? $e["項目"]["レセプト編集情報4"]["カラム位置"] : $values[15]
+			$e["項目"]["レセプト編集情報4"]["桁数"]:=$values[16]="" ? $e["項目"]["レセプト編集情報4"]["桁数"] : $values[16]
 			
-			$e["項目"]["漢字名称変更区分"]:=$values[17]
-			$e["項目"]["カナ名称変更区分"]:=$values[18]
+			$e["項目"]["漢字名称変更区分"]:=$values[17]="" ? $e["項目"]["漢字名称変更区分"] : $values[17]
+			$e["項目"]["カナ名称変更区分"]:=$values[18]="" ? $e["項目"]["カナ名称変更区分"] : $values[18]
 			
 		End if 
 		
@@ -211,6 +234,23 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 		End if 
 		
 	End if 
+	
+Function _mayCreate($value : Text) : Boolean
+	
+	Case of 
+		: ($value="0")  //継続
+			return True:C214
+		: ($value="1")  //抹消
+			return False:C215
+		: ($value="2")  //復活
+			return True:C214
+		: ($value="3")  //新規
+			return True:C214
+		: ($value="5")  //変更
+			return True:C214
+		: ($value="9")  //廃止
+			return False:C215
+	End case 
 	
 Function _truncateString($value : Text; $length : Integer) : Text
 	

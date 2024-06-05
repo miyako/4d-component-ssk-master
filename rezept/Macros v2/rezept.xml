@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<!DOCTYPE macros SYSTEM "http://www.4d.com/dtd/2007/macros.dtd" >
+
+<macros>
+    
+    <macro
+        in_menu =           "true"
+        in_toolbar =        "true"
+        type_ahead =        "false"
+        name =              "test_emtpy"
+        version =           "2" >
+        <text><method>macro(&quot;<method_path />&quot;;&quot;<method_name />&quot;)</method></text>
+    </macro>
+    
+</macros>
+

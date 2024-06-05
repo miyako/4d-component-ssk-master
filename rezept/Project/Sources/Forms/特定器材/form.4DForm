@@ -1,0 +1,122 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onUnload"
+	],
+	"windowTitle": "",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"listbox": {
+					"type": "listbox",
+					"dataSource": "Form:C1466.特定器材",
+					"top": 10,
+					"left": 10,
+					"width": 490,
+					"height": 300,
+					"visibility": "visible",
+					"sizingX": "fixed",
+					"sizingY": "grow",
+					"headerHeight": "2em",
+					"listboxType": "collection",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"resizingMode": "legacy",
+					"currentItemSource": "特定器材Item",
+					"columns": [
+						{
+							"name": "ID",
+							"dataSource": "This:C1470.ID",
+							"width": 120,
+							"enterable": false,
+							"header": {
+								"text": "Id",
+								"name": ""
+							},
+							"footer": {
+								"name": "1"
+							}
+						},
+						{
+							"name": "基本漢字名称",
+							"dataSource": "This:C1470.基本漢字名称",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "基本漢字名称",
+								"name": "2"
+							},
+							"footer": {
+								"name": "3"
+							}
+						},
+						{
+							"name": "特定器材コード",
+							"dataSource": "This:C1470.特定器材コード",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "特定器材コード",
+								"name": "4"
+							},
+							"footer": {
+								"name": "5"
+							}
+						},
+						{
+							"header": {
+								"name": "Header1",
+								"text": "変更区分"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.項目.変更区分",
+							"width": 120
+						}
+					]
+				},
+				"Input": {
+					"type": "input",
+					"left": 511,
+					"top": 10,
+					"width": 226,
+					"height": 300,
+					"dataSource": "Form:C1466.特定器材Item.toObject()",
+					"dataSourceTypeHint": "object",
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"sizingX": "grow",
+					"sizingY": "grow"
+				}
+			}
+		}
+	],
+	"geometryStamp": 18,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}
