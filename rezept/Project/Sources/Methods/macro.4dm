@@ -14,9 +14,12 @@ $line:=""
 While (Match regex:C1019("(?m)^(.+?):=(.+?)$"; $code; $i; $pos; $len))
 	
 	$line+=Substring:C12($code; $pos{1}; $len{1})
-	$line+=":="
+	$line+=":=("
 	$line+=Substring:C12($code; $pos{2}; $len{2})
-	$line+="=\"\" ? "
+	$line+="=\"\" && ("
+	$line+=Substring:C12($code; $pos{1}; $len{1})
+	$line+="#Null))"
+	$line+=" ? "
 	$line+=Substring:C12($code; $pos{1}; $len{1})
 	$line+=" : "
 	$line+=Substring:C12($code; $pos{2}; $len{2})
