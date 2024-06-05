@@ -159,10 +159,6 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 	
 	$e:=$dataClass.query("診療行為コード == :1"; $values[2]).first()
 	
-	If ($values[0]="9")
-		TRACE:C157
-	End if 
-	
 	If ($e=Null:C1517) && ($values[0]#"9")
 		$e:=$dataClass.new()
 	End if 
