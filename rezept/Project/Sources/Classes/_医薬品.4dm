@@ -216,6 +216,10 @@ Function _createRecords($CLI : cs:C1710._CLI; $values : Collection; $verbose : B
 				If ($values.length>39)
 					$e["項目"]["抗HIV薬区分"]:=($values[39]="" && ($e["項目"]["抗HIV薬区分"]#Null:C1517)) ? $e["項目"]["抗HIV薬区分"] : $values[39]
 				End if 
+				If ($values.length>41)
+					$e["項目"]["長期収載品関連"]:=($values[40]="" && ($e["項目"]["長期収載品関連"]#Null:C1517)) ? $e["項目"]["長期収載品関連"] : $values[40]
+					$e["項目"]["選定療養区分"]:=($values[41]="" && ($e["項目"]["選定療養区分"]#Null:C1517)) ? $e["項目"]["選定療養区分"] : $values[41]
+				End if 
 			End if 
 			
 		End if 
