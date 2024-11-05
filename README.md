@@ -33,15 +33,15 @@ $医薬品:=$rezept.get("医薬品"; "610406079")
 
 |ファイル|更新日|ファイル名|
 |:-|:-|:-|
-|厚生労働省<br />医療保険が適用される医薬品について<br />[処方箋に記載する一般名処方の標準的な記載](https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shohosen_240401.html)|2024年3月11日|ippanmeishohoumaster_______.xlsx|
-|厚生労働省<br />医療保険が適用される医薬品について<br />[薬価基準収載品目リスト及び後発医薬品に関する情報](https://www.mhlw.go.jp/topics/2024/04/tp20240401-01.html)|2024年5月21日|tp________-01_01.xlsx<br />tp________-01_02.xlsx<br />tp________-01_03.xlsx|
+|厚生労働省<br />医療保険が適用される医薬品について<br />[処方箋に記載する一般名処方の標準的な記載](https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shohosen_240401.html)|2024年6月14日|ippanmeishohoumaster_______.xlsx|
+|厚生労働省<br />医療保険が適用される医薬品について<br />[薬価基準収載品目リスト及び後発医薬品に関する情報](https://www.mhlw.go.jp/topics/2024/04/tp20240401-01.html)|2024年11月1日|tp________-01_01.xlsx<br />tp________-01_02.xlsx<br />tp________-01_03.xlsx|
 |各先発医薬品の後発医薬品の有無に関する情報||未対応|
-|医薬品|2024年5月31日+廃止項目|y_ALL________.zip|
-|医科診療行為|2024年5月31日+廃止項目|s_ALL________.zip|
+|医薬品|2024年10月18日+廃止項目|y_ALL________.zip|
+|医科診療行為|2024年11月1日+廃止項目|s_ALL________.zip|
 |[労災診療行為](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/rezeptsystem/index.html#HID6-2)|2024年5月28日+廃止項目|ファイル名: rezept-master-01-yyyymmdd.csv|
 |特定器材|2024年3月15日|t_ALL________.zip|
-|労災特定器材|2024年5月28日+廃止項目|ファイル名: rezept-master-03-yyyymmdd.csv|
-|コメント|2024年5月24日|c_ALL________.zip|
+|労災特定器材|2024年8月30日+廃止項目|ファイル名: rezept-master-03-yyyymmdd.csv|
+|コメント|2024年10月2日|c_ALL________.zip|
 |労災コメント|2020年4月15日|ファイル名: rezept-master-06-yyyymmdd.csv|
 |傷病名|2024年6月1日|b_ALL________.zip|
 |修飾語|2024年6月1日|z_ALL________.zip|
