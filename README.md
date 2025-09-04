@@ -33,18 +33,18 @@ $医薬品:=$rezept.get("医薬品"; "610406079")
 
 |ファイル|更新日|ファイル名|
 |:-|:-|:-|
-|厚生労働省<br />医療保険が適用される医薬品について<br />[処方箋に記載する一般名処方の標準的な記載](https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shohosen_240401.html)|2024年6月14日|ippanmeishohoumaster_______.xlsx|
-|厚生労働省<br />医療保険が適用される医薬品について<br />[薬価基準収載品目リスト及び後発医薬品に関する情報](https://www.mhlw.go.jp/topics/2024/04/tp20240401-01.html)|2024年11月1日|tp________-01_01.xlsx<br />tp________-01_02.xlsx<br />tp________-01_03.xlsx|
+|厚生労働省<br />医療保険が適用される医薬品について<br />[処方箋に記載する一般名処方の標準的な記載](https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shohosen_250401.html)|令和7年8月14日適用|ippanmeishohoumaster_______.xlsx|
+|厚生労働省<br />医療保険が適用される医薬品について<br />[薬価基準収載品目リスト及び後発医薬品に関する情報](https://www.mhlw.go.jp/topics/2025/04/tp20250401-01.html)|令和7年8月14日適用|tp________-01_01.xlsx<br />tp________-01_02.xlsx<br />tp________-01_03.xlsx|
 |各先発医薬品の後発医薬品の有無に関する情報||未対応|
-|医薬品|2024年10月18日+廃止項目|y_ALL________.zip|
-|医科診療行為|2024年11月1日+廃止項目|s_ALL________.zip|
-|[労災診療行為](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/rezeptsystem/index.html#HID6-2)|2024年5月28日+廃止項目|ファイル名: rezept-master-01-yyyymmdd.csv|
-|特定器材|2024年3月15日|t_ALL________.zip|
-|労災特定器材|2024年8月30日+廃止項目|ファイル名: rezept-master-03-yyyymmdd.csv|
-|コメント|2024年10月2日|c_ALL________.zip|
-|労災コメント|2020年4月15日|ファイル名: rezept-master-06-yyyymmdd.csv|
-|傷病名|2024年6月1日|b_ALL________.zip|
-|修飾語|2024年6月1日|z_ALL________.zip|
+|[医薬品](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_04.html)|2025年8月13日+廃止項目|y_ALL________.zip|
+|[医科診療行為](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_01.html)|2025年9月1日+廃止項目|s_ALL________.zip|
+|[労災診療行為](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/rezeptsystem/index.html#HID6-2)|令和6年11月1日+廃止項目|ファイル名: rezept-master-01-yyyymmdd.csv|
+|[特定器材](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_05.html)|2025年8月29日|t_ALL________.zip|
+|労災特定器材|令和6年5月28日+廃止項目|ファイル名: rezept-master-03-yyyymmdd.csv|
+|[コメント](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_06.html)|2025年7月15日|c_ALL________.zip|
+|労災コメント|令和2年4月15日|ファイル名: rezept-master-06-yyyymmdd.csv|
+|[傷病名](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_07.html)|2025年5月30日|b_ALL________.zip|
+|[修飾語](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_08.html)|2025年6月2日|z_ALL________.zip|
 |歯科診療行為||未対応|
 |調剤行為||未対応|
 |歯式||未対応|
