@@ -1,4 +1,10 @@
 {
+	"Development": {
+		"methods": [
+			"macro"
+		]
+	},
+	"issue-20": {},
 	"ORDA": {
 		"tables": [
 			"_コメント",
@@ -36,6 +42,28 @@
 			"_Params",
 			"_公費",
 			"_番号"
+		]
+	},
+	"Runtime": {
+		"methods": [
+			"get_data_s",
+			"get_info_s",
+			"new_github_s",
+			"select_s"
+		],
+		"classes": [
+			"GitHub",
+			"Rezept"
+		]
+	},
+	"Tests": {
+		"methods": [
+			"test_count",
+			"test_regenerate"
+		],
+		"forms": [
+			"診療行為",
+			"特定器材"
 		]
 	},
 	"trash": {}
