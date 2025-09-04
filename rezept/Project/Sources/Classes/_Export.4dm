@@ -966,7 +966,7 @@ Function setup_i()
 				If ($e後発医薬品#Null:C1517)
 					$instance.後発品:=OB Copy:C1225($e後発医薬品.toObject(); ck shared:K85:29; $sharedCollection)
 				Else 
-					$instance.後発品:=Null:C1517  //一般名なし
+					$instance.後発品:=Null:C1517  //後発品なし
 				End if 
 				
 			End if 

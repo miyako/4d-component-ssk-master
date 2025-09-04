@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 $t:=ds:C1482._コメント.all().distinct("項目.変更区分")
 $t0:=ds:C1482._コメント.query("項目.変更区分 == :1"; "0")  //継続
 $t1:=ds:C1482._コメント.query("項目.変更区分 == :1"; "1")  //抹消

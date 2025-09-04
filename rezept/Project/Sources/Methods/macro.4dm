@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 #DECLARE($method_path : Text; $method_name : Text)
 
 var $code : Text

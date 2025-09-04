@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 //一般名処方,後発医薬品,医薬品がセット（医薬品に統合する）
 ds:C1482._一般名処方.regenerate()
 ds:C1482._後発医薬品.regenerate()
