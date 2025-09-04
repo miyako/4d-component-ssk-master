@@ -1,10 +1,10 @@
-﻿{
+{
 	"name": "ssk-master",
 	"description": "社会保険診療報酬支払基金マスター",
 	"author": "Keisuke Miyako <keisuke.miyako@4d.com>",
 	"license": "MIT",
 	"repository": "https://github.com/miyako/4d-component-ssk-master",
-	"version": "0.1.60",
+	"version": "0.1.61",
 	"release_name": "2025年9月3日",
 	"tool": {
 		"platform": "macos",
