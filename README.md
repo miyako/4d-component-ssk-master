@@ -44,7 +44,7 @@ $医薬品:=$rezept.get("医薬品"; "610406079")
 |[コメント](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_06.html)|2025年7月15日|c_ALL________.zip|
 |労災コメント|2020年4月15日|ファイル名: rezept-master-06-yyyymmdd.csv|
 |[傷病名](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_07.html)|2025年5月30日|b_ALL________.zip|
-|修飾語|2024年6月1日|z_ALL________.zip|
+|[修飾語](https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/r06/kihonmasta_08.html)|2025年6月2日|z_ALL________.zip|
 |歯科診療行為||未対応|
 |調剤行為||未対応|
 |歯式||未対応|
