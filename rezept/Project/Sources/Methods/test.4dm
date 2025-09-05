@@ -1,4 +1,11 @@
 //%attributes = {}
+
+$一般名:=ds:C1482._一般名処方.search("1329705Q1ZZZ").一般名処方の標準的な記載
+
+
+//ds._特定器材.regenerate()
+//ds._コメント.regenerate()
+
 //ds._一般名処方.regenerate()
 //ds._後発医薬品.regenerate()
 //ds._医薬品.regenerate()
