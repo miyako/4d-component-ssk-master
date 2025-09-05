@@ -1,5 +1,5 @@
 //%attributes = {}
-If (Get application info:C1599.headless)
+If (Application info:C1599.headless)
 	
 	var $CLI : cs:C1710._CLI
 	$CLI:=cs:C1710._CLI.new().ES().XY(0; 0)
