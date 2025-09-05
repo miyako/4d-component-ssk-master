@@ -31,7 +31,7 @@ $CLI\
 .print("***"+Parse formula:C1576(":C1662")+"***"; "bold")\
 .LF()
 
-$chain:=Get call chain:C1662
+$chain:=Call chain:C1662
 
 For each ($link; $chain)
 	$CLI\
@@ -63,13 +63,13 @@ $CLI\
 ARRAY LONGINT:C221($codes; 0)
 ARRAY TEXT:C222($components; 0)
 ARRAY TEXT:C222($messages; 0)
-GET LAST ERROR STACK:C1015($codes; $components; $messages)
+_O_GET LAST ERROR STACK:C1015($codes; $components; $messages)
 
 For ($i; 1; Size of array:C274($codes))
 	$CLI\
 		.print("error")\
 		.print(": ")\
-		.print($codes{$i})\
+		.print(String:C10($codes{$i}))\
 		.LF()
 	$CLI\
 		.print("component")\
