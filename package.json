@@ -4,7 +4,7 @@
 	"author": "Keisuke Miyako <keisuke.miyako@4d.com>",
 	"license": "MIT",
 	"repository": "https://github.com/miyako/4d-component-ssk-master",
-	"version": "0.1.63",
+	"version": "0.1.64",
 	"release_name": "2025年9月5日",
 	"tool": {
 		"platform": "macos",
