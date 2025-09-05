@@ -9,7 +9,7 @@ Function search($薬価基準コード : Text)->$一般名 : Object
 	$params.parameters.例外コード:="例外コード"
 	$params.parameters.検索値:=Substring:C12($薬価基準コード; 1; 9)+"@"
 	
-	var $es : cs:C1710._一般名処方Selection
+	var $es : 4D:C1709.EntitySelection
 	$es:=This:C1470.query(":例外コード !== :例外コード and :一般名コード == :検索値"; $params)
 	
 	If ($es.length#0)
@@ -44,8 +44,8 @@ Function _pauseIndexes() : cs:C1710._一般名処方
 	
 Function _resumeIndexes() : cs:C1710._一般名処方
 	
-	RESUME INDEXES:C1294(This:C1470._getTablePointer1()->; *)
-	RESUME INDEXES:C1294(This:C1470._getTablePointer2()->; *)
+	RESUME INDEXES:C1294(This:C1470._getTablePointer1()->)
+	RESUME INDEXES:C1294(This:C1470._getTablePointer2()->)
 	
 	return This:C1470
 	
