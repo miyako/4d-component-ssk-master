@@ -12,7 +12,7 @@ Function _pauseIndexes() : cs:C1710._修飾語
 	
 Function _resumeIndexes() : cs:C1710._修飾語
 	
-	RESUME INDEXES:C1294(This:C1470._getTablePointer()->; *)
+	RESUME INDEXES:C1294(This:C1470._getTablePointer()->)
 	
 	return This:C1470
 	
