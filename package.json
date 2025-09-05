@@ -5,11 +5,11 @@
 	"license": "MIT",
 	"repository": "https://github.com/miyako/4d-component-ssk-master",
 	"version": "0.1.62",
-	"release_name": "2025年9月3日",
+	"release_name": "2025年9月5日",
 	"tool": {
 		"platform": "macos",
 		"branch": "20%20Rx",
-		"version": "20%20R6",
+		"version": "20%20R8",
 		"build": "latest",
 		"arch": "arm"
 	},
